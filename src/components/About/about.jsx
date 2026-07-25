@@ -6,17 +6,17 @@ function About() {
     {
       icon: <UtensilsCrossed size={35} />,
       number: "500+",
-      title: "Events Catered",
+      title: "வெற்றிகரமான நிகழ்வுகள்",
     },
     {
       icon: <Award size={35} />,
       number: "10+",
-      title: "Years Experience",
+      title: "ஆண்டுகள் அனுபவம்",
     },
     {
       icon: <Users size={35} />,
       number: "100%",
-      title: "Customer Satisfaction",
+      title: "வாடிக்கையாளர்களின் திருப்தி",
     },
   ];
 
@@ -34,18 +34,17 @@ function About() {
           viewport={{ once:true }}
         >
           <p className="text-yellow-600 uppercase tracking-[4px] font-semibold">
-            About Us
+            எங்களை பற்றி
           </p>
 
           <p className="mt-8 text-gray-600 leading-8">
-            Nalan Catering delivers premium catering services for weddings,
-            birthdays, corporate events and family celebrations. We combine
-            authentic flavours, elegant presentation and exceptional service to
-            create unforgettable experiences for every guest.
+            Nalan Catering கடந்த 10+ ஆண்டுகளாக தமிழ்நாடு முழுவதும் திருமணங்கள், நிச்சயதார்த்தங்கள், பிறந்தநாள் விழாக்கள் மற்றும் Corporate Events ஆகியவற்றிற்கு தரமான உணவு மற்றும் சிறந்த சேவையை வழங்கி வருகிறது.
+
+            எங்கள் நோக்கம் சுவையான உணவை மட்டும் வழங்குவது அல்ல, உங்கள் விழாவை அனைவரும் நினைவில் வைத்திருக்கும் ஒரு அனுபவமாக மாற்றுவதாகும்.
           </p>
 
           <button className="mt-10 bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-full transition">
-            Learn More
+            மேலும் அறிய
           </button>
 
         </motion.div>

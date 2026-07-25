@@ -23,18 +23,18 @@ function Hero() {
             transition={{ duration: .7 }}
             className="uppercase tracking-[6px] text-yellow-400"
           >
-            Premium Catering Service
+            தமிழ் பாரம்பரியம் • Premium Catering Service
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: .2 }}
-            className="text-white text-6xl md:text-8xl font-bold mt-6"
+            className="text-white text-4xl md:text-7xl font-bold mt-6 leading-tight"
           >
-            Celebrate Every
+            உங்கள் விழா 
             <br />
-            Occasion
+            எங்கள் பொறுப்பு
           </motion.h1>
 
           <motion.p
@@ -43,18 +43,17 @@ function Hero() {
             transition={{ delay: .5 }}
             className="text-gray-200 mt-8 text-xl max-w-2xl mx-auto"
           >
-            Delicious food, elegant presentation and unforgettable memories
-            crafted for weddings, birthdays and corporate events.
+            திருமணம், பிறந்தநாள் விழா, Corporate Events மற்றும் அனைத்து விசேஷ நிகழ்வுகளுக்கும் சுவையான உணவு, சிறந்த சேவை மற்றும் மறக்க முடியாத அனுபவம்.
           </motion.p>
 
           <div className="mt-10 flex gap-6 justify-center flex-wrap">
 
             <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-full font-semibold transition">
-              Book Now
+              📞 Book Your Event
             </button>
 
             <button className="border border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-black transition">
-              View Menu
+              🍛 View Menu
             </button>
 
           </div>
