@@ -41,8 +41,9 @@ function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="py-24 px-6 bg-[#FFF8F0]">
+    <section id="gallery" className="py-20 md:py-24 px-4 md:px-6 bg-[#FFF8F0]">
       <div className="max-w-7xl mx-auto">
+
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -55,7 +56,7 @@ function Gallery() {
             எங்கள் நிகழ்வுகள்
           </p>
 
-          <h2 className="text-5xl font-bold text-gray-900 mt-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-4">
             எங்கள் சேவையின் சில சிறப்பான தருணங்கள்
           </h2>
 
@@ -66,7 +67,7 @@ function Gallery() {
         </motion.div>
 
         {/* Gallery Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-16">
           {galleryItems.map((item, index) => (
             <motion.div
               key={index}
@@ -77,22 +78,23 @@ function Gallery() {
                 delay: index * 0.1,
               }}
               viewport={{ once: true }}
+              whileTap={{ scale: 0.97 }}
               className="group overflow-hidden rounded-3xl shadow-lg bg-white"
             >
               <div className="overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-72 object-cover group-hover:scale-110 transition duration-500"
+                  className="w-full h-36 md:h-72 object-cover group-hover:scale-110 transition duration-500"
                 />
               </div>
 
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900">
+              <div className="p-3 md:p-6">
+                <h3 className="text-sm md:text-2xl font-bold text-gray-900">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-gray-600">
+                <p className="mt-2 md:mt-3 text-xs md:text-base text-gray-600">
                   {item.description}
                 </p>
               </div>
@@ -108,11 +110,12 @@ function Gallery() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-xl font-semibold text-gray-800">
+          <p className="text-base md:text-xl font-semibold text-gray-800">
             ⭐ 500+ வெற்றிகரமான நிகழ்வுகளில் நம்பிக்கையுடன் சேவை
             வழங்கியுள்ளோம்.
           </p>
         </motion.div>
+
       </div>
     </section>
   );

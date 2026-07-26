@@ -30,7 +30,7 @@ function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: .2 }}
-            className="text-white text-4xl md:text-7xl font-bold mt-6 leading-tight"
+            className="text-white text-3xl sm:text-4xl md:text-7xl font-bold mt-6 leading-tight"
           >
             உங்கள் விழா 
             <br />
