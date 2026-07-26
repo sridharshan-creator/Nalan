@@ -6,20 +6,19 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-const scrollToSection = (id) => {
-  console.log("Navbar clicked:", id);
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
 
-  const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
 
-  if (section) {
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
+    setMenuOpen(false);
+  };
 
-  setMenuOpen(false);
-};
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
@@ -43,19 +42,20 @@ const scrollToSection = (id) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 w-full overflow-x-hidden z-50 transition-all duration-500 ${
         scrolled
           ? "bg-white/90 backdrop-blur-xl shadow-lg"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-5">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4">
+
         {/* Logo */}
         <motion.button
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={() => scrollToSection("home")}
-          className="text-3xl font-bold text-yellow-600 cursor-pointer"
+          className="text-lg sm:text-xl md:text-3xl font-bold text-yellow-600 cursor-pointer whitespace-nowrap"
         >
           Nalan Catering
         </motion.button>
@@ -66,7 +66,7 @@ const scrollToSection = (id) => {
             <button
               key={link.name}
               onClick={() => scrollToSection(link.id)}
-              className="relative font-medium text-gray-800 transition-colors duration-300 hover:text-yellow-600 group"
+              className="relative font-medium text-gray-800 hover:text-yellow-600 transition group"
             >
               {link.name}
 
@@ -78,7 +78,7 @@ const scrollToSection = (id) => {
         {/* Desktop CTA */}
         <button
           onClick={() => scrollToSection("contact")}
-          className="hidden lg:block bg-yellow-500 hover:bg-yellow-600 transition px-6 py-3 rounded-full text-white font-semibold"
+          className="hidden lg:block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-semibold transition"
         >
           Book Now
         </button>
@@ -86,10 +86,11 @@ const scrollToSection = (id) => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden"
+          className="lg:hidden flex-shrink-0"
         >
-          {menuOpen ? <X size={30} /> : <Menu size={30} />}
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
+
       </div>
 
       {/* Mobile Menu */}
@@ -99,13 +100,13 @@ const scrollToSection = (id) => {
             <button
               key={link.name}
               onClick={() => scrollToSection(link.id)}
-              className="block w-full text-left px-8 py-5 border-b hover:bg-yellow-50"
+              className="block w-full text-left px-6 py-4 border-b hover:bg-yellow-50"
             >
               {link.name}
             </button>
           ))}
 
-          <div className="p-6">
+          <div className="p-4">
             <button
               onClick={() => scrollToSection("contact")}
               className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-full font-semibold transition"
