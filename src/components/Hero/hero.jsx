@@ -47,13 +47,27 @@ function Hero() {
           </motion.p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-white w-64 py-3 rounded-full font-semibold transition">
-              📞 Book Your Event
-            </button>
+            <button
+  onClick={() =>
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    })
+  }
+  className="bg-yellow-500 hover:bg-yellow-600 text-white w-64 py-3 rounded-full font-semibold transition"
+>
+  📞 Book Your Event
+</button>
 
-            <button className="border border-white text-white w-64 py-3 rounded-full hover:bg-white hover:text-black transition">
-              🍛 View Menu
-            </button>
+<button
+  onClick={() =>
+    document.getElementById("menu")?.scrollIntoView({
+      behavior: "smooth",
+    })
+  }
+  className="border border-white text-white w-64 py-3 rounded-full hover:bg-white hover:text-black transition"
+>
+  🍛 View Menu
+</button>
           </div>
 
         </div>
