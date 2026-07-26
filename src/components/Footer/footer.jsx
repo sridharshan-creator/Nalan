@@ -10,6 +10,9 @@ function Footer() {
           <h2 className="text-2xl md:text-3xl font-bold text-yellow-500">
             Nalan Catering
           </h2>
+          <p className="mt-3 text-gray-400">
+           🍃 வாழையிலையில் பரிமாறும் பாரம்பரிய சுவை
+          </p>
 
           <p className="mt-4 text-gray-400 leading-7 break-words">
             நல்ல சுவை • நல்ல சேவை • நல்ல நினைவுகள்

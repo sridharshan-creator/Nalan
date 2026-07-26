@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;700;800&display=swap');
 @import "tailwindcss";
+
+body{
+  font-family: "Noto Sans Tamil", sans-serif;
+}
 
 html {
   scroll-behavior: smooth;

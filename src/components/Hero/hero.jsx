@@ -21,7 +21,7 @@ function Hero() {
             transition={{ duration: 0.7 }}
             className="uppercase tracking-[2px] md:tracking-[6px] text-yellow-400 text-xs sm:text-sm md:text-base"
           >
-            தமிழ் பாரம்பரியம் • Premium Catering Service
+            🌾 தமிழ் பாரம்பரியம் • சுவையின் பெருமை
           </motion.p>
 
           <motion.h1
@@ -32,7 +32,7 @@ function Hero() {
           >
             உங்கள் விழா
             <br />
-            எங்கள் பொறுப்பு
+            எங்கள் அன்பான விருந்து
           </motion.h1>
 
           <motion.p
@@ -53,7 +53,7 @@ function Hero() {
       behavior: "smooth",
     })
   }
-  className="bg-yellow-500 hover:bg-yellow-600 text-white w-64 py-3 rounded-full font-semibold transition"
+  className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-full"
 >
   📞 Book Your Event
 </button>

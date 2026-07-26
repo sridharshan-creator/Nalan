@@ -32,13 +32,13 @@ function Navbar() {
   }, []);
 
   const links = [
-    { name: "home", id: "home" },
-    { name: "about", id: "about" },
-    { name: "services", id: "services" },
-    { name: "menu", id: "menu" },
-    { name: "gallery", id: "gallery" },
-    { name: "contact", id: "contact" },
-  ];
+  { name: "முகப்பு", id: "home" },
+  { name: "எங்களை பற்றி", id: "about" },
+  { name: "சேவைகள்", id: "services" },
+  { name: "உணவு பட்டியல்", id: "menu" },
+  { name: "தருணங்கள்", id: "gallery" },
+  { name: "தொடர்பு", id: "contact" },
+];
 
   return (
     <header
