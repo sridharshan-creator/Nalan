@@ -26,12 +26,16 @@ function About() {
 
         {/* Left Side */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className="text-yellow-600 uppercase tracking-[4px] font-semibold">
+          <p className="text-yellow-500 text-lg mb-2">
+            ✨ ❖ ✨
+          </p>
+
+          <p className="text-yellow-500 uppercase tracking-[4px] font-semibold">
             எங்களை பற்றி
           </p>
 
@@ -52,25 +56,41 @@ function About() {
             அனுபவமாக மாற்றுவதாகும்.
           </p>
 
-          <button className="mt-10 bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-full transition">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-10 bg-yellow-500 hover:bg-amber-800 text-white px-8 py-4 rounded-full transition"
+          >
             மேலும் அறிய
-          </button>
+          </motion.button>
         </motion.div>
 
         {/* Right Side */}
         <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="grid grid-cols-3 gap-3 md:gap-6"
         >
           {stats.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white rounded-3xl shadow-xl p-4 md:p-8 text-center hover:-translate-y-3 transition duration-300"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+              }}
+              viewport={{ once: true }}
+              whileHover={{
+                y: -10,
+                scale: 1.03,
+              }}
+              whileTap={{ scale: 0.97 }}
+              className="bg-white rounded-3xl shadow-xl p-4 md:p-8 text-center"
             >
-              <div className="text-yellow-500 flex justify-center mb-3">
+              <div className="text-amber-700 flex justify-center mb-3">
                 {item.icon}
               </div>
 
@@ -81,7 +101,7 @@ function About() {
               <p className="mt-2 text-xs md:text-base text-gray-600">
                 {item.title}
               </p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 

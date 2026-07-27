@@ -40,23 +40,27 @@ function Menu() {
 
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-yellow-600 uppercase tracking-[4px] font-semibold">
+          <p className="text-yellow-500 text-lg mb-2">
+            ✨ ❖ ✨
+          </p>
+
+          <p className="text-yellow-500 uppercase tracking-[4px] font-semibold">
             உணவு பட்டியல்
           </p>
 
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-4">
-            பாரம்பரிய சுவை, நவீன தரம்
+            பாரம்பரிய சுவை • நவீன தரம்
           </h2>
 
           <p className="text-gray-600 mt-6 max-w-3xl mx-auto leading-8">
-            எங்கள் உணவு பட்டியலில் பாரம்பரிய தமிழ் உணவுகள் முதல் நவீன
-            Special Dishes வரை அனைத்தும் கிடைக்கும்.
+            எங்கள் உணவு பட்டியலில் பாரம்பரிய தமிழ் உணவுகள் முதல்
+            நவீன சிறப்பு உணவுகள் வரை அனைத்தும் கிடைக்கும்.
           </p>
         </motion.div>
 
@@ -64,7 +68,7 @@ function Menu() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
           className="mt-12 bg-yellow-500 text-white rounded-3xl p-6 md:p-8 text-center shadow-xl"
         >
@@ -73,7 +77,8 @@ function Menu() {
           </h3>
 
           <p className="mt-3 text-sm md:text-lg">
-            Authentic Tamil Nadu Catering Experience for Weddings & Special Events
+            திருமணம், நிச்சயதார்த்தம் மற்றும் அனைத்து விழாக்களுக்கும்
+            சிறப்பு தமிழ் விருந்து
           </p>
         </motion.div>
 
@@ -85,13 +90,16 @@ function Menu() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.5,
+                duration: 0.6,
                 delay: index * 0.1,
               }}
               viewport={{ once: true }}
-              whileHover={{ y: -8 }}
+              whileHover={{
+                y: -10,
+                scale: 1.03,
+              }}
               whileTap={{ scale: 0.97 }}
-              className="bg-white rounded-3xl p-4 md:p-8 shadow-lg hover:shadow-2xl transition duration-300"
+              className="bg-white rounded-3xl p-4 md:p-8 shadow-lg hover:shadow-2xl"
             >
               <h3 className="text-base md:text-2xl font-bold text-gray-900">
                 {item.title}

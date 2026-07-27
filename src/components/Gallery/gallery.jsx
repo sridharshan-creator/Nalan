@@ -41,7 +41,10 @@ function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="py-20 md:py-24 px-4 md:px-6 bg-[#FFF8F0]">
+    <section
+      id="gallery"
+      className="py-20 md:py-24 px-4 md:px-6 bg-gradient-to-b from-[#FFF8F0] to-[#FFF3E0]"
+    >
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
@@ -60,7 +63,9 @@ function Gallery() {
             எங்கள் சேவையின் சில சிறப்பான தருணங்கள்
           </h2>
 
-          <p className="text-gray-600 mt-6 max-w-3xl mx-auto">
+          <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full mt-5"></div>
+
+          <p className="text-gray-600 mt-6 max-w-3xl mx-auto leading-7">
             திருமணங்கள், பிறந்தநாள் விழாக்கள், நிறுவன நிகழ்வுகள் மற்றும்
             பாரம்பரிய விருந்து நிகழ்ச்சிகளின் புகைப்படங்கள்.
           </p>
@@ -78,14 +83,15 @@ function Gallery() {
                 delay: index * 0.1,
               }}
               viewport={{ once: true }}
+              whileHover={{ y: -8 }}
               whileTap={{ scale: 0.97 }}
-              className="group overflow-hidden rounded-3xl shadow-lg bg-white"
+              className="group overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl bg-white transition-all duration-300"
             >
               <div className="overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-36 md:h-72 object-cover group-hover:scale-110 transition duration-500"
+                  className="w-full h-36 md:h-72 object-cover group-hover:scale-110 transition duration-700"
                 />
               </div>
 
@@ -102,15 +108,15 @@ function Gallery() {
           ))}
         </div>
 
-        {/* Bottom Text */}
+        {/* Bottom Highlight */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="mt-16 bg-yellow-500 text-white rounded-3xl p-6 md:p-8 text-center shadow-xl"
         >
-          <p className="text-base md:text-xl font-semibold text-gray-800">
+          <p className="text-base md:text-xl font-semibold">
             ⭐ 500+ வெற்றிகரமான நிகழ்வுகளில் நம்பிக்கையுடன் சேவை
             வழங்கியுள்ளோம்.
           </p>

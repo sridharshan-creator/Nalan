@@ -36,13 +36,17 @@ function Services() {
 
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
         >
-          <p className="text-yellow-600 uppercase tracking-[4px] font-semibold">
+          <p className="text-yellow-500 text-lg mb-2">
+            ✨ ❖ ✨
+          </p>
+
+          <p className="text-yellow-500 uppercase tracking-[4px] font-semibold">
             எங்கள் சேவைகள்
           </p>
 
@@ -50,10 +54,10 @@ function Services() {
             உங்கள் ஒவ்வொரு விழாவிற்கும் சிறந்த Catering Solutions
           </h2>
 
-          <p className="text-gray-600 mt-6 max-w-3xl mx-auto">
+          <p className="text-gray-600 mt-6 max-w-3xl mx-auto leading-8">
             சிறிய குடும்ப விழாவிலிருந்து பெரிய திருமண விழா வரை,
-            அனைத்து நிகழ்வுகளுக்கும் தரமான உணவு மற்றும் சிறந்த சேவையை
-            வழங்குகிறோம்.
+            அனைத்து நிகழ்வுகளுக்கும் தரமான உணவு மற்றும் சிறந்த
+            சேவையை வழங்குகிறோம்.
           </p>
         </motion.div>
 
@@ -64,11 +68,17 @@ function Services() {
               key={index}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+              }}
               viewport={{ once: true }}
-              whileHover={{ y: -12 }}
+              whileHover={{
+                y: -10,
+                scale: 1.03,
+              }}
               whileTap={{ scale: 0.97 }}
-              className="bg-[#FFF8F0] rounded-3xl p-5 md:p-8 shadow-lg hover:shadow-2xl transition text-center"
+              className="bg-[#FFF8F0] rounded-3xl p-5 md:p-8 shadow-lg hover:shadow-2xl text-center"
             >
               <div className="text-yellow-500 mb-4 flex justify-center">
                 {service.icon}
@@ -78,7 +88,7 @@ function Services() {
                 {service.title}
               </h3>
 
-              <p className="text-yellow-600 font-medium mt-2 text-xs sm:text-sm md:text-base">
+              <p className="text-yellow-500 font-medium mt-2 text-xs sm:text-sm md:text-base">
                 {service.subtitle}
               </p>
             </motion.div>
