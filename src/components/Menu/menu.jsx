@@ -1,118 +1,215 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Menu() {
+  const [activeCategory, setActiveCategory] = useState(0);
+
   const categories = [
     {
-      title: "🍛 திருமண சாப்பாடு",
-      description:
-        "சக்கரை பொங்கல், சாம்பார், ரசம், அவியல், பொரியல், அப்பளம், பாயாசம் மற்றும் வாழையிலை விருந்து.",
+      title: "🍚 Rice",
+      items: [
+        "White Rice",
+        "Ghee Rice",
+        "Lemon Rice",
+        "Tomato Rice",
+        "Coconut Rice",
+        "Curd Rice",
+        "Jeera Rice",
+        "Veg Biryani",
+      ],
     },
     {
-      title: "🥞 டிபன் வகைகள்",
-      description:
-        "இட்லி, தோசை, நெய் ரோஸ்ட், பொங்கல், பூரி மசால், வடை மற்றும் மினி டிபன்.",
+      title: "🍛 Gravies",
+      items: [
+        "Sambar",
+        "Rasam",
+        "Vatha Kuzhambu",
+        "Mor Kuzhambu",
+        "Kara Kuzhambu",
+        "Vegetable Kurma",
+        "Dal Fry",
+        "Paneer Butter Masala",
+      ],
     },
     {
-      title: "🍗 செட்டிநாடு சிறப்புகள்",
-      description:
-        "செட்டிநாடு சிக்கன், பெப்பர் சிக்கன், மட்டன் சுக்கா, சிக்கன் கிரேவி மற்றும் பிரியாணி.",
+      title: "🥬 Vegetables",
+      items: [
+        "Aviyal",
+        "Beans Poriyal",
+        "Cabbage Poriyal",
+        "Potato Fry",
+        "Carrot Beans Poriyal",
+        "Kootu",
+        "Brinjal Curry",
+        "Cauliflower Fry",
+      ],
     },
     {
-      title: "🥤 வரவேற்பு பானங்கள்",
-      description:
-        "ரோஸ் மில்க், பாதாம் பால், ஜிகர்தண்டா, எலுமிச்சை சாறு மற்றும் பழச்சாறுகள்.",
+      title: "🍗 Non-Veg",
+      items: [
+        "Chicken Biryani",
+        "Mutton Biryani",
+        "Chicken 65",
+        "Pepper Chicken",
+        "Fish Fry",
+        "Mutton Sukka",
+        "Chicken Gravy",
+        "Prawn Fry",
+      ],
     },
     {
-      title: "🍨 இனிப்புகள்",
-      description:
-        "குலாப் ஜாமுன், ஜாங்கிரி, லட்டு, ரசகுல்லா, ஐஸ்கிரீம் மற்றும் பழச்சலாட்.",
+      title: "🥞 Tiffin",
+      items: [
+        "Idli",
+        "Dosa",
+        "Ghee Roast",
+        "Pongal",
+        "Poori",
+        "Chapathi",
+        "Vada",
+        "Mini Tiffin",
+      ],
     },
     {
-      title: "☕ மாலை நேர சிற்றுண்டி",
-      description:
-        "சமோசா, கட்லெட், பஜ்ஜி, போண்டா, தேநீர் மற்றும் காபி.",
+      title: "🍨 Sweets",
+      items: [
+        "Gulab Jamun",
+        "Kesari",
+        "Jangiri",
+        "Rasgulla",
+        "Laddu",
+        "Payasam",
+        "Ice Cream",
+        "Fruit Salad",
+      ],
+    },
+    {
+      title: "🥤 Drinks",
+      items: [
+        "Rose Milk",
+        "Jigarthanda",
+        "Badam Milk",
+        "Fresh Lime",
+        "Coffee",
+        "Tea",
+        "Mango Juice",
+        "Watermelon Juice",
+      ],
+    },
+    {
+      title: "🍟 Snacks",
+      items: [
+        "Samosa",
+        "Cutlet",
+        "Bajji",
+        "Bonda",
+        "Pakoda",
+        "Spring Roll",
+        "French Fries",
+        "Sandwich",
+      ],
     },
   ];
 
   return (
-    <section id="menu" className="py-20 md:py-24 px-4 md:px-6 bg-[#FFF8F0]">
+    <section
+      id="menu"
+      className="py-24 px-4 bg-gradient-to-b from-[#fffaf2] to-[#fff3dc]"
+    >
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-yellow-500 text-lg mb-2">
-            ✨ ❖ ✨
-          </p>
+          <p className="text-yellow-500 text-lg">✨ ❖ ✨</p>
 
-          <p className="text-yellow-500 uppercase tracking-[4px] font-semibold">
-            உணவு பட்டியல்
-          </p>
-
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-4">
-            பாரம்பரிய சுவை • நவீன தரம்
+          <h2 className="text-4xl md:text-5xl font-bold mt-4">
+            Our Menu
           </h2>
 
-          <p className="text-gray-600 mt-6 max-w-3xl mx-auto leading-8">
-            எங்கள் உணவு பட்டியலில் பாரம்பரிய தமிழ் உணவுகள் முதல்
-            நவீன சிறப்பு உணவுகள் வரை அனைத்தும் கிடைக்கும்.
+          <p className="text-gray-600 mt-5 max-w-2xl mx-auto">
+            Traditional South Indian, North Indian and Special Catering Menu
           </p>
         </motion.div>
 
-        {/* Highlight Banner */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="mt-12 bg-yellow-500 text-white rounded-3xl p-6 md:p-8 text-center shadow-xl"
-        >
-          <h3 className="text-xl md:text-3xl font-bold">
-            🌿 வாழையிலையில் பரிமாறப்படும் பாரம்பரிய தமிழ் உணவுகள்
-          </h3>
-
-          <p className="mt-3 text-sm md:text-lg">
-            திருமணம், நிச்சயதார்த்தம் மற்றும் அனைத்து விழாக்களுக்கும்
-            சிறப்பு தமிழ் விருந்து
-          </p>
-        </motion.div>
-
-        {/* Menu Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-16">
-          {categories.map((item, index) => (
-            <motion.div
+        {/* Category Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mt-12 mb-10">
+          {categories.map((category, index) => (
+            <button
               key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-              }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -10,
-                scale: 1.03,
-              }}
-              whileTap={{ scale: 0.97 }}
-              className="bg-white rounded-3xl p-4 md:p-8 shadow-lg hover:shadow-2xl"
+              onClick={() => setActiveCategory(index)}
+              className={`px-6 py-3 rounded-full font-semibold transition ${
+                activeCategory === index
+                  ? "bg-yellow-500 text-white shadow-lg"
+                  : "bg-white border border-yellow-300 hover:bg-yellow-100"
+              }`}
             >
-              <h3 className="text-base md:text-2xl font-bold text-gray-900">
-                {item.title}
-              </h3>
-
-              <p className="text-gray-600 mt-3 md:mt-4 text-xs md:text-base leading-6 md:leading-7">
-                {item.description}
-              </p>
-            </motion.div>
+              {category.title}
+            </button>
           ))}
         </div>
 
+        {/* Notebook */}
+<AnimatePresence mode="wait">
+  <motion.div
+    key={activeCategory}
+    initial={{ rotateY: -90, opacity: 0 }}
+    animate={{ rotateY: 0, opacity: 1 }}
+    exit={{ rotateY: 90, opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    className="max-w-4xl mx-auto"
+  >
+    <div className="bg-[#fffef7] rounded-xl shadow-2xl border-2 border-gray-300 overflow-hidden">
+
+      {/* Top */}
+      <div className="bg-red-700 text-white py-4 text-center text-3xl font-bold">
+        {categories[activeCategory].title}
       </div>
+
+      {/* Notebook Paper */}
+      <div className="relative p-8">
+        <div className="absolute left-12 top-0 bottom-0 w-[2px] bg-red-400"></div>
+
+        <div className="relative pl-10 grid md:grid-cols-2 gap-4">
+          {categories[activeCategory].items.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.05 }}
+              className="text-lg text-gray-700 py-1"
+            >
+              🍽 {item}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </motion.div>
+</AnimatePresence>
+
+        {/* Quote Button */}
+        <div className="text-center mt-12">
+          <button
+            onClick={() =>
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-xl"
+          >
+            📞 Get Free Quote
+          </button>
+        </div>
+
+      </div>
+
     </section>
   );
 }

@@ -1,11 +1,29 @@
+import { useState, useEffect } from "react";
 import Home from "./pages/home";
+import Loader from "./components/Loader/Loader";
 import WhatsAppButton from "./components/WhatsAppButton/whatsappbutton";
-import { FaWhatsapp } from "react-icons/fa";
+
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4000); // 4 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
-      <Home />
-      <WhatsAppButton />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Home />
+          <WhatsAppButton />
+        </>
+      )}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { UtensilsCrossed, Award, Users } from "lucide-react";
-
+import aboutImage from "../../assets/images/about.jpg";
 function About() {
   const stats = [
     {
@@ -65,45 +65,57 @@ function About() {
           </motion.button>
         </motion.div>
 
-        {/* Right Side */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-3 gap-3 md:gap-6"
-        >
-          {stats.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-              }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -10,
-                scale: 1.03,
-              }}
-              whileTap={{ scale: 0.97 }}
-              className="bg-white rounded-3xl shadow-xl p-4 md:p-8 text-center"
-            >
-              <div className="text-amber-700 flex justify-center mb-3">
-                {item.icon}
-              </div>
+       {/* Right Side */}
 
-              <h3 className="text-xl md:text-4xl font-bold text-gray-900">
-                {item.number}
-              </h3>
+<motion.div
+  initial={{ opacity: 0, x: 50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+  className="space-y-8"
+>
+  {/* About Image */}
+  <div className="overflow-hidden rounded-3xl shadow-2xl">
+    <img
+      src={aboutImage}
+      alt="Nalan Catering"
+      className="w-full h-[420px] object-cover hover:scale-105 transition duration-700"
+    />
+  </div>
 
-              <p className="mt-2 text-xs md:text-base text-gray-600">
-                {item.title}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+  {/* Stats */}
+  <div className="grid grid-cols-3 gap-3 md:gap-6">
+    {stats.map((item, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: index * 0.15,
+        }}
+        viewport={{ once: true }}
+        whileHover={{
+          y: -8,
+          scale: 1.03,
+        }}
+        className="bg-white rounded-3xl shadow-xl p-4 md:p-6 text-center"
+      >
+        <div className="text-yellow-500 flex justify-center mb-3">
+          {item.icon}
+        </div>
+
+        <h3 className="text-2xl md:text-4xl font-bold text-gray-900">
+          {item.number}
+        </h3>
+
+        <p className="mt-2 text-xs md:text-sm text-gray-600">
+          {item.title}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
 
       </div>
     </section>
