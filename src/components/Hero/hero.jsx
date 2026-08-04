@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import hero from "../../assets/images/hero.jpg";
+import heroVideo from "../../assets/videos/hero.mp4";
 import {
   Users,
   Trophy,
@@ -14,14 +14,18 @@ function Hero() {
       className="relative min-h-screen overflow-hidden"
     >
       {/* Background */}
-      <img
-        src={hero}
-        alt="Nalan Catering"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="absolute inset-0 w-full h-full object-cover"
+>
+  <source src={heroVideo} type="video/mp4" />
+</video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-black/45"></div>
 
       {/* Hero Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-4 pt-40 md:pt-48">
