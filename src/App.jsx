@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Home from "./pages/home";
-import Loader from "./components/loader/loader";
+import Loader from "./components/Loader/loader";
 import WhatsAppButton from "./components/WhatsAppButton/whatsappbutton";
 
 function App() {
