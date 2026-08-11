@@ -1,9 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;700;800&display=swap');
 @import "tailwindcss";
-
-body{
-  font-family: "Noto Sans Tamil", sans-serif;
-}
 
 html {
   scroll-behavior: smooth;
@@ -12,21 +7,10 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #fff8f0;
-  color: #111827;
-  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
 
-* {
-  box-sizing: border-box;
-}
-html,
-body,
 #root {
   width: 100%;
-  overflow-x: hidden;
-}
-* {
-  max-width: 100%;
+  min-height: 100vh;
 }

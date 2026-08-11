@@ -1,19 +1,28 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import {
   Menu,
   X,
   Phone,
   Mail,
   MapPin,
+  ArrowRight,
 } from "lucide-react";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-    });
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
     setMenuOpen(false);
   };
 
@@ -29,107 +38,496 @@ function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50">
 
-      {/* Top Maroon Bar */}
-      <div className="hidden md:block bg-[#6B0F0F] text-white text-xs">
+      {/* =====================================================
+          TOP INFORMATION BAR
+      ====================================================== */}
+
+      <motion.div
+        initial={{ y: -25, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.5,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="hidden md:block bg-[#5B0B0B] text-white text-xs"
+      >
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
 
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Phone size={13} />
+
+            {/* Phone */}
+            <motion.div
+              whileHover={{ y: -1 }}
+              transition={{ duration: 0.15 }}
+              className="flex items-center gap-2"
+            >
+              <Phone size={13} className="text-yellow-400" />
               <span>+91 75488 95467</span>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center gap-2">
-              <Mail size={13} />
+            {/* Email */}
+            <motion.div
+              whileHover={{ y: -1 }}
+              transition={{ duration: 0.15 }}
+              className="flex items-center gap-2"
+            >
+              <Mail size={13} className="text-yellow-400" />
               <span>info@nalancatering.com</span>
-            </div>
+            </motion.div>
+
           </div>
 
-          <div className="flex items-center gap-2">
-            <MapPin size={13} />
+          {/* Location */}
+          <motion.div
+            whileHover={{ y: -1 }}
+            transition={{ duration: 0.15 }}
+            className="flex items-center gap-2"
+          >
+            <MapPin size={13} className="text-yellow-400" />
             <span>Serving Across Tamil Nadu</span>
-          </div>
+          </motion.div>
 
         </div>
-      </div>
+      </motion.div>
 
-      {/* Main White Navbar */}
-      <div className="bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-2 flex items-center justify-between">
 
-          {/* Logo */}
-          <button
-            onClick={() => scrollToSection("home")}
-            className="text-left"
-          >
-            <h1 className="text-2xl md:text-3xl font-bold text-[#7A1F1F] leading-tight">
-              நலன் கேட்டரிங்
-            </h1>
+      {/* =====================================================
+          MAIN NAVBAR
+      ====================================================== */}
 
-            <p className="text-[10px] md:text-xs text-yellow-600 font-medium mt-1">
-              தமிழ் பாரம்பரியம் • சுவையின் பெருமை
-            </p>
-          </button>
+      <motion.div
+        initial={{ y: -35, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.65,
+          delay: 0.08,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
+          bg-white/95
+          backdrop-blur-xl
+          border-b
+          border-yellow-100
+          shadow-[0_5px_30px_rgba(0,0,0,0.08)]
+        "
+      >
 
-          {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {links.map((link) => (
-              <button
-                key={link.name}
+        <div
+          className="
+            max-w-7xl
+            mx-auto
+            px-4
+            md:px-8
+            py-2.5
+            flex
+            items-center
+            justify-between
+          "
+        >
+
+          {/* =================================================
+    LOGO
+================================================== */}
+
+<motion.button
+  onClick={() => scrollToSection("home")}
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.97 }}
+  transition={{ duration: 0.15 }}
+  className="text-left group shrink-0"
+>
+  <h1 className="text-2xl md:text-3xl font-bold text-[#741B1B] leading-tight whitespace-nowrap">
+    நளன் கேட்டரிங்
+  </h1>
+
+  <p
+    className="
+      text-[10px]
+      md:text-xs
+      text-yellow-600
+      font-medium
+      mt-1
+      whitespace-nowrap
+      block
+    "
+  >
+    தமிழ் பாரம்பரியம் • சுவையின் பெருமை
+  </p>
+</motion.button>
+
+          {/* =================================================
+              DESKTOP NAVIGATION
+          ================================================== */}
+
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+
+            {links.map((link, index) => (
+
+              <motion.button
+                key={link.id}
+                initial={{
+                  opacity: 0,
+                  y: -10,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.3,
+                  delay: 0.18 + index * 0.045,
+                  ease: "easeOut",
+                }}
                 onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium text-gray-700 hover:text-yellow-600 transition relative group"
+                whileHover={{
+                  y: -2,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
+                className="
+                  relative
+                  group
+                  text-sm
+                  font-medium
+                  text-gray-700
+                  hover:text-[#741B1B]
+                  transition-colors
+                  duration-150
+                "
               >
+
                 {link.name}
 
-                <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-              </button>
+                {/* Animated underline */}
+
+                <motion.span
+                  initial={{
+                    width: 0,
+                    left: "50%",
+                  }}
+                  whileHover={{
+                    width: "100%",
+                    left: "0%",
+                  }}
+                  transition={{
+                    duration: 0.18,
+                    ease: "easeOut",
+                  }}
+                  className="
+                    absolute
+                    -bottom-2
+                    h-[2px]
+                    rounded-full
+                    bg-yellow-500
+                  "
+                />
+
+              </motion.button>
+
             ))}
+
           </nav>
 
-          {/* Desktop Button */}
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="hidden lg:block bg-yellow-500 hover:bg-yellow-600 text-white px-7 py-3 rounded-full font-semibold text-sm shadow-md transition ml-8"
-          >
-            📞 பதிவு செய்யுங்கள்
-          </button>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
+          {/* =================================================
+              DESKTOP CTA
+          ================================================== */}
+
+          <motion.button
+            onClick={() => scrollToSection("contact")}
+            whileHover={{
+              scale: 1.035,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            transition={{
+              duration: 0.15,
+            }}
+            className="
+              group
+              hidden
+              lg:flex
+              items-center
+              gap-2
+              bg-yellow-500
+              hover:bg-yellow-400
+              text-white
+              px-6
+              py-3
+              rounded-full
+              font-semibold
+              text-sm
+              shadow-[0_8px_25px_rgba(234,179,8,0.25)]
+              transition-colors
+              duration-150
+            "
           >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+
+            <span>
+              📞 பதிவு செய்யுங்கள்
+            </span>
+
+            <ArrowRight
+              size={16}
+              className="
+                transition-transform
+                duration-150
+                group-hover:translate-x-1
+              "
+            />
+
+          </motion.button>
+
+
+          {/* =================================================
+              MOBILE MENU BUTTON
+          ================================================== */}
+
+          <motion.button
+            whileTap={{
+              scale: 0.88,
+            }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="
+              lg:hidden
+              w-11
+              h-11
+              rounded-full
+              flex
+              items-center
+              justify-center
+              bg-[#FFF8F0]
+              text-[#741B1B]
+              border
+              border-yellow-100
+              shadow-sm
+            "
+          >
+
+            <AnimatePresence mode="wait">
+
+              {menuOpen ? (
+
+                <motion.div
+                  key="close"
+                  initial={{
+                    rotate: -90,
+                    opacity: 0,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    rotate: 0,
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  exit={{
+                    rotate: 90,
+                    opacity: 0,
+                    scale: 0.7,
+                  }}
+                  transition={{
+                    duration: 0.15,
+                    ease: "easeOut",
+                  }}
+                >
+                  <X size={25} />
+                </motion.div>
+
+              ) : (
+
+                <motion.div
+                  key="menu"
+                  initial={{
+                    rotate: 90,
+                    opacity: 0,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    rotate: 0,
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  exit={{
+                    rotate: -90,
+                    opacity: 0,
+                    scale: 0.7,
+                  }}
+                  transition={{
+                    duration: 0.15,
+                    ease: "easeOut",
+                  }}
+                >
+                  <Menu size={25} />
+                </motion.div>
+
+              )}
+
+            </AnimatePresence>
+
+          </motion.button>
 
         </div>
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="lg:hidden bg-white border-t shadow-lg">
 
-            {links.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left px-6 py-4 border-b hover:bg-yellow-50"
-              >
-                {link.name}
-              </button>
-            ))}
+        {/* =================================================
+            MOBILE MENU
+        ================================================== */}
 
-            <div className="p-4">
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="w-full bg-yellow-500 text-white py-3 rounded-full font-semibold"
-              >
-                📞 பதிவு செய்யுங்கள்
-              </button>
-            </div>
+        <AnimatePresence>
 
-          </div>
-        )}
-      </div>
+          {menuOpen && (
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                height: 0,
+              }}
+              animate={{
+                opacity: 1,
+                height: "auto",
+              }}
+              exit={{
+                opacity: 0,
+                height: 0,
+              }}
+              transition={{
+                duration: 0.22,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                lg:hidden
+                overflow-hidden
+                bg-white
+                border-t
+                border-yellow-100
+                shadow-lg
+              "
+            >
+
+              <div className="px-4 py-3">
+
+                {links.map((link, index) => (
+
+                  <motion.button
+                    key={link.id}
+                    initial={{
+                      opacity: 0,
+                      x: -12,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    transition={{
+                      delay: index * 0.035,
+                      duration: 0.18,
+                      ease: "easeOut",
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                    }}
+                    onClick={() => scrollToSection(link.id)}
+                    className="
+                      group
+                      w-full
+                      flex
+                      items-center
+                      justify-between
+                      text-left
+                      px-4
+                      py-3.5
+                      border-b
+                      border-gray-100
+                      text-gray-700
+                      font-medium
+                      hover:bg-yellow-50
+                      hover:text-[#741B1B]
+                      transition-colors
+                      duration-150
+                    "
+                  >
+
+                    <span>
+                      {link.name}
+                    </span>
+
+                    <ArrowRight
+                      size={16}
+                      className="
+                        text-yellow-500
+                        transition-transform
+                        duration-150
+                        group-hover:translate-x-1
+                      "
+                    />
+
+                  </motion.button>
+
+                ))}
+
+
+                {/* Mobile CTA */}
+
+                <div className="pt-4 pb-2">
+
+                  <motion.button
+                    whileHover={{
+                      scale: 1.015,
+                    }}
+                    whileTap={{
+                      scale: 0.97,
+                    }}
+                    transition={{
+                      duration: 0.15,
+                    }}
+                    onClick={() => scrollToSection("contact")}
+                    className="
+                      group
+                      w-full
+                      flex
+                      items-center
+                      justify-center
+                      gap-2
+                      bg-yellow-500
+                      hover:bg-yellow-400
+                      text-white
+                      py-3.5
+                      rounded-full
+                      font-semibold
+                      shadow-lg
+                      transition-colors
+                      duration-150
+                    "
+                  >
+
+                    <span>
+                      📞 பதிவு செய்யுங்கள்
+                    </span>
+
+                    <ArrowRight
+                      size={17}
+                      className="
+                        transition-transform
+                        duration-150
+                        group-hover:translate-x-1
+                      "
+                    />
+
+                  </motion.button>
+
+                </div>
+
+              </div>
+
+            </motion.div>
+
+          )}
+
+        </AnimatePresence>
+
+      </motion.div>
 
     </header>
   );
