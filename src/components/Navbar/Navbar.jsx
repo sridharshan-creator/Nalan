@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
@@ -13,36 +12,31 @@ import {
 
 import nalanLogo from "../../assets/images/nalan-logo.jpg";
 
-
 function Navbar() {
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-
 
   /* =====================================================
       SCROLL TO SECTION
   ====================================================== */
 
   const scrollToSection = (id) => {
-
     const element = document.getElementById(id);
 
-    if (element) {
-
-      const navbarHeight =
-        window.innerWidth < 768 ? 72 : 105;
-
-      const elementPosition =
-        element.getBoundingClientRect().top +
-        window.scrollY;
-
-      window.scrollTo({
-        top: elementPosition - navbarHeight,
-        behavior: "smooth",
-      });
-
+    if (!element) {
+      console.warn(`Section with id="${id}" not found`);
+      return;
     }
+
+    const navbarHeight = window.innerWidth < 768 ? 72 : 105;
+
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: Math.max(0, elementPosition - navbarHeight),
+      behavior: "smooth",
+    });
 
     // Immediately highlight clicked item
     setActiveSection(id);
@@ -51,13 +45,11 @@ function Navbar() {
     setMenuOpen(false);
   };
 
-
   /* =====================================================
       DETECT ACTIVE SECTION WHILE SCROLLING
   ====================================================== */
 
   useEffect(() => {
-
     const sections = [
       "home",
       "about",
@@ -67,54 +59,45 @@ function Navbar() {
       "contact",
     ];
 
-    const observer = new IntersectionObserver(
+    const handleScroll = () => {
+      const navbarHeight = window.innerWidth < 768 ? 72 : 105;
 
-      (entries) => {
+      // Position slightly below the fixed navbar
+      const checkPosition = navbarHeight + 40;
 
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio -
-              a.intersectionRatio
-          );
+      let currentSection = "home";
 
-        if (visibleSections.length > 0) {
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
 
-          setActiveSection(
-            visibleSections[0].target.id
-          );
+        if (!section) return;
 
+        const rect = section.getBoundingClientRect();
+
+        // If the top of this section has passed
+        // the navbar area, make it active.
+        if (rect.top <= checkPosition) {
+          currentSection = id;
         }
+      });
 
-      },
-
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0.1, 0.25, 0.5, 0.75],
-      }
-
-    );
-
-
-    sections.forEach((id) => {
-
-      const section =
-        document.getElementById(id);
-
-      if (section) {
-        observer.observe(section);
-      }
-
-    });
-
-
-    return () => {
-      observer.disconnect();
+      setActiveSection(currentSection);
     };
 
-  }, []);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
+    window.addEventListener("resize", handleScroll);
+
+    // Detect initial section
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
 
   /* =====================================================
       NAVIGATION LINKS
@@ -147,9 +130,7 @@ function Navbar() {
     },
   ];
 
-
   return (
-
     <header
       className="
         fixed
@@ -159,29 +140,23 @@ function Navbar() {
         z-50
       "
     >
-
-
       {/* =====================================================
           TOP INFORMATION BAR
       ====================================================== */}
 
       <motion.div
-
         initial={{
           y: -25,
           opacity: 0,
         }}
-
         animate={{
           y: 0,
           opacity: 1,
         }}
-
         transition={{
           duration: 0.5,
           ease: [0.22, 1, 0.36, 1],
         }}
-
         className="
           hidden
           md:block
@@ -190,7 +165,6 @@ function Navbar() {
           text-xs
         "
       >
-
         <div
           className="
             max-w-7xl
@@ -202,7 +176,6 @@ function Navbar() {
             items-center
           "
         >
-
           <div
             className="
               flex
@@ -210,23 +183,19 @@ function Navbar() {
               gap-6
             "
           >
-
             <motion.div
               whileHover={{
                 y: -1,
               }}
-
               transition={{
                 duration: 0.15,
               }}
-
               className="
                 flex
                 items-center
                 gap-2
               "
             >
-
               <Phone
                 size={13}
                 className="text-green-400"
@@ -235,26 +204,21 @@ function Navbar() {
               <span>
                 +91 89250 59589
               </span>
-
             </motion.div>
-
 
             <motion.div
               whileHover={{
                 y: -1,
               }}
-
               transition={{
                 duration: 0.15,
               }}
-
               className="
                 flex
                 items-center
                 gap-2
               "
             >
-
               <Mail
                 size={13}
                 className="text-green-400"
@@ -263,68 +227,49 @@ function Navbar() {
               <span>
                 nalancateringtrichy@gmail.com
               </span>
-
             </motion.div>
-
           </div>
 
-
           <motion.div
-
             whileHover={{
               y: -1,
             }}
-
             transition={{
               duration: 0.15,
             }}
-
             className="
               flex
               items-center
               gap-2
             "
           >
-
-            <MapPin
-              size={13}
-              className="text-green-400"
-            />
+            
 
             <span>
-              Serving Across Tamil Nadu
+              
             </span>
-
           </motion.div>
-
         </div>
-
       </motion.div>
-
-
 
       {/* =====================================================
           MAIN NAVBAR
       ====================================================== */}
 
       <motion.div
-
         initial={{
           y: -35,
           opacity: 0,
         }}
-
         animate={{
           y: 0,
           opacity: 1,
         }}
-
         transition={{
           duration: 0.65,
           delay: 0.08,
           ease: [0.22, 1, 0.36, 1],
         }}
-
         className="
           bg-white/95
           backdrop-blur-xl
@@ -333,7 +278,6 @@ function Navbar() {
           shadow-[0_5px_30px_rgba(0,0,0,0.08)]
         "
       >
-
         <div
           className="
             max-w-7xl
@@ -350,30 +294,21 @@ function Navbar() {
             gap-3
           "
         >
-
-
           {/* =================================================
               LOGO
           ================================================== */}
 
           <motion.button
-
-            onClick={() =>
-              scrollToSection("home")
-            }
-
+            onClick={() => scrollToSection("home")}
             whileHover={{
               scale: 1.01,
             }}
-
             whileTap={{
               scale: 0.97,
             }}
-
             transition={{
               duration: 0.15,
             }}
-
             className="
               flex
               items-center
@@ -384,7 +319,6 @@ function Navbar() {
               min-w-0
             "
           >
-
             <img
               src={nalanLogo}
               alt="நளன் கேட்டரிங்"
@@ -403,9 +337,7 @@ function Navbar() {
               "
             />
 
-
             <div className="min-w-0">
-
               <h1
                 className="
                   text-[16px]
@@ -421,27 +353,22 @@ function Navbar() {
                 நளன் கேட்டரிங்
               </h1>
 
-
               <p
-                className="
-                  text-[7px]
-                  sm:text-[8px]
-                  md:text-[9px]
-                  lg:text-[10px]
-                  text-green-600
-                  font-medium
-                  mt-1
-                  whitespace-nowrap
-                "
-              >
-                உணவில் தரம் • என்றும் நிரந்தரம்
-              </p>
-
+  className="
+    text-[9px]
+    sm:text-[10px]
+    md:text-[11px]
+    lg:text-[12px]
+    text-green-600
+    font-medium
+    mt-1
+    whitespace-nowrap
+  "
+>
+  உணவில் தரம் • என்றும் நிரந்தரம்
+</p>
             </div>
-
           </motion.button>
-
-
 
           {/* =================================================
               DESKTOP NAVIGATION
@@ -456,29 +383,21 @@ function Navbar() {
               xl:gap-2
             "
           >
-
             {links.map((link, index) => {
-
               const isActive =
                 activeSection === link.id;
 
-
               return (
-
                 <motion.button
-
                   key={link.id}
-
                   initial={{
                     opacity: 0,
                     y: -10,
                   }}
-
                   animate={{
                     opacity: 1,
                     y: 0,
                   }}
-
                   transition={{
                     duration: 0.3,
                     delay:
@@ -486,15 +405,12 @@ function Navbar() {
                       index * 0.045,
                     ease: "easeOut",
                   }}
-
                   onClick={() =>
                     scrollToSection(link.id)
                   }
-
                   whileTap={{
                     scale: 0.96,
                   }}
-
                   className={`
                     relative
                     group
@@ -515,21 +431,16 @@ function Navbar() {
                     }
                   `}
                 >
-
                   {/* ACTIVE GREEN BOX */}
 
                   {isActive && (
-
                     <motion.span
-
                       layoutId="activeNavbar"
-
                       transition={{
                         type: "spring",
                         stiffness: 500,
                         damping: 35,
                       }}
-
                       className="
                         absolute
                         inset-0
@@ -540,9 +451,7 @@ function Navbar() {
                         -z-10
                       "
                     />
-
                   )}
-
 
                   {/* MENU TEXT */}
 
@@ -555,28 +464,22 @@ function Navbar() {
                     {link.name}
                   </span>
 
-
                   {/* HOVER LINE */}
 
                   {!isActive && (
-
                     <motion.span
-
                       initial={{
                         width: 0,
                         left: "50%",
                       }}
-
                       whileHover={{
                         width: "100%",
                         left: "0%",
                       }}
-
                       transition={{
                         duration: 0.18,
                         ease: "easeOut",
                       }}
-
                       className="
                         absolute
                         -bottom-1
@@ -585,42 +488,30 @@ function Navbar() {
                         bg-green-500
                       "
                     />
-
                   )}
-
                 </motion.button>
-
               );
-
             })}
-
           </nav>
-
-
 
           {/* =================================================
               DESKTOP CTA
           ================================================== */}
 
           <motion.button
-
             onClick={() =>
               scrollToSection("contact")
             }
-
             whileHover={{
               scale: 1.035,
               y: -1,
             }}
-
             whileTap={{
               scale: 0.97,
             }}
-
             transition={{
               duration: 0.15,
             }}
-
             className="
               group
               hidden
@@ -645,7 +536,6 @@ function Navbar() {
               shrink-0
             "
           >
-
             <span>
               📞 பதிவு செய்யுங்கள்
             </span>
@@ -658,33 +548,25 @@ function Navbar() {
                 group-hover:translate-x-1
               "
             />
-
           </motion.button>
-
-
 
           {/* =================================================
               MOBILE MENU BUTTON
           ================================================== */}
 
           <motion.button
-
             whileTap={{
               scale: 0.88,
             }}
-
             onClick={() =>
               setMenuOpen(!menuOpen)
             }
-
             aria-label={
               menuOpen
                 ? "Close menu"
                 : "Open menu"
             }
-
             aria-expanded={menuOpen}
-
             className="
               lg:hidden
               w-10
@@ -703,109 +585,83 @@ function Navbar() {
               shadow-sm
             "
           >
-
             <AnimatePresence mode="wait">
-
               {menuOpen ? (
-
                 <motion.div
                   key="close"
-
                   initial={{
                     rotate: -90,
                     opacity: 0,
                     scale: 0.7,
                   }}
-
                   animate={{
                     rotate: 0,
                     opacity: 1,
                     scale: 1,
                   }}
-
                   exit={{
                     rotate: 90,
                     opacity: 0,
                     scale: 0.7,
                   }}
-
                   transition={{
                     duration: 0.15,
                   }}
                 >
                   <X size={23} />
                 </motion.div>
-
               ) : (
-
                 <motion.div
                   key="menu"
-
                   initial={{
                     rotate: 90,
                     opacity: 0,
                     scale: 0.7,
                   }}
-
                   animate={{
                     rotate: 0,
                     opacity: 1,
                     scale: 1,
                   }}
-
                   exit={{
                     rotate: -90,
                     opacity: 0,
                     scale: 0.7,
                   }}
-
                   transition={{
                     duration: 0.15,
                   }}
                 >
                   <Menu size={23} />
                 </motion.div>
-
               )}
-
             </AnimatePresence>
-
           </motion.button>
-
         </div>
-
-
 
         {/* =================================================
             MOBILE MENU
         ================================================== */}
 
         <AnimatePresence>
-
           {menuOpen && (
-
             <motion.div
-
               initial={{
                 opacity: 0,
                 height: 0,
               }}
-
               animate={{
                 opacity: 1,
                 height: "auto",
               }}
-
               exit={{
                 opacity: 0,
                 height: 0,
               }}
-
               transition={{
                 duration: 0.22,
                 ease: [0.22, 1, 0.36, 1],
               }}
-
               className="
                 lg:hidden
                 overflow-hidden
@@ -815,7 +671,6 @@ function Navbar() {
                 shadow-lg
               "
             >
-
               <div
                 className="
                   px-3
@@ -824,43 +679,32 @@ function Navbar() {
                   sm:py-3
                 "
               >
-
                 {links.map((link, index) => {
-
                   const isActive =
                     activeSection === link.id;
 
-
                   return (
-
                     <motion.button
-
                       key={link.id}
-
                       initial={{
                         opacity: 0,
                         x: -12,
                       }}
-
                       animate={{
                         opacity: 1,
                         x: 0,
                       }}
-
                       transition={{
                         delay: index * 0.035,
                         duration: 0.18,
                         ease: "easeOut",
                       }}
-
                       whileTap={{
                         scale: 0.98,
                       }}
-
                       onClick={() =>
                         scrollToSection(link.id)
                       }
-
                       className={`
                         group
                         relative
@@ -887,11 +731,9 @@ function Navbar() {
                         duration-150
                       `}
                     >
-
                       <span>
                         {link.name}
                       </span>
-
 
                       <ArrowRight
                         size={15}
@@ -905,14 +747,9 @@ function Navbar() {
                           }
                         `}
                       />
-
                     </motion.button>
-
                   );
-
                 })}
-
-
 
                 {/* =================================================
                     MOBILE CTA
@@ -926,21 +763,16 @@ function Navbar() {
                     sm:pb-2
                   "
                 >
-
                   <motion.button
-
                     whileHover={{
                       scale: 1.015,
                     }}
-
                     whileTap={{
                       scale: 0.97,
                     }}
-
                     onClick={() =>
                       scrollToSection("contact")
                     }
-
                     className="
                       group
                       w-full
@@ -962,7 +794,6 @@ function Navbar() {
                       duration-150
                     "
                   >
-
                     <span>
                       📞 பதிவு செய்யுங்கள்
                     </span>
@@ -975,25 +806,15 @@ function Navbar() {
                         group-hover:translate-x-1
                       "
                     />
-
                   </motion.button>
-
                 </div>
-
               </div>
-
             </motion.div>
-
           )}
-
         </AnimatePresence>
-
       </motion.div>
-
     </header>
-
   );
 }
-
 
 export default Navbar;

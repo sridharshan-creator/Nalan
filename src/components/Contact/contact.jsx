@@ -66,6 +66,8 @@ ${name}
       className="
         relative
         overflow-hidden
+        scroll-mt-[72px]
+        md:scroll-mt-[105px]
         py-20
         md:py-28
         px-4
@@ -607,7 +609,7 @@ ${name}
 
               <div className="flex-1">
                 <h4 className="font-bold text-gray-900">
-                  எங்கள் இருப்பிடம்
+                  எங்கள் இடம்
                 </h4>
 
                 <p className="text-gray-600 mt-1">
@@ -657,7 +659,7 @@ ${name}
               "
             >
               <MapPin size={18} />
-              Google Maps-ல் இருப்பிடத்தை காண்க
+              Google Maps-ல் இடத்தை காண்க
               <ArrowUpRight size={17} />
             </motion.a>
           </motion.div>
@@ -1086,3 +1088,4 @@ ${name}
 }
 
 export default Contact;
+
