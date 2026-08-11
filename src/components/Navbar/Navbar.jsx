@@ -65,7 +65,7 @@ function Navbar() {
               className="flex items-center gap-2"
             >
               <Phone size={13} className="text-green-400" />
-              <span>+91 75488 95467</span>
+              <span>+91 89250 59589    +91 94427 83393</span>
             </motion.div>
 
             <motion.div
@@ -74,7 +74,7 @@ function Navbar() {
               className="flex items-center gap-2"
             >
               <Mail size={13} className="text-green-400" />
-              <span>info@nalancatering.com</span>
+              <span>nalancateringtrichy@gmail.com</span>
             </motion.div>
 
           </div>
@@ -169,7 +169,7 @@ function Navbar() {
                 block
               "
             >
-              தமிழ் பாரம்பரியம் • சுவையின் பெருமை
+              உணவில் தரம்  • என்றும் நிரந்தரம்
             </p>
 
           </motion.button>
