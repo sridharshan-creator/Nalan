@@ -13,17 +13,17 @@ import aboutImage from "../../assets/images/about.jpg";
 function About() {
   const stats = [
     {
-      icon: <UtensilsCrossed size={27} />,
+      icon: <UtensilsCrossed size={25} />,
       number: "500+",
       title: "வெற்றிகரமான நிகழ்வுகள்",
     },
     {
-      icon: <Award size={27} />,
+      icon: <Award size={25} />,
       number: "10+",
       title: "ஆண்டுகள் அனுபவம்",
     },
     {
-      icon: <Users size={27} />,
+      icon: <Users size={25} />,
       number: "100%",
       title: "வாடிக்கையாளர்களின் திருப்தி",
     },
@@ -31,45 +31,71 @@ function About() {
 
   return (
     <section
-  id="about"
-  className="relative overflow-hidden ..."
->
-  <div
-  className="
-    scroll-float
-    absolute
-    right-[8%]
-    top-20
-    text-5xl
-    md:text-7xl
-    opacity-20
-    pointer-events-none
-    z-0
-  "
->
-  <div
-  className="
-    scroll-float
-    absolute
-    left-[6%]
-    bottom-16
-    text-4xl
-    md:text-6xl
-    opacity-15
-    pointer-events-none
-    z-0
-  "
->
-  ✨
-</div>
-  🍃
-</div>
-      {/* ================= BACKGROUND GLOW ================= */}
+      id="about"
+      className="
+        relative
+        overflow-hidden
+        bg-[#FFFDF9]
+        py-16
+        sm:py-20
+        md:py-24
+        lg:py-28
+        scroll-mt-[72px]
+        md:scroll-mt-[105px]
+      "
+    >
+
+      {/* =====================================================
+          DECORATIVE ELEMENTS
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          right-[4%]
+          sm:right-[8%]
+          top-16
+          sm:top-20
+          text-4xl
+          sm:text-5xl
+          md:text-7xl
+          opacity-10
+          sm:opacity-15
+          pointer-events-none
+          z-0
+        "
+      >
+        🍃
+      </div>
+
+      <div
+        className="
+          absolute
+          left-[4%]
+          sm:left-[6%]
+          bottom-12
+          sm:bottom-16
+          text-3xl
+          sm:text-4xl
+          md:text-6xl
+          opacity-10
+          sm:opacity-15
+          pointer-events-none
+          z-0
+        "
+      >
+        ✨
+      </div>
+
+
+      {/* =====================================================
+          BACKGROUND GLOW
+      ====================================================== */}
 
       <motion.div
         animate={{
           y: [0, -20, 0],
-          opacity: [0.08, 0.14, 0.08],
+          opacity: [0.06, 0.12, 0.06],
         }}
         transition={{
           duration: 6,
@@ -80,11 +106,14 @@ function About() {
           absolute
           -top-32
           -left-32
-          w-80
-          h-80
+          w-64
+          h-64
+          sm:w-80
+          sm:h-80
           rounded-full
           bg-yellow-400
-          blur-[100px]
+          blur-[90px]
+          sm:blur-[100px]
           pointer-events-none
         "
       />
@@ -92,7 +121,7 @@ function About() {
       <motion.div
         animate={{
           y: [0, 20, 0],
-          opacity: [0.06, 0.12, 0.06],
+          opacity: [0.05, 0.1, 0.05],
         }}
         transition={{
           duration: 7,
@@ -103,22 +132,55 @@ function About() {
           absolute
           -bottom-40
           -right-32
-          w-96
-          h-96
+          w-72
+          h-72
+          sm:w-96
+          sm:h-96
           rounded-full
           bg-[#741B1B]
-          blur-[120px]
+          blur-[110px]
+          sm:blur-[120px]
           pointer-events-none
         "
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
 
-        {/* ================= MAIN GRID ================= */}
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div
+        className="
+          relative
+          z-10
+          w-full
+          max-w-7xl
+          mx-auto
+          px-4
+          sm:px-6
+          lg:px-8
+        "
+      >
 
-          {/* ================= LEFT CONTENT ================= */}
+        {/* =================================================
+            MAIN GRID
+        ================================================== */}
+
+        <div
+          className="
+            grid
+            grid-cols-1
+            lg:grid-cols-2
+            gap-10
+            sm:gap-12
+            lg:gap-16
+            items-center
+          "
+        >
+
+          {/* =================================================
+              LEFT CONTENT
+          ================================================= */}
 
           <motion.div
             initial={{
@@ -137,6 +199,7 @@ function About() {
               duration: 0.6,
               ease: [0.22, 1, 0.36, 1],
             }}
+            className="min-w-0"
           >
 
             {/* Section Label */}
@@ -157,25 +220,41 @@ function About() {
               transition={{
                 duration: 0.4,
               }}
-              className="flex items-center gap-3 mb-3"
+              className="
+                flex
+                items-center
+                gap-2
+                sm:gap-3
+                mb-3
+              "
             >
+
               <Sparkles
-                size={18}
-                className="text-yellow-500 flex-shrink-0"
+                size={16}
+                className="
+                  text-yellow-500
+                  flex-shrink-0
+                  sm:w-[18px]
+                  sm:h-[18px]
+                "
               />
 
               <p
                 className="
                   text-yellow-600
                   uppercase
-                  tracking-[3px]
+                  tracking-[2px]
+                  sm:tracking-[3px]
                   font-semibold
-                  text-sm
+                  text-xs
+                  sm:text-sm
                 "
               >
                 எங்களை பற்றி
               </p>
+
             </motion.div>
+
 
             {/* Heading */}
 
@@ -198,11 +277,11 @@ function About() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
-                text-3xl
+                text-[2rem]
                 sm:text-4xl
                 md:text-5xl
                 font-bold
-                leading-tight
+                leading-[1.2]
                 text-gray-900
               "
             >
@@ -213,6 +292,7 @@ function About() {
               சிறந்த சேவை
             </motion.h2>
 
+
             {/* Divider */}
 
             <motion.div
@@ -220,7 +300,7 @@ function About() {
                 width: 0,
               }}
               whileInView={{
-                width: 90,
+                width: 75,
               }}
               viewport={{
                 amount: 0.5,
@@ -235,9 +315,11 @@ function About() {
                 h-[3px]
                 bg-yellow-500
                 rounded-full
-                mt-5
+                mt-4
+                sm:mt-5
               "
             />
+
 
             {/* Paragraph 1 */}
 
@@ -259,11 +341,13 @@ function About() {
                 delay: 0.15,
               }}
               className="
-                mt-7
+                mt-5
+                sm:mt-7
                 text-gray-600
-                leading-8
+                leading-7
+                sm:leading-8
                 text-sm
-                md:text-base
+                sm:text-base
               "
             >
               Nalan Catering கடந்த 10+ ஆண்டுகளாக தமிழ்நாடு முழுவதும்
@@ -271,6 +355,7 @@ function About() {
               Corporate Events ஆகியவற்றிற்கு தரமான உணவு மற்றும் சிறந்த
               சேவையை வழங்கி வருகிறது.
             </motion.p>
+
 
             {/* Paragraph 2 */}
 
@@ -292,17 +377,20 @@ function About() {
                 delay: 0.25,
               }}
               className="
-                mt-4
+                mt-3
+                sm:mt-4
                 text-gray-600
-                leading-8
+                leading-7
+                sm:leading-8
                 text-sm
-                md:text-base
+                sm:text-base
               "
             >
               எங்கள் நோக்கம் சுவையான உணவை மட்டும் வழங்குவது அல்ல,
               உங்கள் விழாவை அனைவரும் நினைவில் வைத்திருக்கும் ஒரு
               அனுபவமாக மாற்றுவதாகும்.
             </motion.p>
+
 
             {/* CTA */}
 
@@ -331,26 +419,34 @@ function About() {
               }}
               className="
                 group
-                mt-8
+                mt-6
+                sm:mt-8
+                w-full
+                sm:w-auto
                 bg-yellow-500
                 hover:bg-yellow-400
                 text-white
-                px-7
-                py-3.5
+                px-6
+                sm:px-7
+                py-3
+                sm:py-3.5
                 rounded-full
                 font-semibold
+                text-sm
+                sm:text-base
                 shadow-[0_10px_30px_rgba(234,179,8,0.22)]
                 transition-colors
                 duration-150
                 flex
                 items-center
+                justify-center
                 gap-2
               "
             >
               மேலும் அறிய
 
               <ArrowRight
-                size={18}
+                size={17}
                 className="
                   transition-transform
                   duration-150
@@ -361,7 +457,10 @@ function About() {
 
           </motion.div>
 
-          {/* ================= RIGHT SIDE ================= */}
+
+          {/* =================================================
+              RIGHT SIDE
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -381,10 +480,16 @@ function About() {
               delay: 0.1,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="space-y-7 min-w-0"
+            className="
+              space-y-5
+              sm:space-y-7
+              min-w-0
+            "
           >
 
-            {/* ================= IMAGE ================= */}
+            {/* =================================================
+                IMAGE
+            ================================================== */}
 
             <motion.div
               initial={{
@@ -407,7 +512,8 @@ function About() {
                 group
                 relative
                 overflow-hidden
-                rounded-[28px]
+                rounded-[22px]
+                sm:rounded-[28px]
                 shadow-[0_20px_50px_rgba(0,0,0,0.15)]
               "
             >
@@ -417,15 +523,18 @@ function About() {
                 alt="Nalan Catering"
                 className="
                   w-full
-                  h-[300px]
+                  h-[260px]
+                  sm:h-[330px]
                   md:h-[420px]
                   object-cover
+                  object-center
                   transition-transform
                   duration-700
                   ease-out
                   group-hover:scale-105
                 "
               />
+
 
               {/* Image Overlay */}
 
@@ -434,12 +543,13 @@ function About() {
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-black/45
+                  from-black/50
                   via-transparent
                   to-transparent
                   pointer-events-none
                 "
               />
+
 
               {/* Image Badge */}
 
@@ -462,31 +572,53 @@ function About() {
                 }}
                 className="
                   absolute
-                  bottom-5
-                  left-5
-                  right-5
+                  bottom-3
+                  left-3
+                  right-3
+                  sm:bottom-5
+                  sm:left-5
+                  sm:right-5
                   md:left-6
                   md:right-6
                   bg-black/45
                   backdrop-blur-md
                   border
                   border-white/20
-                  rounded-2xl
-                  px-4
-                  py-3
+                  rounded-xl
+                  sm:rounded-2xl
+                  px-3
+                  py-2.5
+                  sm:px-4
+                  sm:py-3
                   text-white
                 "
               >
-                <p className="text-xs md:text-sm font-medium">
+                <p className="
+                  text-[10px]
+                  sm:text-xs
+                  md:text-sm
+                  font-medium
+                ">
                   ✦ பாரம்பரிய சுவை • நவீன சேவை
                 </p>
               </motion.div>
 
             </motion.div>
 
-            {/* ================= STATS ================= */}
 
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-5">
+            {/* =================================================
+                STATS
+            ================================================== */}
+
+            <div
+              className="
+                grid
+                grid-cols-3
+                gap-2
+                sm:gap-3
+                md:gap-5
+              "
+            >
 
               {stats.map((item, index) => (
 
@@ -527,10 +659,11 @@ function About() {
                     min-w-0
                     w-full
                     bg-white
-                    rounded-2xl
+                    rounded-xl
+                    sm:rounded-2xl
                     md:rounded-3xl
                     shadow-[0_10px_30px_rgba(0,0,0,0.08)]
-                    p-3
+                    p-2.5
                     sm:p-4
                     md:p-6
                     text-center
@@ -562,6 +695,7 @@ function About() {
                     "
                   />
 
+
                   {/* Icon */}
 
                   <motion.div
@@ -579,12 +713,13 @@ function About() {
                       text-yellow-500
                       flex
                       justify-center
-                      mb-2
+                      mb-1.5
                       sm:mb-3
                     "
                   >
                     {item.icon}
                   </motion.div>
+
 
                   {/* Number */}
 
@@ -592,7 +727,7 @@ function About() {
                     className="
                       relative
                       z-10
-                      text-lg
+                      text-base
                       sm:text-xl
                       md:text-3xl
                       font-bold
@@ -603,20 +738,21 @@ function About() {
                     {item.number}
                   </h3>
 
+
                   {/* Title */}
 
                   <p
                     className="
                       relative
                       z-10
-                      mt-2
-                      text-[9px]
+                      mt-1.5
+                      sm:mt-2
+                      text-[8px]
                       sm:text-[10px]
                       md:text-sm
                       text-gray-600
-                      leading-snug
+                      leading-[1.35]
                       break-words
-                      overflow-wrap-anywhere
                     "
                   >
                     {item.title}
@@ -633,8 +769,10 @@ function About() {
         </div>
 
       </div>
+
     </section>
   );
 }
 
 export default About;
+
