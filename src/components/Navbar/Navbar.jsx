@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import {
   Menu,
   X,
@@ -17,9 +16,13 @@ function Navbar() {
     const element = document.getElementById(id);
 
     if (element) {
-      element.scrollIntoView({
+      const navbarHeight = window.innerWidth < 768 ? 72 : 105;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: elementPosition - navbarHeight,
         behavior: "smooth",
-        block: "start",
       });
     }
 
@@ -90,7 +93,6 @@ function Navbar() {
         </div>
       </motion.div>
 
-
       {/* =====================================================
           MAIN NAVBAR
       ====================================================== */}
@@ -116,50 +118,68 @@ function Navbar() {
           className="
             max-w-7xl
             mx-auto
-            px-4
+            px-3
+            sm:px-4
             md:px-8
-            py-2.5
+            py-2
+            sm:py-2.5
             flex
             items-center
             justify-between
+            gap-3
           "
         >
 
           {/* =================================================
-    LOGO
-================================================== */}
+              LOGO
+          ================================================== */}
 
-<motion.button
-  onClick={() => scrollToSection("home")}
-  whileHover={{ scale: 1.02 }}
-  whileTap={{ scale: 0.97 }}
-  transition={{ duration: 0.15 }}
-  className="text-left group shrink-0"
->
-  <h1 className="text-2xl md:text-3xl font-bold text-[#741B1B] leading-tight whitespace-nowrap">
-    நளன் கேட்டரிங்
-  </h1>
+          <motion.button
+            onClick={() => scrollToSection("home")}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="text-left group min-w-0 shrink"
+          >
 
-  <p
-    className="
-      text-[10px]
-      md:text-xs
-      text-yellow-600
-      font-medium
-      mt-1
-      whitespace-nowrap
-      block
-    "
-  >
-    தமிழ் பாரம்பரியம் • சுவையின் பெருமை
-  </p>
-</motion.button>
+            <h1
+              className="
+                text-[20px]
+                xs:text-[21px]
+                sm:text-2xl
+                md:text-3xl
+                font-bold
+                text-[#741B1B]
+                leading-tight
+                whitespace-nowrap
+              "
+            >
+              நளன் கேட்டரிங்
+            </h1>
+
+            <p
+              className="
+                text-[8px]
+                sm:text-[10px]
+                md:text-xs
+                text-yellow-600
+                font-medium
+                mt-0.5
+                sm:mt-1
+                whitespace-nowrap
+                block
+              "
+            >
+              தமிழ் பாரம்பரியம் • சுவையின் பெருமை
+            </p>
+
+          </motion.button>
 
           {/* =================================================
               DESKTOP NAVIGATION
           ================================================== */}
 
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-7">
 
             {links.map((link, index) => (
 
@@ -194,13 +214,13 @@ function Navbar() {
                   hover:text-[#741B1B]
                   transition-colors
                   duration-150
+                  whitespace-nowrap
                 "
               >
 
                 {link.name}
 
                 {/* Animated underline */}
-
                 <motion.span
                   initial={{
                     width: 0,
@@ -229,7 +249,6 @@ function Navbar() {
 
           </nav>
 
-
           {/* =================================================
               DESKTOP CTA
           ================================================== */}
@@ -254,20 +273,22 @@ function Navbar() {
               bg-yellow-500
               hover:bg-yellow-400
               text-white
-              px-6
-              py-3
+              px-5
+              xl:px-6
+              py-2.5
+              xl:py-3
               rounded-full
               font-semibold
               text-sm
               shadow-[0_8px_25px_rgba(234,179,8,0.25)]
               transition-colors
               duration-150
+              whitespace-nowrap
+              shrink-0
             "
           >
 
-            <span>
-              📞 பதிவு செய்யுங்கள்
-            </span>
+            <span>📞 பதிவு செய்யுங்கள்</span>
 
             <ArrowRight
               size={16}
@@ -280,7 +301,6 @@ function Navbar() {
 
           </motion.button>
 
-
           {/* =================================================
               MOBILE MENU BUTTON
           ================================================== */}
@@ -290,10 +310,15 @@ function Navbar() {
               scale: 0.88,
             }}
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
             className="
               lg:hidden
-              w-11
-              h-11
+              w-10
+              h-10
+              sm:w-11
+              sm:h-11
+              shrink-0
               rounded-full
               flex
               items-center
@@ -332,7 +357,7 @@ function Navbar() {
                     ease: "easeOut",
                   }}
                 >
-                  <X size={25} />
+                  <X size={23} />
                 </motion.div>
 
               ) : (
@@ -359,7 +384,7 @@ function Navbar() {
                     ease: "easeOut",
                   }}
                 >
-                  <Menu size={25} />
+                  <Menu size={23} />
                 </motion.div>
 
               )}
@@ -369,7 +394,6 @@ function Navbar() {
           </motion.button>
 
         </div>
-
 
         {/* =================================================
             MOBILE MENU
@@ -406,7 +430,7 @@ function Navbar() {
               "
             >
 
-              <div className="px-4 py-3">
+              <div className="px-3 sm:px-4 py-2 sm:py-3">
 
                 {links.map((link, index) => (
 
@@ -436,11 +460,15 @@ function Navbar() {
                       items-center
                       justify-between
                       text-left
-                      px-4
-                      py-3.5
+                      px-3
+                      sm:px-4
+                      py-3
+                      sm:py-3.5
                       border-b
                       border-gray-100
                       text-gray-700
+                      text-sm
+                      sm:text-base
                       font-medium
                       hover:bg-yellow-50
                       hover:text-[#741B1B]
@@ -449,12 +477,10 @@ function Navbar() {
                     "
                   >
 
-                    <span>
-                      {link.name}
-                    </span>
+                    <span>{link.name}</span>
 
                     <ArrowRight
-                      size={16}
+                      size={15}
                       className="
                         text-yellow-500
                         transition-transform
@@ -467,10 +493,9 @@ function Navbar() {
 
                 ))}
 
-
                 {/* Mobile CTA */}
 
-                <div className="pt-4 pb-2">
+                <div className="pt-3 sm:pt-4 pb-1 sm:pb-2">
 
                   <motion.button
                     whileHover={{
@@ -493,21 +518,22 @@ function Navbar() {
                       bg-yellow-500
                       hover:bg-yellow-400
                       text-white
-                      py-3.5
+                      py-3
+                      sm:py-3.5
                       rounded-full
                       font-semibold
+                      text-sm
+                      sm:text-base
                       shadow-lg
                       transition-colors
                       duration-150
                     "
                   >
 
-                    <span>
-                      📞 பதிவு செய்யுங்கள்
-                    </span>
+                    <span>📞 பதிவு செய்யுங்கள்</span>
 
                     <ArrowRight
-                      size={17}
+                      size={16}
                       className="
                         transition-transform
                         duration-150
@@ -534,3 +560,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

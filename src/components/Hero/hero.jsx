@@ -18,20 +18,58 @@ function Hero() {
      PARALLAX VALUES
   ====================================================== */
 
-  const backgroundY = useTransform(scrollY, [0, 800], [0, 180]);
-  const backgroundScale = useTransform(scrollY, [0, 800], [1, 1.12]);
+  const backgroundY = useTransform(
+    scrollY,
+    [0, 800],
+    [0, 180]
+  );
 
-  const contentY = useTransform(scrollY, [0, 700], [0, -120]);
-  const contentOpacity = useTransform(scrollY, [0, 500], [1, 0.15]);
+  const backgroundScale = useTransform(
+    scrollY,
+    [0, 800],
+    [1, 1.12]
+  );
 
-  const floatingLeftY = useTransform(scrollY, [0, 700], [0, -210]);
-  const floatingRightY = useTransform(scrollY, [0, 700], [0, -150]);
+  const contentY = useTransform(
+    scrollY,
+    [0, 700],
+    [0, -120]
+  );
+
+  const contentOpacity = useTransform(
+    scrollY,
+    [0, 500],
+    [1, 0.15]
+  );
+
+  const floatingLeftY = useTransform(
+    scrollY,
+    [0, 700],
+    [0, -210]
+  );
+
+  const floatingRightY = useTransform(
+    scrollY,
+    [0, 700],
+    [0, -150]
+  );
 
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    const element = document.getElementById(id);
+
+    if (element) {
+      const navbarHeight =
+        window.innerWidth < 768 ? 72 : 105;
+
+      const elementPosition =
+        element.getBoundingClientRect().top +
+        window.scrollY;
+
+      window.scrollTo({
+        top: elementPosition - navbarHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -39,7 +77,7 @@ function Hero() {
       id="home"
       className="
         relative
-        min-h-screen
+        min-h-[100svh]
         overflow-hidden
         bg-[#07150d]
       "
@@ -70,6 +108,7 @@ function Hero() {
             w-full
             h-full
             object-cover
+            object-center
           "
         >
           <source src={heroVideo} type="video/mp4" />
@@ -86,7 +125,7 @@ function Hero() {
           absolute
           inset-0
           z-[1]
-          bg-black/30
+          bg-black/35
         "
       />
 
@@ -96,17 +135,20 @@ function Hero() {
           inset-0
           z-[1]
           bg-gradient-to-b
-          from-black/60
-          via-black/20
+          from-black/70
+          via-black/25
           to-[#07150d]/95
         "
       />
 
-      {/* Green atmospheric glow */}
+
+      {/* =====================================================
+          GREEN ATMOSPHERIC GLOW
+      ====================================================== */}
 
       <motion.div
         animate={{
-          opacity: [0.15, 0.28, 0.15],
+          opacity: [0.12, 0.25, 0.12],
           scale: [1, 1.15, 1],
         }}
         transition={{
@@ -116,14 +158,17 @@ function Hero() {
         }}
         className="
           absolute
-          top-[-180px]
+          top-[-160px]
           left-1/2
           -translate-x-1/2
-          w-[500px]
-          h-[500px]
+          w-[320px]
+          h-[320px]
+          sm:w-[500px]
+          sm:h-[500px]
           rounded-full
           bg-green-500/30
-          blur-[130px]
+          blur-[100px]
+          sm:blur-[130px]
           z-[2]
           pointer-events-none
         "
@@ -147,20 +192,26 @@ function Hero() {
         }}
         className="
           absolute
-          left-[4%]
+          left-[3%]
+          sm:left-[5%]
           md:left-[7%]
-          top-[25%]
+          top-[28%]
           z-[3]
           pointer-events-none
+          hidden
+          sm:block
         "
       >
         <div
           className="
-            w-16
-            h-16
+            w-12
+            h-12
+            sm:w-16
+            sm:h-16
             md:w-24
             md:h-24
-            rounded-[28px]
+            rounded-[20px]
+            md:rounded-[28px]
             bg-white/10
             backdrop-blur-md
             border
@@ -169,7 +220,8 @@ function Hero() {
             flex
             items-center
             justify-center
-            text-3xl
+            text-2xl
+            sm:text-3xl
             md:text-5xl
           "
         >
@@ -195,20 +247,26 @@ function Hero() {
         }}
         className="
           absolute
-          right-[4%]
+          right-[3%]
+          sm:right-[5%]
           md:right-[8%]
           top-[32%]
           z-[3]
           pointer-events-none
+          hidden
+          sm:block
         "
       >
         <div
           className="
-            w-16
-            h-16
+            w-12
+            h-12
+            sm:w-16
+            sm:h-16
             md:w-24
             md:h-24
-            rounded-[28px]
+            rounded-[20px]
+            md:rounded-[28px]
             bg-white/10
             backdrop-blur-md
             border
@@ -217,7 +275,8 @@ function Hero() {
             flex
             items-center
             justify-center
-            text-3xl
+            text-2xl
+            sm:text-3xl
             md:text-5xl
           "
         >
@@ -227,7 +286,7 @@ function Hero() {
 
 
       {/* =====================================================
-          FLOATING GOLDEN ORB
+          FLOATING ORBS
       ====================================================== */}
 
       <motion.div
@@ -243,23 +302,21 @@ function Hero() {
         }}
         className="
           absolute
-          right-[18%]
+          right-[14%]
+          sm:right-[18%]
           top-[18%]
-          w-4
-          h-4
+          w-3
+          h-3
+          sm:w-5
+          sm:h-5
           md:w-7
           md:h-7
           rounded-full
           bg-yellow-400
-          shadow-[0_0_35px_rgba(250,204,21,0.8)]
+          shadow-[0_0_30px_rgba(250,204,21,0.8)]
           z-[3]
         "
       />
-
-
-      {/* =====================================================
-          FLOATING GREEN ORB
-      ====================================================== */}
 
       <motion.div
         animate={{
@@ -273,15 +330,18 @@ function Hero() {
         }}
         className="
           absolute
-          left-[18%]
+          left-[15%]
+          sm:left-[18%]
           bottom-[27%]
-          w-3
-          h-3
+          w-2
+          h-2
+          sm:w-4
+          sm:h-4
           md:w-5
           md:h-5
           rounded-full
           bg-green-400
-          shadow-[0_0_30px_rgba(74,222,128,0.8)]
+          shadow-[0_0_25px_rgba(74,222,128,0.8)]
           z-[3]
         "
       />
@@ -299,13 +359,16 @@ function Hero() {
         className="
           relative
           z-10
-          min-h-screen
+          min-h-[100svh]
           flex
           items-center
           justify-center
           px-4
-          pt-28
+          sm:px-6
+          pt-[92px]
+          sm:pt-28
           pb-16
+          sm:pb-20
         "
       >
 
@@ -332,33 +395,37 @@ function Hero() {
               flex
               items-center
               justify-center
-              gap-3
-              mb-6
+              gap-2
+              sm:gap-3
+              mb-5
+              sm:mb-6
             "
           >
 
             <Sparkles
-              size={17}
-              className="text-green-400"
+              size={14}
+              className="text-green-400 shrink-0 sm:w-[17px] sm:h-[17px]"
             />
 
             <p
               className="
                 text-green-300
-                text-xs
+                text-[10px]
                 sm:text-sm
                 md:text-base
                 font-semibold
-                tracking-[2px]
+                tracking-[1px]
+                sm:tracking-[2px]
                 text-center
+                leading-relaxed
               "
             >
               தமிழ் பாரம்பரியம் • சுவையின் பெருமை
             </p>
 
             <Sparkles
-              size={17}
-              className="text-green-400"
+              size={14}
+              className="text-green-400 shrink-0 sm:w-[17px] sm:h-[17px]"
             />
 
           </motion.div>
@@ -366,7 +433,7 @@ function Hero() {
 
           {/* =================================================
               MAIN HEADING
-          ================================================= */}
+          ================================================== */}
 
           <div className="text-center">
 
@@ -387,7 +454,8 @@ function Hero() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
-                leading-[1.05]
+                leading-[1.08]
+                sm:leading-[1.05]
                 font-bold
               "
             >
@@ -396,7 +464,8 @@ function Hero() {
                 className="
                   block
                   text-white
-                  text-4xl
+                  text-[2.35rem]
+                  leading-tight
                   sm:text-5xl
                   md:text-7xl
                   lg:text-8xl
@@ -423,11 +492,13 @@ function Hero() {
                 className="
                   block
                   text-green-400
-                  text-4xl
+                  text-[2.15rem]
+                  leading-tight
                   sm:text-5xl
                   md:text-7xl
                   lg:text-8xl
-                  mt-3
+                  mt-2
+                  sm:mt-3
                   drop-shadow-[0_8px_30px_rgba(0,0,0,0.9)]
                 "
               >
@@ -445,7 +516,7 @@ function Hero() {
                 opacity: 0,
               }}
               animate={{
-                width: 110,
+                width: 90,
                 opacity: 1,
               }}
               transition={{
@@ -453,11 +524,13 @@ function Hero() {
                 delay: 1,
               }}
               className="
-                h-[3px]
+                h-[2px]
+                sm:h-[3px]
                 bg-green-400
                 rounded-full
                 mx-auto
-                mt-7
+                mt-5
+                sm:mt-7
                 shadow-[0_0_15px_rgba(74,222,128,0.5)]
               "
             />
@@ -484,15 +557,19 @@ function Hero() {
             }}
             className="
               text-white
-              text-sm
+              text-xs
               sm:text-base
               md:text-lg
               max-w-3xl
               mx-auto
-              mt-7
-              leading-relaxed
+              mt-5
+              sm:mt-7
+              leading-[1.7]
+              sm:leading-relaxed
               text-center
               drop-shadow-[0_4px_15px_rgba(0,0,0,0.9)]
+              px-1
+              sm:px-0
             "
           >
             திருமணம், பிறந்தநாள் விழா, நிறுவன நிகழ்வுகள் மற்றும்
@@ -519,13 +596,17 @@ function Hero() {
               delay: 1.2,
             }}
             className="
-              mt-9
+              mt-7
+              sm:mt-9
               flex
               flex-col
               sm:flex-row
               justify-center
               items-center
-              gap-4
+              gap-3
+              sm:gap-4
+              px-2
+              sm:px-0
             "
           >
 
@@ -544,13 +625,19 @@ function Hero() {
                 group
                 w-full
                 sm:w-auto
+                min-h-[48px]
+                sm:min-h-[56px]
                 bg-green-600
                 hover:bg-green-500
                 text-white
-                px-8
-                py-4
+                px-6
+                sm:px-8
+                py-3
+                sm:py-4
                 rounded-full
                 font-semibold
+                text-sm
+                sm:text-base
                 shadow-[0_12px_40px_rgba(22,163,74,0.35)]
                 transition-colors
                 duration-200
@@ -560,17 +647,15 @@ function Hero() {
                 gap-2
               "
             >
-
-              📞 Book Your Event
+              <span>📞 Book Your Event</span>
 
               <ArrowRight
-                size={18}
+                size={17}
                 className="
                   group-hover:translate-x-1
                   transition-transform
                 "
               />
-
             </motion.button>
 
 
@@ -588,13 +673,19 @@ function Hero() {
               className="
                 w-full
                 sm:w-auto
+                min-h-[48px]
+                sm:min-h-[56px]
                 border
                 border-white/70
                 text-white
-                px-8
-                py-4
+                px-6
+                sm:px-8
+                py-3
+                sm:py-4
                 rounded-full
                 font-semibold
+                text-sm
+                sm:text-base
                 bg-black/20
                 hover:bg-green-600/30
                 backdrop-blur-md
@@ -606,9 +697,7 @@ function Hero() {
                 gap-2
               "
             >
-
               🍛 View Menu
-
             </motion.button>
 
           </motion.div>
@@ -635,7 +724,8 @@ function Hero() {
               w-full
               max-w-5xl
               mx-auto
-              mt-10
+              mt-7
+              sm:mt-10
             "
           >
 
@@ -645,7 +735,8 @@ function Hero() {
                 backdrop-blur-xl
                 border
                 border-white/15
-                rounded-3xl
+                rounded-2xl
+                sm:rounded-3xl
                 overflow-hidden
                 shadow-[0_25px_80px_rgba(0,0,0,0.35)]
               "
@@ -662,7 +753,8 @@ function Hero() {
                       "rgba(34,197,94,0.12)",
                   }}
                   className="
-                    p-4
+                    p-3
+                    sm:p-4
                     md:p-5
                     text-center
                     border-r
@@ -673,19 +765,22 @@ function Hero() {
                 >
 
                   <Users
-                    size={27}
+                    size={22}
                     className="
                       mx-auto
                       text-green-400
-                      mb-2
+                      mb-1.5
+                      sm:mb-2
+                      sm:w-[27px]
+                      sm:h-[27px]
                     "
                   />
 
-                  <h3 className="text-white text-xl md:text-2xl font-bold">
+                  <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
                     500+
                   </h3>
 
-                  <p className="text-gray-200 text-[10px] md:text-xs">
+                  <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
                     வெற்றிகரமான நிகழ்வுகள்
                   </p>
 
@@ -701,7 +796,8 @@ function Hero() {
                       "rgba(34,197,94,0.12)",
                   }}
                   className="
-                    p-4
+                    p-3
+                    sm:p-4
                     md:p-5
                     text-center
                     md:border-r
@@ -712,19 +808,22 @@ function Hero() {
                 >
 
                   <Trophy
-                    size={27}
+                    size={22}
                     className="
                       mx-auto
                       text-green-400
-                      mb-2
+                      mb-1.5
+                      sm:mb-2
+                      sm:w-[27px]
+                      sm:h-[27px]
                     "
                   />
 
-                  <h3 className="text-white text-xl md:text-2xl font-bold">
+                  <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
                     10+
                   </h3>
 
-                  <p className="text-gray-200 text-[10px] md:text-xs">
+                  <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
                     ஆண்டுகள் அனுபவம்
                   </p>
 
@@ -740,7 +839,8 @@ function Hero() {
                       "rgba(34,197,94,0.12)",
                   }}
                   className="
-                    p-4
+                    p-3
+                    sm:p-4
                     md:p-5
                     text-center
                     border-r
@@ -749,19 +849,22 @@ function Hero() {
                 >
 
                   <UtensilsCrossed
-                    size={27}
+                    size={22}
                     className="
                       mx-auto
                       text-green-400
-                      mb-2
+                      mb-1.5
+                      sm:mb-2
+                      sm:w-[27px]
+                      sm:h-[27px]
                     "
                   />
 
-                  <h3 className="text-white text-xl md:text-2xl font-bold">
+                  <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
                     100%
                   </h3>
 
-                  <p className="text-gray-200 text-[10px] md:text-xs">
+                  <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
                     வாடிக்கையாளர் திருப்தி
                   </p>
 
@@ -777,26 +880,32 @@ function Hero() {
                       "rgba(34,197,94,0.12)",
                   }}
                   className="
-                    p-4
+                    p-3
+                    sm:p-4
                     md:p-5
                     text-center
                   "
                 >
 
                   <Leaf
-                    size={27}
+                    size={22}
                     className="
                       mx-auto
                       text-green-400
-                      mb-2
+                      mb-1.5
+                      sm:mb-2
+                      sm:w-[27px]
+                      sm:h-[27px]
                     "
                   />
 
                   <p className="
                     text-white
-                    text-xs
+                    text-[9px]
+                    sm:text-xs
                     md:text-sm
                     font-semibold
+                    leading-relaxed
                   ">
                     சுத்தமான & தரமான
                     <br />
@@ -817,8 +926,7 @@ function Hero() {
 
 
       {/* =====================================================
-          EXTRA FLOATING ELEMENTS
-          Creates the "travelling" feeling
+          EXTRA FLOATING ELEMENTS — DESKTOP ONLY
       ====================================================== */}
 
       <motion.div
@@ -856,6 +964,7 @@ function Hero() {
           "
         >
           <span className="text-2xl">🍽️</span>
+
           <span className="ml-2 text-sm font-semibold">
             பாரம்பரிய சுவை
           </span>
@@ -903,7 +1012,6 @@ function Hero() {
           <span className="ml-2 text-sm font-semibold">
             இயற்கையான பொருட்கள்
           </span>
-
         </div>
 
       </motion.div>
@@ -919,7 +1027,8 @@ function Hero() {
           bottom-0
           left-0
           right-0
-          h-32
+          h-24
+          sm:h-32
           bg-gradient-to-t
           from-[#07150d]
           to-transparent
@@ -991,3 +1100,4 @@ function Hero() {
 }
 
 export default Hero;
+
