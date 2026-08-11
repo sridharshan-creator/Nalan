@@ -12,67 +12,58 @@ function Gallery() {
   return (
     <section
       id="gallery"
+      aria-labelledby="gallery-heading"
       className="
         relative
         overflow-hidden
         min-h-[850px]
         md:min-h-[900px]
-        bg-black
+        bg-gradient-to-b
+        from-white
+        via-[#F5FBF7]
+        to-[#EAF7EE]
       "
     >
-
       {/* =====================================================
-          FULL BACKGROUND IMAGE
+          BACKGROUND IMAGE
       ====================================================== */}
 
       <div className="absolute inset-0">
-
         <img
           src={backgroundImage}
-          alt="Nalan Catering"
+          alt="Nalan Catering wedding and event catering celebration"
+          loading="lazy"
           className="
             w-full
             h-full
             object-cover
             scale-105
+            opacity-[0.12]
           "
         />
 
-        {/* Dark cinematic overlay */}
-
+        {/* Soft green overlay */}
         <div
           className="
             absolute
             inset-0
-            bg-black/55
+            bg-gradient-to-b
+            from-white/95
+            via-[#F5FBF7]/90
+            to-[#EAF7EE]/95
           "
         />
-
-        {/* Bottom gradient */}
-
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-black/80
-            via-black/30
-            to-black/40
-          "
-        />
-
       </div>
 
-
       {/* =====================================================
-          DECORATIVE GLOW
+          DECORATIVE GREEN GLOWS
       ====================================================== */}
 
       <motion.div
         animate={{
           x: [0, 40, 0],
           y: [0, -20, 0],
-          opacity: [0.08, 0.16, 0.08],
+          opacity: [0.06, 0.12, 0.06],
         }}
         transition={{
           duration: 8,
@@ -86,7 +77,7 @@ function Gallery() {
           w-[450px]
           h-[450px]
           rounded-full
-          bg-yellow-400
+          bg-green-400
           blur-[130px]
           pointer-events-none
         "
@@ -96,7 +87,7 @@ function Gallery() {
         animate={{
           x: [0, -30, 0],
           y: [0, 20, 0],
-          opacity: [0.05, 0.12, 0.05],
+          opacity: [0.05, 0.10, 0.05],
         }}
         transition={{
           duration: 9,
@@ -110,12 +101,11 @@ function Gallery() {
           w-[450px]
           h-[450px]
           rounded-full
-          bg-[#741B1B]
+          bg-green-700
           blur-[130px]
           pointer-events-none
         "
       />
-
 
       {/* =====================================================
           MAIN CONTENT
@@ -136,7 +126,6 @@ function Gallery() {
           justify-center
         "
       >
-
 
         {/* =================================================
             CENTER TEXT
@@ -177,15 +166,14 @@ function Gallery() {
               mb-5
             "
           >
-
             <Sparkles
               size={17}
-              className="text-yellow-400"
+              className="text-green-600"
             />
 
             <p
               className="
-                text-yellow-300
+                text-green-700
                 text-xs
                 md:text-sm
                 font-semibold
@@ -197,40 +185,41 @@ function Gallery() {
 
             <Sparkles
               size={17}
-              className="text-yellow-400"
+              className="text-green-600"
             />
-
           </div>
 
 
           {/* Main Heading */}
 
           <h2
+            id="gallery-heading"
             className="
               text-4xl
               sm:text-5xl
               md:text-6xl
               font-bold
-              text-white
+              text-gray-900
               leading-tight
-              drop-shadow-2xl
+              drop-shadow-sm
             "
           >
             ஒவ்வொரு விழாவும்
+
             <br />
 
-            <span className="text-yellow-400">
+            <span className="text-[#166534]">
               ஒரு இனிய நினைவு
             </span>
           </h2>
 
 
-          {/* Description */}
+          {/* SEO-friendly Description */}
 
           <p
             className="
               mt-6
-              text-white/80
+              text-gray-600
               text-sm
               md:text-base
               leading-7
@@ -238,13 +227,16 @@ function Gallery() {
               mx-auto
             "
           >
-            சுவையான உணவு, சிறந்த சேவை மற்றும்
-            மறக்க முடியாத தருணங்கள் —
-            உங்கள் விழாவின் அழகான நினைவுகள்.
+            நளன் கேட்டரிங் வழங்கும் திருமணம், பிறந்தநாள்,
+            குடும்ப விழாக்கள் மற்றும் சிறப்பு நிகழ்வுகளின்
+            அழகான தருணங்களை காணுங்கள். தரமான உணவு,
+            பாரம்பரிய சுவை மற்றும் சிறந்த catering service
+            மூலம் உங்கள் விழாவை மறக்க முடியாத நினைவாக
+            மாற்றுகிறோம்.
           </p>
 
 
-          {/* Golden divider */}
+          {/* Green divider */}
 
           <motion.div
             initial={{
@@ -262,7 +254,7 @@ function Gallery() {
             }}
             className="
               h-[3px]
-              bg-yellow-400
+              bg-green-500
               rounded-full
               mx-auto
               mt-6
@@ -275,9 +267,10 @@ function Gallery() {
           <p
             className="
               mt-6
-              text-white/70
+              text-green-700/70
               text-xs
               md:text-sm
+              font-medium
             "
           >
             ✦ தமிழ் பாரம்பரியம் • சுவையின் பெருமை ✦
@@ -340,17 +333,17 @@ function Gallery() {
             md:rounded-3xl
             overflow-hidden
             border
-            border-white/30
+            border-green-200
             shadow-2xl
-            bg-black/30
-            backdrop-blur-sm
+            bg-white
             group
           "
         >
 
           <img
             src={photo1}
-            alt="Nalan Catering celebration"
+            alt="Nalan Catering wedding celebration and catering service"
+            loading="lazy"
             className="
               w-full
               h-40
@@ -370,15 +363,13 @@ function Gallery() {
               bottom-0
               p-3
               bg-gradient-to-t
-              from-black/80
+              from-black/70
               to-transparent
             "
           >
-
             <p className="text-white text-[10px] md:text-xs font-semibold">
               இனிய தருணங்கள்
             </p>
-
           </div>
 
         </motion.div>
@@ -438,9 +429,9 @@ function Gallery() {
             md:rounded-3xl
             overflow-hidden
             border
-            border-white/30
+            border-green-200
             shadow-2xl
-            bg-black
+            bg-white
             group
           "
         >
@@ -452,6 +443,7 @@ function Gallery() {
             loop
             playsInline
             preload="metadata"
+            aria-label="Nalan Catering event catering video"
             className="
               w-full
               h-44
@@ -474,22 +466,20 @@ function Gallery() {
               w-8
               h-8
               rounded-full
-              bg-black/40
+              bg-green-700/70
               backdrop-blur-md
               border
-              border-white/30
+              border-white/40
               flex
               items-center
               justify-center
               text-white
             "
           >
-
             <Play
               size={13}
               fill="currentColor"
             />
-
           </div>
 
           <div
@@ -500,15 +490,13 @@ function Gallery() {
               right-0
               p-3
               bg-gradient-to-t
-              from-black/80
+              from-black/70
               to-transparent
             "
           >
-
             <p className="text-white text-[10px] md:text-xs font-semibold">
               விழா தருணங்கள்
             </p>
-
           </div>
 
         </motion.div>
@@ -567,16 +555,17 @@ function Gallery() {
             md:rounded-3xl
             overflow-hidden
             border
-            border-white/30
+            border-green-200
             shadow-2xl
-            bg-black
+            bg-white
             group
           "
         >
 
           <img
             src={photo2}
-            alt="Traditional catering food"
+            alt="Traditional Tamil food catering by Nalan Catering"
+            loading="lazy"
             className="
               w-full
               h-36
@@ -597,15 +586,13 @@ function Gallery() {
               right-0
               p-3
               bg-gradient-to-t
-              from-black/80
+              from-black/70
               to-transparent
             "
           >
-
             <p className="text-white text-[10px] md:text-xs font-semibold">
               பாரம்பரிய சுவை
             </p>
-
           </div>
 
         </motion.div>
@@ -664,9 +651,9 @@ function Gallery() {
             md:rounded-3xl
             overflow-hidden
             border
-            border-white/30
+            border-green-200
             shadow-2xl
-            bg-black
+            bg-white
             group
           "
         >
@@ -678,6 +665,7 @@ function Gallery() {
             loop
             playsInline
             preload="metadata"
+            aria-label="Nalan Catering celebration and food service video"
             className="
               w-full
               h-40
@@ -698,22 +686,20 @@ function Gallery() {
               w-8
               h-8
               rounded-full
-              bg-black/40
+              bg-green-700/70
               backdrop-blur-md
               border
-              border-white/30
+              border-white/40
               flex
               items-center
               justify-center
               text-white
             "
           >
-
             <Play
               size={13}
               fill="currentColor"
             />
-
           </div>
 
           <div
@@ -724,22 +710,20 @@ function Gallery() {
               right-0
               p-3
               bg-gradient-to-t
-              from-black/80
+              from-black/70
               to-transparent
             "
           >
-
             <p className="text-white text-[10px] md:text-xs font-semibold">
               கொண்டாட்ட தருணங்கள்
             </p>
-
           </div>
 
         </motion.div>
 
 
         {/* =================================================
-            DECORATIVE GOLD DOTS
+            DECORATIVE GREEN DOTS
         ================================================== */}
 
         <motion.div
@@ -758,7 +742,7 @@ function Gallery() {
             w-2
             h-2
             rounded-full
-            bg-yellow-400
+            bg-green-500
             hidden
             md:block
           "
@@ -781,7 +765,7 @@ function Gallery() {
             w-2
             h-2
             rounded-full
-            bg-yellow-400
+            bg-green-500
             hidden
             md:block
           "
@@ -791,7 +775,7 @@ function Gallery() {
 
 
       {/* =====================================================
-          MOBILE BOTTOM ACCENT
+          MOBILE / SECTION BOTTOM ACCENT
       ====================================================== */}
 
       <div
@@ -802,9 +786,9 @@ function Gallery() {
           right-0
           h-1
           bg-gradient-to-r
-          from-yellow-300
-          via-yellow-500
-          to-yellow-300
+          from-green-300
+          via-green-600
+          to-green-300
         "
       />
 
