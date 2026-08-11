@@ -1,108 +1,132 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Sparkles, Play } from "lucide-react";
 
 import backgroundImage from "../../assets/images/IMG-20260803-WA0010.jpg";
 import photo1 from "../../assets/images/IMG-20260803-WA0011.jpg";
 import photo2 from "../../assets/images/IMG-20260803-WA0014.jpg";
-
 import video1 from "../../assets/videos/VID-20260803-WA0030.mp4";
 import video2 from "../../assets/videos/VID-20260803-WA0024.mp4";
 
 function Gallery() {
+  const sectionRef = useRef(null);
+
+  // This controls BOTH entering and leaving animations.
+  // once:false is important because we want the animations
+  // to reverse when the user scrolls away.
+  const isInView = useInView(sectionRef, {
+    amount: 0.3,
+    once: false,
+  });
+
   return (
     <section
+      ref={sectionRef}
       id="gallery"
       aria-labelledby="gallery-heading"
       className="
         relative
         overflow-hidden
-        min-h-[850px]
-        md:min-h-[900px]
-        bg-gradient-to-b
-        from-white
-        via-[#F5FBF7]
-        to-[#EAF7EE]
+        min-h-[900px]
+        md:min-h-[950px]
+        bg-black
       "
     >
       {/* =====================================================
-          BACKGROUND IMAGE
+          FULL BACKGROUND IMAGE
       ====================================================== */}
 
       <div className="absolute inset-0">
         <img
           src={backgroundImage}
           alt="Nalan Catering wedding and event catering celebration"
-          loading="lazy"
           className="
+            absolute
+            inset-0
             w-full
             h-full
             object-cover
-            scale-105
-            opacity-[0.12]
+            object-center
           "
         />
 
-        {/* Soft green overlay */}
+        {/* Dark green cinematic overlay */}
         <div
           className="
             absolute
             inset-0
             bg-gradient-to-b
-            from-white/95
-            via-[#F5FBF7]/90
-            to-[#EAF7EE]/95
+            from-black/35
+            via-[#062e1b]/30
+            to-black/60
+          "
+        />
+
+        {/* Green atmosphere */}
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-r
+            from-[#063b24]/30
+            via-transparent
+            to-[#063b24]/30
           "
         />
       </div>
 
       {/* =====================================================
-          DECORATIVE GREEN GLOWS
+          ANIMATED GREEN GLOW — TOP LEFT
       ====================================================== */}
 
       <motion.div
         animate={{
-          x: [0, 40, 0],
-          y: [0, -20, 0],
-          opacity: [0.06, 0.12, 0.06],
+          x: isInView ? [0, 35, 0] : 0,
+          y: isInView ? [0, -20, 0] : 0,
+          opacity: isInView ? [0.08, 0.16, 0.08] : 0,
         }}
         transition={{
           duration: 8,
-          repeat: Infinity,
+          repeat: isInView ? Infinity : 0,
           ease: "easeInOut",
         }}
         className="
           absolute
-          -top-40
-          -left-40
-          w-[450px]
-          h-[450px]
+          -top-48
+          -left-48
+          w-[500px]
+          h-[500px]
           rounded-full
           bg-green-400
-          blur-[130px]
+          blur-[140px]
           pointer-events-none
         "
       />
 
+      {/* =====================================================
+          ANIMATED GREEN GLOW — BOTTOM RIGHT
+      ====================================================== */}
+
       <motion.div
         animate={{
-          x: [0, -30, 0],
-          y: [0, 20, 0],
-          opacity: [0.05, 0.10, 0.05],
+          x: isInView ? [0, -30, 0] : 0,
+          y: isInView ? [0, 20, 0] : 0,
+          opacity: isInView ? [0.06, 0.13, 0.06] : 0,
         }}
         transition={{
           duration: 9,
-          repeat: Infinity,
+          repeat: isInView ? Infinity : 0,
           ease: "easeInOut",
         }}
         className="
           absolute
-          -bottom-40
-          -right-40
-          w-[450px]
-          h-[450px]
+          -bottom-48
+          -right-48
+          w-[500px]
+          h-[500px]
           rounded-full
           bg-green-700
-          blur-[130px]
+          blur-[140px]
           pointer-events-none
         "
       />
@@ -117,13 +141,10 @@ function Gallery() {
           z-10
           max-w-7xl
           mx-auto
-          min-h-[850px]
-          md:min-h-[900px]
+          min-h-[900px]
+          md:min-h-[950px]
           px-5
           md:px-8
-          flex
-          items-center
-          justify-center
         "
       >
 
@@ -134,27 +155,28 @@ function Gallery() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 30,
+            y: 100,
           }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
+          animate={{
+            opacity: isInView ? 1 : 0,
+            y: isInView ? 0 : 100,
           }}
           transition={{
             duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
-            relative
+            absolute
             z-30
+            left-1/2
+            -translate-x-1/2
+            top-[24%]
+            md:top-[23%]
+            w-[90%]
+            max-w-3xl
             text-center
-            max-w-2xl
-            px-4
           "
         >
-
           {/* Label */}
 
           <div
@@ -167,28 +189,28 @@ function Gallery() {
             "
           >
             <Sparkles
-              size={17}
-              className="text-green-600"
+              size={18}
+              className="text-green-300"
             />
 
             <p
               className="
-                text-green-700
+                text-green-200
                 text-xs
                 md:text-sm
                 font-semibold
                 tracking-[3px]
+                drop-shadow-lg
               "
             >
               எங்கள் நினைவுகள்
             </p>
 
             <Sparkles
-              size={17}
-              className="text-green-600"
+              size={18}
+              className="text-green-300"
             />
           </div>
-
 
           {/* Main Heading */}
 
@@ -198,33 +220,33 @@ function Gallery() {
               text-4xl
               sm:text-5xl
               md:text-6xl
+              lg:text-7xl
               font-bold
-              text-gray-900
-              leading-tight
-              drop-shadow-sm
+              text-white
+              leading-[1.15]
+              drop-shadow-[0_5px_20px_rgba(0,0,0,0.7)]
             "
           >
             ஒவ்வொரு விழாவும்
-
             <br />
 
-            <span className="text-[#166534]">
+            <span className="text-green-300">
               ஒரு இனிய நினைவு
             </span>
           </h2>
 
-
-          {/* SEO-friendly Description */}
+          {/* SEO-friendly description */}
 
           <p
             className="
               mt-6
-              text-gray-600
+              text-white/85
               text-sm
               md:text-base
               leading-7
-              max-w-xl
+              max-w-2xl
               mx-auto
+              drop-shadow-lg
             "
           >
             நளன் கேட்டரிங் வழங்கும் திருமணம், பிறந்தநாள்,
@@ -235,126 +257,102 @@ function Gallery() {
             மாற்றுகிறோம்.
           </p>
 
-
           {/* Green divider */}
 
           <motion.div
-            initial={{
-              width: 0,
-            }}
-            whileInView={{
-              width: 90,
-            }}
-            viewport={{
-              once: true,
+            initial={{ width: 0 }}
+            animate={{
+              width: isInView ? 90 : 0,
             }}
             transition={{
-              duration: 0.5,
-              delay: 0.2,
+              duration: 0.6,
+              delay: isInView ? 0.25 : 0,
+              ease: "easeOut",
             }}
             className="
               h-[3px]
-              bg-green-500
+              bg-green-400
               rounded-full
               mx-auto
               mt-6
+              shadow-[0_0_15px_rgba(74,222,128,0.5)]
             "
           />
-
 
           {/* Bottom text */}
 
           <p
             className="
               mt-6
-              text-green-700/70
+              text-green-200/80
               text-xs
               md:text-sm
               font-medium
+              tracking-wide
+              drop-shadow-lg
             "
           >
             ✦ தமிழ் பாரம்பரியம் • சுவையின் பெருமை ✦
           </p>
-
         </motion.div>
 
-
         {/* =================================================
-            FLOATING IMAGE 1 — LEFT
+            TOP LEFT IMAGE
         ================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            x: -80,
+            x: -180,
             rotate: -8,
           }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-            rotate: -5,
-          }}
-          viewport={{
-            once: true,
-          }}
           animate={{
-            y: [0, -15, 0],
-            rotate: [-5, -3, -5],
+            opacity: isInView ? 1 : 0,
+            x: isInView ? 0 : -180,
+            rotate: isInView ? -5 : -8,
           }}
           transition={{
-            y: {
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-            rotate: {
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
-          whileHover={{
-            scale: 1.05,
-            rotate: 0,
-            zIndex: 40,
+            duration: 0.85,
+            delay: isInView ? 0.15 : 0,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
             absolute
             z-20
-            left-4
+            left-3
             md:left-8
-            lg:left-16
-            top-[15%]
+            lg:left-14
+            top-[8%]
             w-32
             sm:w-40
-            md:w-52
-            lg:w-60
+            md:w-48
+            lg:w-56
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
             border
-            border-green-200
-            shadow-2xl
-            bg-white
+            border-green-300/50
+            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
+            bg-black
             group
           "
         >
-
-          <img
-            src={photo1}
-            alt="Nalan Catering wedding celebration and catering service"
-            loading="lazy"
-            className="
-              w-full
-              h-40
-              sm:h-48
-              md:h-60
-              object-cover
-              transition-transform
-              duration-700
-              group-hover:scale-110
-            "
-          />
+          <div className="aspect-[4/3] overflow-hidden">
+            <img
+              src={photo1}
+              alt="Nalan Catering wedding celebration and catering service"
+              loading="lazy"
+              className="
+                w-full
+                h-full
+                object-cover
+                object-center
+                transition-transform
+                duration-700
+                group-hover:scale-110
+              "
+            />
+          </div>
 
           <div
             className="
@@ -363,7 +361,7 @@ function Gallery() {
               bottom-0
               p-3
               bg-gradient-to-t
-              from-black/70
+              from-black/80
               to-transparent
             "
           >
@@ -371,90 +369,69 @@ function Gallery() {
               இனிய தருணங்கள்
             </p>
           </div>
-
         </motion.div>
 
-
         {/* =================================================
-            FLOATING VIDEO 1 — RIGHT
+            TOP RIGHT VIDEO
         ================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            x: 80,
-            rotate: 7,
-          }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-            rotate: 5,
-          }}
-          viewport={{
-            once: true,
+            x: 180,
+            rotate: 8,
           }}
           animate={{
-            y: [0, 18, 0],
-            rotate: [5, 3, 5],
+            opacity: isInView ? 1 : 0,
+            x: isInView ? 0 : 180,
+            rotate: isInView ? 5 : 8,
           }}
           transition={{
-            y: {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-            rotate: {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
-          whileHover={{
-            scale: 1.05,
-            rotate: 0,
-            zIndex: 40,
+            duration: 0.85,
+            delay: isInView ? 0.2 : 0,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
             absolute
             z-20
-            right-4
+            right-3
             md:right-8
-            lg:right-16
-            top-[13%]
-            w-36
-            sm:w-44
-            md:w-56
-            lg:w-64
+            lg:right-14
+            top-[8%]
+            w-32
+            sm:w-40
+            md:w-48
+            lg:w-56
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
             border
-            border-green-200
-            shadow-2xl
-            bg-white
+            border-green-300/50
+            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
+            bg-black
             group
           "
         >
-
-          <video
-            src={video1}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label="Nalan Catering event catering video"
-            className="
-              w-full
-              h-44
-              sm:h-52
-              md:h-64
-              object-cover
-              transition-transform
-              duration-700
-              group-hover:scale-105
-            "
-          />
+          <div className="aspect-[4/3] overflow-hidden">
+            <video
+              src={video1}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Nalan Catering event catering video"
+              className="
+                w-full
+                h-full
+                object-cover
+                object-center
+                transition-transform
+                duration-700
+                group-hover:scale-105
+              "
+            />
+          </div>
 
           {/* Play badge */}
 
@@ -466,7 +443,7 @@ function Gallery() {
               w-8
               h-8
               rounded-full
-              bg-green-700/70
+              bg-green-700/80
               backdrop-blur-md
               border
               border-white/40
@@ -474,6 +451,7 @@ function Gallery() {
               items-center
               justify-center
               text-white
+              shadow-lg
             "
           >
             <Play
@@ -490,7 +468,7 @@ function Gallery() {
               right-0
               p-3
               bg-gradient-to-t
-              from-black/70
+              from-black/80
               to-transparent
             "
           >
@@ -498,85 +476,67 @@ function Gallery() {
               விழா தருணங்கள்
             </p>
           </div>
-
         </motion.div>
 
-
         {/* =================================================
-            FLOATING IMAGE 2 — BOTTOM LEFT
+            BOTTOM LEFT IMAGE
         ================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 80,
-            rotate: 6,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            rotate: 4,
-          }}
-          viewport={{
-            once: true,
+            x: -160,
+            y: 100,
+            rotate: 7,
           }}
           animate={{
-            y: [0, 15, 0],
-            rotate: [4, 6, 4],
+            opacity: isInView ? 1 : 0,
+            x: isInView ? 0 : -160,
+            y: isInView ? 0 : 100,
+            rotate: isInView ? 4 : 7,
           }}
           transition={{
-            y: {
-              duration: 5.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-            rotate: {
-              duration: 5.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
-          whileHover={{
-            scale: 1.05,
-            rotate: 0,
-            zIndex: 40,
+            duration: 0.9,
+            delay: isInView ? 0.3 : 0,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
             absolute
             z-20
-            left-[8%]
-            md:left-[16%]
-            bottom-[10%]
+            left-3
+            md:left-[10%]
+            lg:left-[14%]
+            bottom-[6%]
             w-32
             sm:w-40
-            md:w-52
-            lg:w-56
+            md:w-48
+            lg:w-52
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
             border
-            border-green-200
-            shadow-2xl
-            bg-white
+            border-green-300/50
+            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
+            bg-black
             group
           "
         >
-
-          <img
-            src={photo2}
-            alt="Traditional Tamil food catering by Nalan Catering"
-            loading="lazy"
-            className="
-              w-full
-              h-36
-              sm:h-44
-              md:h-56
-              object-cover
-              transition-transform
-              duration-700
-              group-hover:scale-110
-            "
-          />
+          <div className="aspect-[4/3] overflow-hidden">
+            <img
+              src={photo2}
+              alt="Traditional Tamil food catering by Nalan Catering"
+              loading="lazy"
+              className="
+                w-full
+                h-full
+                object-cover
+                object-center
+                transition-transform
+                duration-700
+                group-hover:scale-110
+              "
+            />
+          </div>
 
           <div
             className="
@@ -586,7 +546,7 @@ function Gallery() {
               right-0
               p-3
               bg-gradient-to-t
-              from-black/70
+              from-black/80
               to-transparent
             "
           >
@@ -594,89 +554,73 @@ function Gallery() {
               பாரம்பரிய சுவை
             </p>
           </div>
-
         </motion.div>
 
-
         {/* =================================================
-            FLOATING VIDEO 2 — BOTTOM RIGHT
+            BOTTOM RIGHT VIDEO
         ================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 80,
-            rotate: -6,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            rotate: -4,
-          }}
-          viewport={{
-            once: true,
+            x: 160,
+            y: 100,
+            rotate: -7,
           }}
           animate={{
-            y: [0, -16, 0],
-            rotate: [-4, -6, -4],
+            opacity: isInView ? 1 : 0,
+            x: isInView ? 0 : 160,
+            y: isInView ? 0 : 100,
+            rotate: isInView ? -4 : -7,
           }}
           transition={{
-            y: {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-            rotate: {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
-          whileHover={{
-            scale: 1.05,
-            rotate: 0,
-            zIndex: 40,
+            duration: 0.9,
+            delay: isInView ? 0.35 : 0,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
             absolute
             z-20
-            right-[8%]
-            md:right-[16%]
-            bottom-[9%]
-            w-36
-            sm:w-44
-            md:w-56
-            lg:w-60
+            right-3
+            md:right-[10%]
+            lg:right-[14%]
+            bottom-[6%]
+            w-32
+            sm:w-40
+            md:w-48
+            lg:w-52
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
             border
-            border-green-200
-            shadow-2xl
-            bg-white
+            border-green-300/50
+            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
+            bg-black
             group
           "
         >
+          <div className="aspect-[4/3] overflow-hidden">
+            <video
+              src={video2}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Nalan Catering celebration and food service video"
+              className="
+                w-full
+                h-full
+                object-cover
+                object-center
+                transition-transform
+                duration-700
+                group-hover:scale-105
+              "
+            />
+          </div>
 
-          <video
-            src={video2}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label="Nalan Catering celebration and food service video"
-            className="
-              w-full
-              h-40
-              sm:h-48
-              md:h-60
-              object-cover
-              transition-transform
-              duration-700
-              group-hover:scale-105
-            "
-          />
+          {/* Play badge */}
 
           <div
             className="
@@ -686,7 +630,7 @@ function Gallery() {
               w-8
               h-8
               rounded-full
-              bg-green-700/70
+              bg-green-700/80
               backdrop-blur-md
               border
               border-white/40
@@ -694,6 +638,7 @@ function Gallery() {
               items-center
               justify-center
               text-white
+              shadow-lg
             "
           >
             <Play
@@ -710,7 +655,7 @@ function Gallery() {
               right-0
               p-3
               bg-gradient-to-t
-              from-black/70
+              from-black/80
               to-transparent
             "
           >
@@ -718,9 +663,7 @@ function Gallery() {
               கொண்டாட்ட தருணங்கள்
             </p>
           </div>
-
         </motion.div>
-
 
         {/* =================================================
             DECORATIVE GREEN DOTS
@@ -728,21 +671,22 @@ function Gallery() {
 
         <motion.div
           animate={{
-            opacity: [0.3, 0.8, 0.3],
-            scale: [1, 1.3, 1],
+            opacity: isInView ? [0.3, 0.9, 0.3] : 0,
+            scale: isInView ? [1, 1.3, 1] : 1,
           }}
           transition={{
             duration: 2.5,
-            repeat: Infinity,
+            repeat: isInView ? Infinity : 0,
           }}
           className="
             absolute
-            top-[40%]
-            left-[28%]
+            top-[48%]
+            left-[30%]
             w-2
             h-2
             rounded-full
-            bg-green-500
+            bg-green-300
+            shadow-[0_0_12px_rgba(74,222,128,0.8)]
             hidden
             md:block
           "
@@ -750,32 +694,31 @@ function Gallery() {
 
         <motion.div
           animate={{
-            opacity: [0.3, 0.8, 0.3],
-            scale: [1, 1.3, 1],
+            opacity: isInView ? [0.3, 0.9, 0.3] : 0,
+            scale: isInView ? [1, 1.3, 1] : 1,
           }}
           transition={{
             duration: 3,
-            repeat: Infinity,
+            repeat: isInView ? Infinity : 0,
             delay: 1,
           }}
           className="
             absolute
-            top-[45%]
-            right-[28%]
+            top-[52%]
+            right-[30%]
             w-2
             h-2
             rounded-full
-            bg-green-500
+            bg-green-300
+            shadow-[0_0_12px_rgba(74,222,128,0.8)]
             hidden
             md:block
           "
         />
-
       </div>
 
-
       {/* =====================================================
-          MOBILE / SECTION BOTTOM ACCENT
+          BOTTOM GREEN ACCENT
       ====================================================== */}
 
       <div
@@ -791,7 +734,6 @@ function Gallery() {
           to-green-300
         "
       />
-
     </section>
   );
 }
