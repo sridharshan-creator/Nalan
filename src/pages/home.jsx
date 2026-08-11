@@ -1,14 +1,14 @@
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
-import About from "../components/About/About";
-import Services from "../components/Services/Services";
-import Menu from "../components/Menu/Menu";
-import Gallery from "../components/Gallery/Gallery";
-import Testimonials from "../components/Testimonials/Testimonials";
-import Booking from "../components/Booking/Booking";
-import Contact from "../components/Contact/Contact";
-import Footer from "../components/Footer/Footer";
-import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton";
+import About from "../components/About/about";
+import Services from "../components/Services/services";
+import Menu from "../components/Menu/menu";
+import Gallery from "../components/Gallery/gallery";
+import Testimonials from "../components/Testimonials/testimonials";
+import Booking from "../components/Booking/booking";
+import Contact from "../components/Contact/contact";
+import Footer from "../components/Footer/footer";
+import WhatsAppButton from "../components/WhatsAppButton/whatsAppButton";
 
 function Home() {
   return (
