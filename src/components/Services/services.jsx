@@ -5,7 +5,6 @@ import {
   Cake,
   Building2,
   Home,
-  ArrowRight,
 } from "lucide-react";
 
 import marriageImage from "../../assets/images/marraigeserv.jpg";
@@ -13,111 +12,222 @@ import birthdayImage from "../../assets/images/birthday.jpg";
 import corporateImage from "../../assets/images/corporate.jpg";
 import houseImage from "../../assets/images/house.jpg";
 
+
 function Services() {
+
   const services = [
     {
       image: marriageImage,
       icon: <UtensilsCrossed size={24} />,
-      title: "💍 திருமண விழாக்கள்",
+      title: "திருமண விழாக்கள்",
       subtitle: "Wedding Catering",
       description:
-        "சிறப்பான திருமண விருந்திற்கு பாரம்பரிய சுவையுடன் சிறந்த சேவை.",
+        "திருமண விழாக்களுக்கு பாரம்பரிய சுவையுடன் தரமான உணவு, சிறந்த catering சேவை மற்றும் அனுபவமிக்க பணியாளர்களை வழங்குகிறோம்.",
+      alt:
+        "நளன் கேட்டரிங் திருமண விழா உணவு மற்றும் wedding catering சேவை",
     },
+
     {
       image: birthdayImage,
       icon: <Cake size={24} />,
-      title: "🎂 பிறந்தநாள் விழாக்கள்",
+      title: "பிறந்தநாள் விழாக்கள்",
       subtitle: "Birthday Parties",
       description:
-        "உங்கள் பிறந்தநாள் கொண்டாட்டத்தை சுவையான உணவுடன் மறக்க முடியாததாக மாற்றுங்கள்.",
+        "பிறந்தநாள் கொண்டாட்டங்களுக்கு சுவையான உணவு மற்றும் சிறந்த catering சேவையுடன் உங்கள் சிறப்பு நாளை மறக்க முடியாததாக மாற்றுகிறோம்.",
+      alt:
+        "நளன் கேட்டரிங் பிறந்தநாள் விழா உணவு மற்றும் birthday catering சேவை",
     },
+
     {
       image: corporateImage,
       icon: <Building2 size={24} />,
-      title: "🏢 நிறுவன நிகழ்வுகள்",
+      title: "நிறுவன நிகழ்வுகள்",
       subtitle: "Corporate Events",
       description:
-        "Meetings, conferences மற்றும் corporate events-க்கு தரமான catering.",
+        "Meetings, conferences மற்றும் corporate events போன்ற நிறுவன நிகழ்வுகளுக்கு தரமான உணவு மற்றும் professional catering சேவையை வழங்குகிறோம்.",
+      alt:
+        "நளன் கேட்டரிங் corporate event மற்றும் நிறுவன நிகழ்வு catering சேவை",
     },
+
     {
       image: houseImage,
       icon: <Home size={24} />,
-      title: "🏠 வீட்டு விழாக்கள்",
+      title: "வீட்டு விழாக்கள்",
       subtitle: "Family Functions",
       description:
-        "குடும்ப விழாக்கள் மற்றும் சிறப்பு நிகழ்வுகளுக்கு வீட்டுச் சுவையுடன் விருந்து.",
+        "குடும்ப விழாக்கள், சிறப்பு நிகழ்வுகள் மற்றும் வீட்டில் நடைபெறும் கொண்டாட்டங்களுக்கு வீட்டுச் சுவையுடன் தரமான உணவு மற்றும் catering சேவை.",
+      alt:
+        "நளன் கேட்டரிங் வீட்டு விழா மற்றும் family function catering சேவை",
     },
   ];
 
+
   return (
+
     <section
       id="services"
+      aria-labelledby="services-heading"
       className="
         relative
         overflow-hidden
-        bg-white
+        bg-gradient-to-br
+        from-[#e0f0df]
+        via-[#edf7eb]
+        to-[#d5ead4]
         py-16
         sm:py-20
         md:py-24
+        lg:py-28
+        scroll-mt-[72px]
+        md:scroll-mt-[105px]
       "
     >
+
       {/* =====================================================
-          BACKGROUND DECORATION
+          BACKGROUND GREEN GLOWS
       ====================================================== */}
 
-      <div
+      {/* Top green glow */}
+
+      <motion.div
+        animate={{
+          x: [0, 35, 0],
+          y: [0, 20, 0],
+          scale: [1, 1.08, 1],
+          opacity: [0.12, 0.19, 0.12],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="
           absolute
-          top-0
-          left-1/2
-          -translate-x-1/2
-          w-[280px]
-          sm:w-[400px]
-          md:w-[500px]
-          h-[220px]
-          sm:h-[260px]
-          md:h-[300px]
-          bg-yellow-400/10
-          blur-[90px]
-          md:blur-[120px]
+          -top-40
+          -left-40
+          w-80
+          h-80
+          sm:w-[420px]
+          sm:h-[420px]
           rounded-full
+          bg-green-400
+          blur-[100px]
+          sm:blur-[130px]
           pointer-events-none
         "
       />
 
-      {/* Floating decorations */}
 
-      <div
+      {/* Center green glow */}
+
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.06, 0.12, 0.06],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="
           absolute
-          right-[4%]
-          top-20
-          text-4xl
-          sm:text-5xl
-          md:text-7xl
-          opacity-10
+          top-1/2
+          left-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          w-[400px]
+          h-[300px]
+          sm:w-[600px]
+          sm:h-[400px]
+          rounded-full
+          bg-green-500
+          blur-[120px]
           pointer-events-none
-          z-0
+        "
+      />
+
+
+      {/* Bottom green glow */}
+
+      <motion.div
+        animate={{
+          x: [0, -35, 0],
+          y: [0, -25, 0],
+          scale: [1, 1.1, 1],
+          opacity: [0.10, 0.17, 0.10],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          absolute
+          -bottom-40
+          -right-40
+          w-80
+          h-80
+          sm:w-[450px]
+          sm:h-[450px]
+          rounded-full
+          bg-green-700
+          blur-[110px]
+          sm:blur-[140px]
+          pointer-events-none
+        "
+      />
+
+
+      {/* Floating leaf decorations */}
+
+      <motion.div
+        animate={{
+          y: [0, -15, 0],
+          rotate: [0, 5, 0],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          absolute
+          right-[5%]
+          top-16
+          text-5xl
+          sm:text-7xl
+          opacity-15
+          pointer-events-none
         "
       >
         🍃
-      </div>
+      </motion.div>
 
-      <div
+
+      <motion.div
+        animate={{
+          y: [0, 15, 0],
+          rotate: [0, -5, 0],
+        }}
+        transition={{
+          duration: 5.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="
           absolute
           left-[4%]
           bottom-16
-          text-3xl
-          sm:text-4xl
-          md:text-6xl
-          opacity-10
+          text-4xl
+          sm:text-6xl
+          opacity-15
           pointer-events-none
-          z-0
         "
       >
-        ✨
-      </div>
+        🌿
+      </motion.div>
+
 
       {/* =====================================================
           MAIN CONTAINER
@@ -135,6 +245,7 @@ function Services() {
           md:px-8
         "
       >
+
 
         {/* =================================================
             HEADING
@@ -184,20 +295,22 @@ function Services() {
               duration: 0.4,
             }}
             className="
-              text-yellow-500
+              text-green-600
               text-base
               sm:text-lg
               mb-2
             "
+            aria-hidden="true"
           >
-            ✨ ❖ ✨
+            ✦ ❖ ✦
           </motion.p>
 
-          {/* Label */}
+
+          {/* SEO friendly section label */}
 
           <p
             className="
-              text-yellow-500
+              text-green-700
               uppercase
               tracking-[2px]
               sm:tracking-[4px]
@@ -207,12 +320,14 @@ function Services() {
               md:text-base
             "
           >
-            எங்கள் சேவைகள்
+            எங்கள் கேட்டரிங் சேவைகள்
           </p>
 
-          {/* Heading */}
+
+          {/* Main SEO heading */}
 
           <h2
+            id="services-heading"
             className="
               text-2xl
               sm:text-3xl
@@ -221,7 +336,7 @@ function Services() {
               leading-tight
               mt-3
               sm:mt-4
-              text-gray-900
+              text-[#123524]
             "
           >
             உங்கள் ஒவ்வொரு விழாவிற்கும்
@@ -229,7 +344,7 @@ function Services() {
             <span
               className="
                 block
-                text-[#741B1B]
+                text-green-700
                 mt-1.5
                 sm:mt-2
               "
@@ -238,7 +353,8 @@ function Services() {
             </span>
           </h2>
 
-          {/* Description */}
+
+          {/* SEO description */}
 
           <p
             className="
@@ -255,11 +371,13 @@ function Services() {
             "
           >
             சிறிய குடும்ப விழாவிலிருந்து பெரிய திருமண விழா வரை,
-            அனைத்து நிகழ்வுகளுக்கும் தரமான உணவு மற்றும் சிறந்த
-            சேவையை வழங்குகிறோம்.
+            திருமணங்கள், பிறந்தநாள் விழாக்கள், நிறுவன நிகழ்வுகள் மற்றும்
+            குடும்ப நிகழ்வுகளுக்கு தரமான உணவு மற்றும் சிறந்த
+            கேட்டரிங் சேவையை தமிழ்நாடு முழுவதும் வழங்குகிறோம்.
           </p>
 
         </motion.div>
+
 
 
         {/* =================================================
@@ -280,7 +398,7 @@ function Services() {
 
           {services.map((service, index) => (
 
-            <motion.div
+            <motion.article
               key={service.title}
 
               initial={{
@@ -323,15 +441,16 @@ function Services() {
                 group
                 relative
                 overflow-hidden
-                bg-[#FFF8F0]
+                bg-white/75
+                backdrop-blur-sm
                 rounded-[22px]
                 sm:rounded-[26px]
                 md:rounded-[28px]
-                shadow-lg
-                hover:shadow-2xl
+                shadow-[0_12px_35px_rgba(22,101,52,0.10)]
+                hover:shadow-[0_20px_45px_rgba(22,101,52,0.18)]
                 border
-                border-transparent
-                hover:border-yellow-200
+                border-green-100
+                hover:border-green-300
                 cursor-pointer
                 transition-shadow
                 duration-200
@@ -339,8 +458,9 @@ function Services() {
               "
             >
 
+
               {/* ===========================================
-                  IMAGE
+                  IMAGE + GREEN GLOW
               ============================================ */}
 
               <div
@@ -349,94 +469,142 @@ function Services() {
                   h-52
                   sm:h-56
                   md:h-56
-                  overflow-hidden
+                  overflow-visible
                 "
               >
 
-                <motion.img
-                  src={service.image}
-                  alt={service.title}
+                {/* Extra green glow behind image */}
+
+                <div
                   className="
+                    absolute
+                    -inset-2
+                    rounded-[25px]
+                    bg-green-500/25
+                    blur-xl
+                    opacity-60
+                    group-hover:opacity-90
+                    group-hover:bg-green-500/35
+                    transition-all
+                    duration-300
+                    pointer-events-none
+                  "
+                />
+
+
+                {/* Image container */}
+
+                <div
+                  className="
+                    relative
                     w-full
                     h-full
-                    object-cover
-                  "
-                  whileHover={{
-                    scale: 1.08,
-                  }}
-                  transition={{
-                    duration: 0.35,
-                    ease: "easeOut",
-                  }}
-                />
-
-                {/* Dark overlay */}
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black/60
-                    via-black/10
-                    to-transparent
-                    pointer-events-none
-                  "
-                />
-
-                {/* Golden shine */}
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-r
-                    from-transparent
-                    via-white/20
-                    to-transparent
-                    -translate-x-full
-                    group-hover:translate-x-full
-                    transition-transform
-                    duration-700
-                    pointer-events-none
-                  "
-                />
-
-                {/* Icon */}
-
-                <motion.div
-                  whileHover={{
-                    rotate: -6,
-                    scale: 1.1,
-                  }}
-                  transition={{
-                    duration: 0.16,
-                    ease: "easeOut",
-                  }}
-                  className="
-                    absolute
-                    bottom-3
-                    left-3
-                    sm:bottom-4
-                    sm:left-4
-                    w-11
-                    h-11
-                    sm:w-12
-                    sm:h-12
-                    rounded-xl
-                    sm:rounded-2xl
-                    bg-yellow-500
-                    text-white
-                    flex
-                    items-center
-                    justify-center
-                    shadow-lg
+                    overflow-hidden
+                    rounded-t-[22px]
+                    sm:rounded-t-[26px]
+                    md:rounded-t-[28px]
+                    bg-green-100
                   "
                 >
-                  {service.icon}
-                </motion.div>
+
+                  <motion.img
+                    src={service.image}
+                    alt={service.alt}
+                    loading="lazy"
+                    decoding="async"
+
+                    className="
+                      w-full
+                      h-full
+                      object-cover
+                    "
+
+                    whileHover={{
+                      scale: 1.08,
+                    }}
+
+                    transition={{
+                      duration: 0.35,
+                      ease: "easeOut",
+                    }}
+                  />
+
+
+                  {/* Green image tint */}
+
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-t
+                      from-green-950/55
+                      via-green-900/5
+                      to-green-500/5
+                      pointer-events-none
+                    "
+                  />
+
+
+                  {/* Shine effect */}
+
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white/20
+                      to-transparent
+                      -translate-x-full
+                      group-hover:translate-x-full
+                      transition-transform
+                      duration-700
+                      pointer-events-none
+                    "
+                  />
+
+
+                  {/* Icon */}
+
+                  <motion.div
+                    whileHover={{
+                      rotate: -6,
+                      scale: 1.1,
+                    }}
+
+                    transition={{
+                      duration: 0.16,
+                      ease: "easeOut",
+                    }}
+
+                    className="
+                      absolute
+                      bottom-3
+                      left-3
+                      sm:bottom-4
+                      sm:left-4
+                      w-11
+                      h-11
+                      sm:w-12
+                      sm:h-12
+                      rounded-xl
+                      sm:rounded-2xl
+                      bg-green-600
+                      text-white
+                      flex
+                      items-center
+                      justify-center
+                      shadow-[0_8px_20px_rgba(22,101,52,0.30)]
+                    "
+                    aria-hidden="true"
+                  >
+                    {service.icon}
+                  </motion.div>
+
+                </div>
 
               </div>
+
 
 
               {/* ===========================================
@@ -460,17 +628,18 @@ function Services() {
                     md:text-xl
                     font-bold
                     leading-snug
-                    text-gray-900
+                    text-[#123524]
                   "
                 >
                   {service.title}
                 </h3>
 
+
                 {/* Subtitle */}
 
                 <p
                   className="
-                    text-yellow-600
+                    text-green-600
                     font-semibold
                     mt-1.5
                     sm:mt-2
@@ -480,6 +649,7 @@ function Services() {
                 >
                   {service.subtitle}
                 </p>
+
 
                 {/* Description */}
 
@@ -496,50 +666,26 @@ function Services() {
                   {service.description}
                 </p>
 
-                {/* Learn more */}
 
-                <div
-                  className="
-                    flex
-                    items-center
-                    gap-2
-                    mt-4
-                    text-[#741B1B]
-                    text-xs
-                    sm:text-sm
-                    font-semibold
-                  "
-                >
-                  <span>
-                    மேலும் அறிய
-                  </span>
-
-                  <ArrowRight
-                    size={15}
-                    className="
-                      transition-transform
-                      duration-150
-                      group-hover:translate-x-1.5
-                    "
-                  />
-                </div>
-
-                {/* Bottom line */}
+                {/* Animated bottom line */}
 
                 <motion.div
                   initial={{
                     width: "20%",
                   }}
+
                   whileHover={{
                     width: "100%",
                   }}
+
                   transition={{
                     duration: 0.2,
                     ease: "easeOut",
                   }}
+
                   className="
                     h-[2px]
-                    bg-yellow-500
+                    bg-green-500
                     mt-3
                     sm:mt-4
                     rounded-full
@@ -548,7 +694,7 @@ function Services() {
 
               </div>
 
-            </motion.div>
+            </motion.article>
 
           ))}
 
@@ -560,5 +706,5 @@ function Services() {
   );
 }
 
-export default Services;
 
+export default Services;

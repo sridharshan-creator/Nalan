@@ -2,10 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import heroVideo from "../../assets/videos/hero.mp4";
 
 import {
-  Users,
-  Trophy,
-  UtensilsCrossed,
-  Leaf,
   ChevronDown,
   ArrowRight,
   Sparkles,
@@ -42,18 +38,6 @@ function Hero() {
     [1, 0.15]
   );
 
-  const floatingLeftY = useTransform(
-    scrollY,
-    [0, 700],
-    [0, -210]
-  );
-
-  const floatingRightY = useTransform(
-    scrollY,
-    [0, 700],
-    [0, -150]
-  );
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
 
@@ -74,15 +58,15 @@ function Hero() {
 
   return (
     <section
-  id="home"
-  className="
-    relative
-    min-h-[100svh]
-    overflow-hidden
-    bg-[#07150d]
-    tamil-font
-  "
->
+      id="home"
+      className="
+        relative
+        min-h-[100svh]
+        overflow-hidden
+        bg-[#07150d]
+        tamil-font
+      "
+    >
 
       {/* =====================================================
           BACKGROUND VIDEO
@@ -122,12 +106,12 @@ function Hero() {
       ====================================================== */}
 
       <div
-       className="
-  absolute
-  inset-0
-  z-[1]
-  bg-black/10
-"
+        className="
+          absolute
+          inset-0
+          z-[1]
+          bg-black/10
+        "
       />
 
       <div
@@ -137,8 +121,8 @@ function Hero() {
           z-[1]
           bg-gradient-to-b
           from-black/50
-via-black/10
-to-[#07150d]/75
+          via-black/10
+          to-[#07150d]/75
         "
       />
 
@@ -172,178 +156,6 @@ to-[#07150d]/75
           sm:blur-[130px]
           z-[2]
           pointer-events-none
-        "
-      />
-
-
-      {/* =====================================================
-          FLOATING DECORATION — LEFT
-      ====================================================== */}
-
-      <motion.div
-        style={{ y: floatingLeftY }}
-        animate={{
-          rotate: [-4, 4, -4],
-          x: [0, 8, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          left-[3%]
-          sm:left-[5%]
-          md:left-[7%]
-          top-[28%]
-          z-[3]
-          pointer-events-none
-          hidden
-          sm:block
-        "
-      >
-        <div
-          className="
-            w-12
-            h-12
-            sm:w-16
-            sm:h-16
-            md:w-24
-            md:h-24
-            rounded-[20px]
-            md:rounded-[28px]
-            bg-white/10
-            backdrop-blur-md
-            border
-            border-white/20
-            shadow-2xl
-            flex
-            items-center
-            justify-center
-            text-2xl
-            sm:text-3xl
-            md:text-5xl
-          "
-        >
-          🍃
-        </div>
-      </motion.div>
-
-
-      {/* =====================================================
-          FLOATING DECORATION — RIGHT
-      ====================================================== */}
-
-      <motion.div
-        style={{ y: floatingRightY }}
-        animate={{
-          rotate: [4, -4, 4],
-          x: [0, -8, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          right-[3%]
-          sm:right-[5%]
-          md:right-[8%]
-          top-[32%]
-          z-[3]
-          pointer-events-none
-          hidden
-          sm:block
-        "
-      >
-        <div
-          className="
-            w-12
-            h-12
-            sm:w-16
-            sm:h-16
-            md:w-24
-            md:h-24
-            rounded-[20px]
-            md:rounded-[28px]
-            bg-white/10
-            backdrop-blur-md
-            border
-            border-white/20
-            shadow-2xl
-            flex
-            items-center
-            justify-center
-            text-2xl
-            sm:text-3xl
-            md:text-5xl
-          "
-        >
-          🍛
-        </div>
-      </motion.div>
-
-
-      {/* =====================================================
-          FLOATING ORBS
-      ====================================================== */}
-
-      <motion.div
-        animate={{
-          y: [0, -25, 0],
-          x: [0, 12, 0],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          right-[14%]
-          sm:right-[18%]
-          top-[18%]
-          w-3
-          h-3
-          sm:w-5
-          sm:h-5
-          md:w-7
-          md:h-7
-          rounded-full
-          bg-yellow-400
-          shadow-[0_0_30px_rgba(250,204,21,0.8)]
-          z-[3]
-        "
-      />
-
-      <motion.div
-        animate={{
-          y: [0, 30, 0],
-          x: [0, -15, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          left-[15%]
-          sm:left-[18%]
-          bottom-[27%]
-          w-2
-          h-2
-          sm:w-4
-          sm:h-4
-          md:w-5
-          md:h-5
-          rounded-full
-          bg-green-400
-          shadow-[0_0_25px_rgba(74,222,128,0.8)]
-          z-[3]
         "
       />
 
@@ -405,7 +217,13 @@ to-[#07150d]/75
 
             <Sparkles
               size={14}
-              className="text-green-400 shrink-0 sm:w-[17px] sm:h-[17px]"
+              className="
+                text-green-400
+                shrink-0
+                sm:w-[17px]
+                sm:h-[17px]
+                drop-shadow-[0_2px_8px_rgba(74,222,128,0.5)]
+              "
             />
 
             <p
@@ -419,6 +237,7 @@ to-[#07150d]/75
                 sm:tracking-[2px]
                 text-center
                 leading-relaxed
+                drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]
               "
             >
               தமிழ் பாரம்பரியம் • சுவையின் பெருமை
@@ -426,7 +245,13 @@ to-[#07150d]/75
 
             <Sparkles
               size={14}
-              className="text-green-400 shrink-0 sm:w-[17px] sm:h-[17px]"
+              className="
+                text-green-400
+                shrink-0
+                sm:w-[17px]
+                sm:h-[17px]
+                drop-shadow-[0_2px_8px_rgba(74,222,128,0.5)]
+              "
             />
 
           </motion.div>
@@ -462,6 +287,8 @@ to-[#07150d]/75
               "
             >
 
+              {/* FIRST LINE */}
+
               <span
                 className="
                   block
@@ -471,11 +298,14 @@ to-[#07150d]/75
                   sm:text-5xl
                   md:text-7xl
                   lg:text-8xl
-                  drop-shadow-[0_8px_30px_rgba(0,0,0,0.9)]
+                  drop-shadow-[0_5px_18px_rgba(0,0,0,0.75)]
                 "
               >
                 உங்கள் விழா
               </span>
+
+
+              {/* SECOND LINE */}
 
               <motion.span
                 initial={{
@@ -501,7 +331,7 @@ to-[#07150d]/75
                   lg:text-8xl
                   mt-2
                   sm:mt-3
-                  drop-shadow-[0_8px_30px_rgba(0,0,0,0.9)]
+                  drop-shadow-[0_5px_18px_rgba(0,0,0,0.75)]
                 "
               >
                 எங்கள் அன்பான விருந்து
@@ -510,7 +340,9 @@ to-[#07150d]/75
             </motion.h1>
 
 
-            {/* Divider */}
+            {/* =================================================
+                DIVIDER
+            ================================================== */}
 
             <motion.div
               initial={{
@@ -542,7 +374,7 @@ to-[#07150d]/75
 
           {/* =================================================
               DESCRIPTION
-          ================================================= */}
+          ================================================== */}
 
           <motion.p
             initial={{
@@ -569,7 +401,7 @@ to-[#07150d]/75
               leading-[1.7]
               sm:leading-relaxed
               text-center
-              drop-shadow-[0_4px_15px_rgba(0,0,0,0.9)]
+              drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]
               px-1
               sm:px-0
             "
@@ -582,7 +414,7 @@ to-[#07150d]/75
 
           {/* =================================================
               BUTTONS
-          ================================================= */}
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -697,6 +529,7 @@ to-[#07150d]/75
                 items-center
                 justify-center
                 gap-2
+                shadow-[0_4px_15px_rgba(0,0,0,0.25)]
               "
             >
               🍛 View Menu
@@ -704,316 +537,6 @@ to-[#07150d]/75
 
           </motion.div>
 
-
-          {/* =================================================
-              FLOATING STATS
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 40,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 1.4,
-            }}
-            className="
-              w-full
-              max-w-5xl
-              mx-auto
-              mt-7
-              sm:mt-10
-            "
-          >
-
-            <div
-              className="
-                bg-black/35
-                backdrop-blur-xl
-                border
-                border-white/15
-                rounded-2xl
-                sm:rounded-3xl
-                overflow-hidden
-                shadow-[0_25px_80px_rgba(0,0,0,0.35)]
-              "
-            >
-
-              <div className="grid grid-cols-2 md:grid-cols-4">
-
-                {/* STAT 1 */}
-
-                <motion.div
-                  whileHover={{
-                    y: -5,
-                    backgroundColor:
-                      "rgba(34,197,94,0.12)",
-                  }}
-                  className="
-                    p-3
-                    sm:p-4
-                    md:p-5
-                    text-center
-                    border-r
-                    border-b
-                    md:border-b-0
-                    border-white/10
-                  "
-                >
-
-                  <Users
-                    size={22}
-                    className="
-                      mx-auto
-                      text-green-400
-                      mb-1.5
-                      sm:mb-2
-                      sm:w-[27px]
-                      sm:h-[27px]
-                    "
-                  />
-
-                  <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
-                    50,000+
-                  </h3>
-
-                  <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
-                    வெற்றிகரமான நிகழ்வுகள்
-                  </p>
-
-                </motion.div>
-
-
-                {/* STAT 2 */}
-
-                <motion.div
-                  whileHover={{
-                    y: -5,
-                    backgroundColor:
-                      "rgba(34,197,94,0.12)",
-                  }}
-                  className="
-                    p-3
-                    sm:p-4
-                    md:p-5
-                    text-center
-                    md:border-r
-                    border-b
-                    md:border-b-0
-                    border-white/10
-                  "
-                >
-
-                  <Trophy
-                    size={22}
-                    className="
-                      mx-auto
-                      text-green-400
-                      mb-1.5
-                      sm:mb-2
-                      sm:w-[27px]
-                      sm:h-[27px]
-                    "
-                  />
-
-                  <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
-                      40+
-                  </h3>
-
-                  <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
-                    ஆண்டுகள் அனுபவம்
-                  </p>
-
-                </motion.div>
-
-
-                {/* STAT 3 */}
-
-                <motion.div
-                  whileHover={{
-                    y: -5,
-                    backgroundColor:
-                      "rgba(34,197,94,0.12)",
-                  }}
-                  className="
-                    p-3
-                    sm:p-4
-                    md:p-5
-                    text-center
-                    border-r
-                    border-white/10
-                  "
-                >
-
-                  <UtensilsCrossed
-                    size={22}
-                    className="
-                      mx-auto
-                      text-green-400
-                      mb-1.5
-                      sm:mb-2
-                      sm:w-[27px]
-                      sm:h-[27px]
-                    "
-                  />
-
-                  <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
-                    100%
-                  </h3>
-
-                  <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
-                    வாடிக்கையாளர் திருப்தி
-                  </p>
-
-                </motion.div>
-
-
-                {/* STAT 4 */}
-
-                <motion.div
-                  whileHover={{
-                    y: -5,
-                    backgroundColor:
-                      "rgba(34,197,94,0.12)",
-                  }}
-                  className="
-                    p-3
-                    sm:p-4
-                    md:p-5
-                    text-center
-                  "
-                >
-
-                  <Leaf
-                    size={22}
-                    className="
-                      mx-auto
-                      text-green-400
-                      mb-1.5
-                      sm:mb-2
-                      sm:w-[27px]
-                      sm:h-[27px]
-                    "
-                  />
-
-                  <p className="
-                    text-white
-                    text-[9px]
-                    sm:text-xs
-                    md:text-sm
-                    font-semibold
-                    leading-relaxed
-                  ">
-                    சுத்தமான & தரமான
-                    <br />
-                    பாரம்பரிய உணவு
-                  </p>
-
-                </motion.div>
-
-              </div>
-
-            </div>
-
-          </motion.div>
-
-        </div>
-
-      </motion.div>
-
-
-      {/* =====================================================
-          EXTRA FLOATING ELEMENTS — DESKTOP ONLY
-      ====================================================== */}
-
-      <motion.div
-        animate={{
-          y: [0, -35, 0],
-          rotate: [0, 8, 0],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          bottom-[18%]
-          right-[10%]
-          z-[4]
-          hidden
-          lg:block
-          pointer-events-none
-        "
-      >
-
-        <div
-          className="
-            px-5
-            py-3
-            rounded-2xl
-            bg-white/10
-            backdrop-blur-xl
-            border
-            border-white/20
-            text-white
-            shadow-2xl
-          "
-        >
-          <span className="text-2xl">🍽️</span>
-
-          <span className="ml-2 text-sm font-semibold">
-            பாரம்பரிய சுவை
-          </span>
-        </div>
-
-      </motion.div>
-
-
-      <motion.div
-        animate={{
-          y: [0, 25, 0],
-          rotate: [0, -6, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          bottom-[22%]
-          left-[9%]
-          z-[4]
-          hidden
-          lg:block
-          pointer-events-none
-        "
-      >
-
-        <div
-          className="
-            px-5
-            py-3
-            rounded-2xl
-            bg-green-900/40
-            backdrop-blur-xl
-            border
-            border-green-300/20
-            text-white
-            shadow-2xl
-          "
-        >
-          <span className="text-2xl">🌿</span>
-
-          <span className="ml-2 text-sm font-semibold">
-            இயற்கையான பொருட்கள்
-          </span>
         </div>
 
       </motion.div>
@@ -1068,6 +591,7 @@ to-[#07150d]/75
           items-center
           text-white/70
           cursor-pointer
+          drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]
         "
       >
 
