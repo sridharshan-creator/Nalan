@@ -11,39 +11,15 @@ import video2 from "../../assets/videos/VID-20260803-WA0024.mp4";
 function Gallery() {
   return (
     <section
-  id="about"
-  className="relative overflow-hidden ..."
->
-  <div
-  className="
-    scroll-float
-    absolute
-    right-[8%]
-    top-20
-    text-5xl
-    md:text-7xl
-    opacity-20
-    pointer-events-none
-    z-0
-  "
->
-  <div
-  className="
-    scroll-float
-    absolute
-    left-[6%]
-    bottom-16
-    text-4xl
-    md:text-6xl
-    opacity-15
-    pointer-events-none
-    z-0
-  "
->
-  ✨
-</div>
-  🍃
-</div>
+      id="gallery"
+      className="
+        relative
+        overflow-hidden
+        min-h-[850px]
+        md:min-h-[900px]
+        bg-black
+      "
+    >
 
       {/* =====================================================
           FULL BACKGROUND IMAGE
