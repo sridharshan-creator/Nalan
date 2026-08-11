@@ -17,6 +17,7 @@ function Navbar() {
 
     if (element) {
       const navbarHeight = window.innerWidth < 768 ? 72 : 105;
+
       const elementPosition =
         element.getBoundingClientRect().top + window.scrollY;
 
@@ -52,46 +53,44 @@ function Navbar() {
           duration: 0.5,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="hidden md:block bg-[#5B0B0B] text-white text-xs"
+        className="hidden md:block bg-[#07150D] text-white text-xs"
       >
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
 
           <div className="flex items-center gap-6">
 
-            {/* Phone */}
             <motion.div
               whileHover={{ y: -1 }}
               transition={{ duration: 0.15 }}
               className="flex items-center gap-2"
             >
-              <Phone size={13} className="text-yellow-400" />
+              <Phone size={13} className="text-green-400" />
               <span>+91 75488 95467</span>
             </motion.div>
 
-            {/* Email */}
             <motion.div
               whileHover={{ y: -1 }}
               transition={{ duration: 0.15 }}
               className="flex items-center gap-2"
             >
-              <Mail size={13} className="text-yellow-400" />
+              <Mail size={13} className="text-green-400" />
               <span>info@nalancatering.com</span>
             </motion.div>
 
           </div>
 
-          {/* Location */}
           <motion.div
             whileHover={{ y: -1 }}
             transition={{ duration: 0.15 }}
             className="flex items-center gap-2"
           >
-            <MapPin size={13} className="text-yellow-400" />
+            <MapPin size={13} className="text-green-400" />
             <span>Serving Across Tamil Nadu</span>
           </motion.div>
 
         </div>
       </motion.div>
+
 
       {/* =====================================================
           MAIN NAVBAR
@@ -109,7 +108,7 @@ function Navbar() {
           bg-white/95
           backdrop-blur-xl
           border-b
-          border-yellow-100
+          border-green-100
           shadow-[0_5px_30px_rgba(0,0,0,0.08)]
         "
       >
@@ -149,7 +148,7 @@ function Navbar() {
                 sm:text-2xl
                 md:text-3xl
                 font-bold
-                text-[#741B1B]
+                text-[#166534]
                 leading-tight
                 whitespace-nowrap
               "
@@ -162,7 +161,7 @@ function Navbar() {
                 text-[8px]
                 sm:text-[10px]
                 md:text-xs
-                text-yellow-600
+                text-green-600
                 font-medium
                 mt-0.5
                 sm:mt-1
@@ -174,6 +173,7 @@ function Navbar() {
             </p>
 
           </motion.button>
+
 
           {/* =================================================
               DESKTOP NAVIGATION
@@ -211,7 +211,7 @@ function Navbar() {
                   text-sm
                   font-medium
                   text-gray-700
-                  hover:text-[#741B1B]
+                  hover:text-[#166534]
                   transition-colors
                   duration-150
                   whitespace-nowrap
@@ -220,7 +220,6 @@ function Navbar() {
 
                 {link.name}
 
-                {/* Animated underline */}
                 <motion.span
                   initial={{
                     width: 0,
@@ -239,7 +238,7 @@ function Navbar() {
                     -bottom-2
                     h-[2px]
                     rounded-full
-                    bg-yellow-500
+                    bg-green-500
                   "
                 />
 
@@ -249,6 +248,7 @@ function Navbar() {
 
           </nav>
 
+
           {/* =================================================
               DESKTOP CTA
           ================================================== */}
@@ -257,6 +257,7 @@ function Navbar() {
             onClick={() => scrollToSection("contact")}
             whileHover={{
               scale: 1.035,
+              y: -1,
             }}
             whileTap={{
               scale: 0.97,
@@ -270,8 +271,8 @@ function Navbar() {
               lg:flex
               items-center
               gap-2
-              bg-yellow-500
-              hover:bg-yellow-400
+              bg-green-600
+              hover:bg-green-500
               text-white
               px-5
               xl:px-6
@@ -280,7 +281,7 @@ function Navbar() {
               rounded-full
               font-semibold
               text-sm
-              shadow-[0_8px_25px_rgba(234,179,8,0.25)]
+              shadow-[0_8px_25px_rgba(22,163,74,0.25)]
               transition-colors
               duration-150
               whitespace-nowrap
@@ -300,6 +301,7 @@ function Navbar() {
             />
 
           </motion.button>
+
 
           {/* =================================================
               MOBILE MENU BUTTON
@@ -323,10 +325,10 @@ function Navbar() {
               flex
               items-center
               justify-center
-              bg-[#FFF8F0]
-              text-[#741B1B]
+              bg-green-50
+              text-green-700
               border
-              border-yellow-100
+              border-green-100
               shadow-sm
             "
           >
@@ -395,6 +397,7 @@ function Navbar() {
 
         </div>
 
+
         {/* =================================================
             MOBILE MENU
         ================================================== */}
@@ -425,7 +428,7 @@ function Navbar() {
                 overflow-hidden
                 bg-white
                 border-t
-                border-yellow-100
+                border-green-100
                 shadow-lg
               "
             >
@@ -470,8 +473,8 @@ function Navbar() {
                       text-sm
                       sm:text-base
                       font-medium
-                      hover:bg-yellow-50
-                      hover:text-[#741B1B]
+                      hover:bg-green-50
+                      hover:text-green-700
                       transition-colors
                       duration-150
                     "
@@ -482,7 +485,7 @@ function Navbar() {
                     <ArrowRight
                       size={15}
                       className="
-                        text-yellow-500
+                        text-green-500
                         transition-transform
                         duration-150
                         group-hover:translate-x-1
@@ -492,6 +495,7 @@ function Navbar() {
                   </motion.button>
 
                 ))}
+
 
                 {/* Mobile CTA */}
 
@@ -515,8 +519,8 @@ function Navbar() {
                       items-center
                       justify-center
                       gap-2
-                      bg-yellow-500
-                      hover:bg-yellow-400
+                      bg-green-600
+                      hover:bg-green-500
                       text-white
                       py-3
                       sm:py-3.5
@@ -524,7 +528,7 @@ function Navbar() {
                       font-semibold
                       text-sm
                       sm:text-base
-                      shadow-lg
+                      shadow-[0_8px_25px_rgba(22,163,74,0.2)]
                       transition-colors
                       duration-150
                     "

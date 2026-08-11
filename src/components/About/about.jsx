@@ -4,7 +4,6 @@ import {
   UtensilsCrossed,
   Award,
   Users,
-  ArrowRight,
   Sparkles,
 } from "lucide-react";
 
@@ -35,7 +34,7 @@ function About() {
       className="
         relative
         overflow-hidden
-        bg-[#FFFDF9]
+        bg-[#F5F8F2]
         py-16
         sm:py-20
         md:py-24
@@ -44,10 +43,7 @@ function About() {
         md:scroll-mt-[105px]
       "
     >
-
-      {/* =====================================================
-          DECORATIVE ELEMENTS
-      ====================================================== */}
+      {/* Decorative Elements */}
 
       <div
         className="
@@ -84,13 +80,10 @@ function About() {
           z-0
         "
       >
-        ✨
+        🌿
       </div>
 
-
-      {/* =====================================================
-          BACKGROUND GLOW
-      ====================================================== */}
+      {/* Background Glow */}
 
       <motion.div
         animate={{
@@ -111,9 +104,9 @@ function About() {
           sm:w-80
           sm:h-80
           rounded-full
-          bg-yellow-400
+          bg-green-400
           blur-[90px]
-          sm:blur-[100px]
+          sm:blur-[110px]
           pointer-events-none
         "
       />
@@ -121,7 +114,7 @@ function About() {
       <motion.div
         animate={{
           y: [0, 20, 0],
-          opacity: [0.05, 0.1, 0.05],
+          opacity: [0.04, 0.09, 0.04],
         }}
         transition={{
           duration: 7,
@@ -137,17 +130,14 @@ function About() {
           sm:w-96
           sm:h-96
           rounded-full
-          bg-[#741B1B]
+          bg-green-700
           blur-[110px]
-          sm:blur-[120px]
+          sm:blur-[130px]
           pointer-events-none
         "
       />
 
-
-      {/* =====================================================
-          MAIN CONTAINER
-      ====================================================== */}
+      {/* Main Container */}
 
       <div
         className="
@@ -161,10 +151,7 @@ function About() {
           lg:px-8
         "
       >
-
-        {/* =================================================
-            MAIN GRID
-        ================================================== */}
+        {/* Main Grid */}
 
         <div
           className="
@@ -177,10 +164,7 @@ function About() {
             items-center
           "
         >
-
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
+          {/* LEFT CONTENT */}
 
           <motion.div
             initial={{
@@ -201,7 +185,6 @@ function About() {
             }}
             className="min-w-0"
           >
-
             {/* Section Label */}
 
             <motion.div
@@ -228,11 +211,10 @@ function About() {
                 mb-3
               "
             >
-
               <Sparkles
                 size={16}
                 className="
-                  text-yellow-500
+                  text-green-600
                   flex-shrink-0
                   sm:w-[18px]
                   sm:h-[18px]
@@ -241,8 +223,7 @@ function About() {
 
               <p
                 className="
-                  text-yellow-600
-                  uppercase
+                  text-green-700
                   tracking-[2px]
                   sm:tracking-[3px]
                   font-semibold
@@ -252,9 +233,7 @@ function About() {
               >
                 எங்களை பற்றி
               </p>
-
             </motion.div>
-
 
             {/* Heading */}
 
@@ -282,16 +261,15 @@ function About() {
                 md:text-5xl
                 font-bold
                 leading-[1.2]
-                text-gray-900
+                text-[#123524]
               "
             >
               தரமான உணவு
-              <span className="text-[#741B1B]">
+              <span className="text-green-600">
                 {" "}•{" "}
               </span>
               சிறந்த சேவை
             </motion.h2>
-
 
             {/* Divider */}
 
@@ -313,13 +291,12 @@ function About() {
               }}
               className="
                 h-[3px]
-                bg-yellow-500
+                bg-green-600
                 rounded-full
                 mt-4
                 sm:mt-5
               "
             />
-
 
             {/* Paragraph 1 */}
 
@@ -356,7 +333,6 @@ function About() {
               சேவையை வழங்கி வருகிறது.
             </motion.p>
 
-
             {/* Paragraph 2 */}
 
             <motion.p
@@ -390,77 +366,9 @@ function About() {
               உங்கள் விழாவை அனைவரும் நினைவில் வைத்திருக்கும் ஒரு
               அனுபவமாக மாற்றுவதாகும்.
             </motion.p>
-
-
-            {/* CTA */}
-
-            <motion.button
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                amount: 0.3,
-                once: false,
-              }}
-              transition={{
-                duration: 0.45,
-                delay: 0.35,
-              }}
-              whileHover={{
-                scale: 1.04,
-              }}
-              whileTap={{
-                scale: 0.97,
-              }}
-              className="
-                group
-                mt-6
-                sm:mt-8
-                w-full
-                sm:w-auto
-                bg-yellow-500
-                hover:bg-yellow-400
-                text-white
-                px-6
-                sm:px-7
-                py-3
-                sm:py-3.5
-                rounded-full
-                font-semibold
-                text-sm
-                sm:text-base
-                shadow-[0_10px_30px_rgba(234,179,8,0.22)]
-                transition-colors
-                duration-150
-                flex
-                items-center
-                justify-center
-                gap-2
-              "
-            >
-              மேலும் அறிய
-
-              <ArrowRight
-                size={17}
-                className="
-                  transition-transform
-                  duration-150
-                  group-hover:translate-x-1
-                "
-              />
-            </motion.button>
-
           </motion.div>
 
-
-          {/* =================================================
-              RIGHT SIDE
-          ================================================== */}
+          {/* RIGHT SIDE */}
 
           <motion.div
             initial={{
@@ -486,10 +394,7 @@ function About() {
               min-w-0
             "
           >
-
-            {/* =================================================
-                IMAGE
-            ================================================== */}
+            {/* IMAGE */}
 
             <motion.div
               initial={{
@@ -515,9 +420,10 @@ function About() {
                 rounded-[22px]
                 sm:rounded-[28px]
                 shadow-[0_20px_50px_rgba(0,0,0,0.15)]
+                border
+                border-green-900/10
               "
             >
-
               <img
                 src={aboutImage}
                 alt="Nalan Catering"
@@ -535,7 +441,6 @@ function About() {
                 "
               />
 
-
               {/* Image Overlay */}
 
               <div
@@ -543,13 +448,12 @@ function About() {
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-black/50
+                  from-[#07150d]/65
                   via-transparent
                   to-transparent
                   pointer-events-none
                 "
               />
-
 
               {/* Image Badge */}
 
@@ -580,10 +484,10 @@ function About() {
                   sm:right-5
                   md:left-6
                   md:right-6
-                  bg-black/45
+                  bg-[#07150d]/60
                   backdrop-blur-md
                   border
-                  border-white/20
+                  border-green-300/20
                   rounded-xl
                   sm:rounded-2xl
                   px-3
@@ -593,22 +497,20 @@ function About() {
                   text-white
                 "
               >
-                <p className="
-                  text-[10px]
-                  sm:text-xs
-                  md:text-sm
-                  font-medium
-                ">
+                <p
+                  className="
+                    text-[10px]
+                    sm:text-xs
+                    md:text-sm
+                    font-medium
+                  "
+                >
                   ✦ பாரம்பரிய சுவை • நவீன சேவை
                 </p>
               </motion.div>
-
             </motion.div>
 
-
-            {/* =================================================
-                STATS
-            ================================================== */}
+            {/* STATS */}
 
             <div
               className="
@@ -619,9 +521,7 @@ function About() {
                 md:gap-5
               "
             >
-
               {stats.map((item, index) => (
-
                 <motion.div
                   key={index}
                   initial={{
@@ -669,12 +569,11 @@ function About() {
                     text-center
                     border
                     border-transparent
-                    hover:border-yellow-200
+                    hover:border-green-200
                     transition-shadow
                     duration-200
                   "
                 >
-
                   {/* Hover Glow */}
 
                   <div
@@ -685,7 +584,7 @@ function About() {
                       w-24
                       h-24
                       rounded-full
-                      bg-yellow-400/15
+                      bg-green-400/15
                       blur-2xl
                       opacity-0
                       group-hover:opacity-100
@@ -694,7 +593,6 @@ function About() {
                       pointer-events-none
                     "
                   />
-
 
                   {/* Icon */}
 
@@ -710,7 +608,7 @@ function About() {
                     className="
                       relative
                       z-10
-                      text-yellow-500
+                      text-green-600
                       flex
                       justify-center
                       mb-1.5
@@ -719,7 +617,6 @@ function About() {
                   >
                     {item.icon}
                   </motion.div>
-
 
                   {/* Number */}
 
@@ -731,13 +628,12 @@ function About() {
                       sm:text-xl
                       md:text-3xl
                       font-bold
-                      text-gray-900
+                      text-[#123524]
                       leading-tight
                     "
                   >
                     {item.number}
                   </h3>
-
 
                   {/* Title */}
 
@@ -757,19 +653,12 @@ function About() {
                   >
                     {item.title}
                   </p>
-
                 </motion.div>
-
               ))}
-
             </div>
-
           </motion.div>
-
         </div>
-
       </div>
-
     </section>
   );
 }

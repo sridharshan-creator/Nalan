@@ -28,7 +28,7 @@ function Menu() {
     ],
   },
   {
-    title: "மத்திய விருந்து",
+    title: "மதிய விருந்து",
     emoji: "🍛",
     items: [
       "சாதம்",

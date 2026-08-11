@@ -74,14 +74,15 @@ function Hero() {
 
   return (
     <section
-      id="home"
-      className="
-        relative
-        min-h-[100svh]
-        overflow-hidden
-        bg-[#07150d]
-      "
-    >
+  id="home"
+  className="
+    relative
+    min-h-[100svh]
+    overflow-hidden
+    bg-[#07150d]
+    tamil-font
+  "
+>
 
       {/* =====================================================
           BACKGROUND VIDEO
@@ -121,12 +122,12 @@ function Hero() {
       ====================================================== */}
 
       <div
-        className="
-          absolute
-          inset-0
-          z-[1]
-          bg-black/35
-        "
+       className="
+  absolute
+  inset-0
+  z-[1]
+  bg-black/10
+"
       />
 
       <div
@@ -135,9 +136,9 @@ function Hero() {
           inset-0
           z-[1]
           bg-gradient-to-b
-          from-black/70
-          via-black/25
-          to-[#07150d]/95
+          from-black/50
+via-black/10
+to-[#07150d]/75
         "
       />
 
@@ -456,14 +457,15 @@ function Hero() {
               className="
                 leading-[1.08]
                 sm:leading-[1.05]
-                font-bold
+                font-semibold
+                tamil-font
               "
             >
 
               <span
                 className="
                   block
-                  text-white
+                  text-white/90
                   text-[2.35rem]
                   leading-tight
                   sm:text-5xl
@@ -491,7 +493,7 @@ function Hero() {
                 }}
                 className="
                   block
-                  text-green-400
+                  text-green-400/90
                   text-[2.15rem]
                   leading-tight
                   sm:text-5xl
@@ -777,7 +779,7 @@ function Hero() {
                   />
 
                   <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
-                    500+
+                    50,000+
                   </h3>
 
                   <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
@@ -820,7 +822,7 @@ function Hero() {
                   />
 
                   <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
-                    10+
+                      40+
                   </h3>
 
                   <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs leading-relaxed">
