@@ -30,20 +30,40 @@ function Navbar() {
     const navbarHeight =
       window.innerWidth < 768 ? 72 : 105;
 
-    const elementPosition =
-      element.getBoundingClientRect().top +
-      window.scrollY;
+    // If mobile menu is open, close it first.
+    if (menuOpen) {
+      setMenuOpen(false);
 
-    window.scrollTo({
-      top: Math.max(
-        0,
-        elementPosition - navbarHeight
-      ),
-      behavior: "smooth",
-    });
+      // Wait for the mobile menu collapse animation
+      // before calculating the final scroll position.
+      setTimeout(() => {
+        const elementPosition =
+          element.getBoundingClientRect().top +
+          window.scrollY;
+
+        window.scrollTo({
+          top: Math.max(
+            0,
+            elementPosition - navbarHeight
+          ),
+          behavior: "smooth",
+        });
+      }, 280);
+    } else {
+      const elementPosition =
+        element.getBoundingClientRect().top +
+        window.scrollY;
+
+      window.scrollTo({
+        top: Math.max(
+          0,
+          elementPosition - navbarHeight
+        ),
+        behavior: "smooth",
+      });
+    }
 
     setActiveSection(id);
-    setMenuOpen(false);
   };
 
   /* =====================================================
@@ -304,6 +324,7 @@ function Navbar() {
           ================================================== */}
 
           <motion.button
+            type="button"
             onClick={() =>
               scrollToSection("home")
             }
@@ -378,6 +399,7 @@ function Navbar() {
               </p>
 
             </div>
+
           </motion.button>
 
           {/* =================================================
@@ -405,6 +427,7 @@ function Navbar() {
               return (
                 <motion.button
                   key={link.id}
+                  type="button"
                   initial={{
                     opacity: 0,
                     y: -8,
@@ -525,6 +548,7 @@ function Navbar() {
           ================================================== */}
 
           <motion.button
+            type="button"
             onClick={() =>
               scrollToSection("booking")
             }
@@ -579,6 +603,7 @@ function Navbar() {
           ================================================== */}
 
           <motion.button
+            type="button"
             whileTap={{
               scale: 0.88,
             }}
@@ -721,6 +746,7 @@ function Navbar() {
                     return (
                       <motion.button
                         key={link.id}
+                        type="button"
                         initial={{
                           opacity: 0,
                           x: -15,
@@ -791,7 +817,9 @@ function Navbar() {
                   }
                 )}
 
-                {/* MOBILE CTA */}
+                {/* =================================================
+                    MOBILE CTA
+                ================================================== */}
 
                 <div
                   className="
@@ -802,17 +830,17 @@ function Navbar() {
                 >
 
                   <motion.button
+                    type="button"
+                    onClick={() =>
+                      scrollToSection("booking")
+                    }
                     whileHover={{
-                      scale: 1.015,
+                      scale: 1.03,
+                      y: -1,
                     }}
                     whileTap={{
-                      scale: 0.97,
+                      scale: 0.96,
                     }}
-                    onClick={() =>
-                      scrollToSection(
-                        "booking"
-                      )
-                    }
                     className="
                       w-full
                       flex
@@ -822,13 +850,14 @@ function Navbar() {
                       bg-green-600
                       hover:bg-green-500
                       text-white
+                      px-4
                       py-3
-                      sm:py-3.5
                       rounded-full
                       font-semibold
                       text-sm
-                      sm:text-base
-                      shadow-[0_8px_25px_rgba(22,163,74,0.2)]
+                      shadow-[0_8px_25px_rgba(22,163,74,0.25)]
+                      transition-colors
+                      duration-150
                     "
                   >
 
@@ -838,6 +867,7 @@ function Navbar() {
 
                     <ArrowRight
                       size={16}
+                      aria-hidden="true"
                     />
 
                   </motion.button>
@@ -847,6 +877,7 @@ function Navbar() {
               </div>
 
             </motion.div>
+
           )}
 
         </AnimatePresence>

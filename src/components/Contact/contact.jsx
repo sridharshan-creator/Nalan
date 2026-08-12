@@ -20,10 +20,10 @@ function Contact() {
     const guests = formData.get("guests");
     const requirements = formData.get("requirements");
 
-    const subject = "நளன் கேட்டரிங் - நிகழ்வு விசாரணை";
+    const subject = "நளன் கேட்டரிங் - நிகழ்வு விவரங்கள்";
 
     const body = `
-வணக்கம் நளன் கேட்டரிங்,
+வணக்கம் நளன் கேட்டரிங்🙏,
 
 எனது நிகழ்விற்காக கேட்டரிங் சேவை தொடர்பாக விசாரிக்க விரும்புகிறேன்.
 

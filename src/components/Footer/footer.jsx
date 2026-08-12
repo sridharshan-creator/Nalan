@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import {
   Phone,
   Mail,
@@ -49,6 +50,7 @@ function Footer() {
         text-white
       "
     >
+
       {/* =====================================================
           GREEN BACKGROUND GLOWS
       ====================================================== */}
@@ -169,6 +171,7 @@ function Footer() {
           pb-10
         "
       >
+
         <div
           className="
             grid
@@ -181,103 +184,114 @@ function Footer() {
 
           {/* ================= BRAND ================= */}
 
-<motion.div
-  initial={{
-    opacity: 0,
-    y: 30,
-  }}
-  whileInView={{
-    opacity: 1,
-    y: 0,
-  }}
-  viewport={{
-    once: true,
-    amount: 0.2,
-  }}
-  transition={{
-    duration: 0.7,
-  }}
->
-  {/* Logo + Brand Name */}
-  <motion.button
-    type="button"
-    onClick={() => scrollToSection("home")}
-    whileHover={{
-      scale: 1.03,
-    }}
-    whileTap={{
-      scale: 0.97,
-    }}
-    className="
-      flex
-      items-center
-      gap-4
-      p-0
-      bg-transparent
-      border-0
-      cursor-pointer
-      text-left
-    "
-    aria-label="Go to Nalan Catering home"
-  >
-    {/* Logo */}
-    <img
-      src={nalanLogo}
-      alt="Nalan Catering Logo"
-      className="
-        h-16
-        w-16
-        md:h-20
-        md:w-20
-        object-contain
-        rounded-xl
-        shadow-lg
-        shadow-green-950/40
-        shrink-0
-      "
-    />
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
+          >
 
-    {/* Brand Name */}
-    <div>
-      <h2
-        className="
-          text-xl
-          md:text-2xl
-          font-bold
-          text-green-50
-          whitespace-nowrap
-        "
-      >
-        நளன் கேட்டரிங் 
-      </h2>
+            {/* Logo + Brand Name */}
 
-      <p
-        className="
-          mt-2
-          text-green-200
-          text-xs
-          md:text-sm
-          leading-5
-        "
-      >
-         உணவில் தரம் என்றும் நிரந்தரம்
-      </p>
-    </div>
-  </motion.button>
+            <motion.button
+              type="button"
+              onClick={() => scrollToSection("home")}
+              whileHover={{
+                scale: 1.03,
+              }}
+              whileTap={{
+                scale: 0.97,
+              }}
+              className="
+                flex
+                items-center
+                gap-4
+                p-0
+                bg-transparent
+                border-0
+                cursor-pointer
+                text-left
+              "
+              aria-label="Go to Nalan Catering home"
+            >
 
-  {/* Tagline */}
-  <p
-    className="
-      mt-5
-      text-green-100/60
-      text-sm
-      leading-7
-      max-w-sm
-    "
-  >
-    நல்ல சுவை • நல்ல சேவை • நல்ல நினைவுகள்
-  </p>
-</motion.div>
+              {/* Logo */}
+
+              <img
+                src={nalanLogo}
+                alt="Nalan Catering Logo"
+                className="
+                  h-16
+                  w-16
+                  md:h-20
+                  md:w-20
+                  object-contain
+                  rounded-xl
+                  shadow-lg
+                  shadow-green-950/40
+                  shrink-0
+                "
+              />
+
+              {/* Brand Name */}
+
+              <div>
+
+                <h2
+                  className="
+                    text-xl
+                    md:text-2xl
+                    font-bold
+                    text-green-50
+                    whitespace-nowrap
+                  "
+                >
+                  நளன் கேட்டரிங்
+                </h2>
+
+                <p
+                  className="
+                    mt-2
+                    text-green-200
+                    text-xs
+                    md:text-sm
+                    leading-5
+                  "
+                >
+                  உணவில் தரம் என்றும் நிரந்தரம்
+                </p>
+
+              </div>
+
+            </motion.button>
+
+            {/* Tagline */}
+
+            <p
+              className="
+                mt-5
+                text-green-100/60
+                text-sm
+                leading-7
+                max-w-sm
+              "
+            >
+              நல்ல சுவை • நல்ல சேவை • நல்ல நினைவுகள்
+            </p>
+
+          </motion.div>
+
 
           {/* =================================================
               QUICK LINKS
@@ -301,6 +315,7 @@ function Footer() {
               delay: 0.1,
             }}
           >
+
             <h3
               className="
                 text-lg
@@ -314,8 +329,11 @@ function Footer() {
             </h3>
 
             <ul className="space-y-3">
+
               {quickLinks.map((link) => (
+
                 <li key={link.id}>
+
                   <button
                     type="button"
                     onClick={() =>
@@ -333,6 +351,7 @@ function Footer() {
                       text-left
                     "
                   >
+
                     <span
                       className="
                         w-1.5
@@ -346,11 +365,17 @@ function Footer() {
                     />
 
                     {link.name}
+
                   </button>
+
                 </li>
+
               ))}
+
             </ul>
+
           </motion.div>
+
 
           {/* =================================================
               CONTACT
@@ -374,6 +399,7 @@ function Footer() {
               delay: 0.2,
             }}
           >
+
             <h3
               className="
                 text-lg
@@ -402,6 +428,7 @@ function Footer() {
                   transition-colors
                 "
               >
+
                 <span
                   className="
                     flex
@@ -425,7 +452,9 @@ function Footer() {
                 <span className="text-sm">
                   +91 89250 59589
                 </span>
+
               </a>
+
 
               {/* EMAIL */}
 
@@ -441,6 +470,7 @@ function Footer() {
                   transition-colors
                 "
               >
+
                 <span
                   className="
                     flex
@@ -464,7 +494,9 @@ function Footer() {
                 <span className="text-sm break-all">
                   {BUSINESS_EMAIL}
                 </span>
+
               </a>
+
 
               {/* LOCATION */}
 
@@ -482,6 +514,7 @@ function Footer() {
                   transition-colors
                 "
               >
+
                 <span
                   className="
                     flex
@@ -515,11 +548,15 @@ function Footer() {
                     shrink-0
                   "
                 />
+
               </a>
 
             </div>
+
           </motion.div>
+
         </div>
+
 
         {/* =====================================================
             DIVIDER
@@ -537,6 +574,7 @@ function Footer() {
           "
         />
 
+
         {/* =====================================================
             COPYRIGHT
         ====================================================== */}
@@ -552,10 +590,13 @@ function Footer() {
         >
           © 2026 Nalan Catering. All Rights Reserved.
         </div>
+
       </div>
+
 
       {/* =====================================================
           DEVELOPER BRANDING
+          RED • ROSE • BLUE MOVING EFFECT
       ====================================================== */}
 
       <div
@@ -564,13 +605,15 @@ function Footer() {
           z-20
           w-full
           border-t
-          border-green-400/20
+          border-red-400/20
           bg-[#032812]
           overflow-hidden
         "
       >
 
-        {/* FULL WIDTH WHITE MOVING LIGHT */}
+        {/* =================================================
+            MOVING RED → ROSE → BLUE LIGHT
+        ================================================== */}
 
         <motion.div
           animate={{
@@ -589,11 +632,42 @@ function Footer() {
             h-[2px]
             bg-gradient-to-r
             from-transparent
-            via-white
+            via-rose-400
             to-transparent
+            shadow-[0_0_12px_rgba(244,63,94,0.8)]
             pointer-events-none
           "
         />
+
+        {/* =================================================
+            SECOND BLUE MOVING LIGHT
+        ================================================== */}
+
+        <motion.div
+          animate={{
+            x: ["300%", "-100%"],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 1,
+          }}
+          className="
+            absolute
+            top-0
+            left-0
+            w-[35%]
+            h-[2px]
+            bg-gradient-to-r
+            from-transparent
+            via-blue-400
+            to-transparent
+            shadow-[0_0_12px_rgba(59,130,246,0.8)]
+            pointer-events-none
+          "
+        />
+
 
         <div
           className="
@@ -608,7 +682,7 @@ function Footer() {
           "
         >
 
-          {/* LEFT ZOOMING DOT */}
+          {/* LEFT RED DOT */}
 
           <motion.span
             animate={{
@@ -624,10 +698,12 @@ function Footer() {
               w-[6px]
               h-[6px]
               rounded-full
-              bg-green-400
+              bg-red-500
+              shadow-[0_0_8px_rgba(239,68,68,0.8)]
               shrink-0
             "
           />
+
 
           {/* DESIGNED & DEVELOPED TEXT */}
 
@@ -643,53 +719,67 @@ function Footer() {
               whitespace-nowrap
             "
           >
-            Designed & Developed by
+          Developed by
           </span>
 
-          {/* SMALL DOT */}
 
-          <span
-            className="
-              w-[4px]
-              h-[4px]
-              rounded-full
-              bg-green-400/70
-              shrink-0
-            "
-          />
+          {/* SMALL ROSE DOT */}
 
-          {/* COM SR INFOTECH */}
+          
 
-          <a
+
+          {/* =================================================
+              COM SR INFOTECH
+              RED → ROSE → BLUE MOVING TEXT
+          ================================================== */}
+
+          <motion.a
             href="https://comsrinfotech.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Com SR Infotech website"
+            animate={{
+              backgroundPosition: [
+                "0% 50%",
+                "100% 50%",
+                "0% 50%",
+              ],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear",
+            }}
             className="
-              relative
-              inline-block
-              font-mono
-              font-bold
-              text-[12px]
-              md:text-[14px]
-              tracking-[0.5px]
-              whitespace-nowrap
-              bg-gradient-to-r
-              from-green-300
-              via-emerald-100
-              to-green-400
-              bg-[length:300%_auto]
-              bg-clip-text
-              text-transparent
-              hover:bg-[position:100%_center]
-              transition-all
-              duration-500
-            "
+  relative
+  inline-block
+  font-mono
+  font-black
+  text-[13px]
+  md:text-[15px]
+  tracking-[0.5px]
+  whitespace-nowrap
+
+  bg-gradient-to-r
+  from-red-500
+  via-rose-400
+  via-pink-400
+  via-purple-400
+  to-blue-500
+
+  bg-[length:300%_100%]
+  bg-clip-text
+  text-transparent
+
+  drop-shadow-[0_0_3px_rgba(244,63,94,0.9)]
+  drop-shadow-[0_0_8px_rgba(59,130,246,0.45)]
+"
           >
             Com SR Infotech
-          </a>
+          </motion.a>
 
-          {/* RIGHT ZOOMING DOT */}
+
+          {/* RIGHT BLUE DOT */}
 
           <motion.span
             animate={{
@@ -706,23 +796,39 @@ function Footer() {
               w-[6px]
               h-[6px]
               rounded-full
-              bg-green-400
+              bg-blue-500
+              shadow-[0_0_8px_rgba(59,130,246,0.8)]
               shrink-0
             "
           />
+
 
           {/* ARROW */}
 
-          <ArrowUpRight
-            size={13}
-            className="
-              text-green-400/80
-              shrink-0
-            "
-          />
+          <motion.div
+            animate={{
+              x: [0, 2, 0],
+              y: [0, -2, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ArrowUpRight
+              size={13}
+              className="
+                text-blue-400
+                shrink-0
+              "
+            />
+          </motion.div>
 
         </div>
+
       </div>
+
 
       {/* =====================================================
           BOTTOM GREEN ACCENT
