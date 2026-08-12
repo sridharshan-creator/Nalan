@@ -349,7 +349,7 @@ function Services() {
                 sm:mt-2
               "
             >
-              சிறந்த Catering Solutions
+              சிறந்த Catering சேவைகள்
             </span>
           </h2>
 

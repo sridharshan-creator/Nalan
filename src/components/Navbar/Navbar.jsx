@@ -6,7 +6,6 @@ import {
   X,
   Phone,
   Mail,
-  MapPin,
   ArrowRight,
 } from "lucide-react";
 
@@ -28,25 +27,27 @@ function Navbar() {
       return;
     }
 
-    const navbarHeight = window.innerWidth < 768 ? 72 : 105;
+    const navbarHeight =
+      window.innerWidth < 768 ? 72 : 105;
 
     const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY;
+      element.getBoundingClientRect().top +
+      window.scrollY;
 
     window.scrollTo({
-      top: Math.max(0, elementPosition - navbarHeight),
+      top: Math.max(
+        0,
+        elementPosition - navbarHeight
+      ),
       behavior: "smooth",
     });
 
-    // Immediately highlight clicked item
     setActiveSection(id);
-
-    // Close mobile menu
     setMenuOpen(false);
   };
 
   /* =====================================================
-      DETECT ACTIVE SECTION WHILE SCROLLING
+      ACTIVE SECTION DETECTION
   ====================================================== */
 
   useEffect(() => {
@@ -56,26 +57,29 @@ function Navbar() {
       "services",
       "menu",
       "gallery",
+      "testimonials",
+      "booking",
       "contact",
     ];
 
     const handleScroll = () => {
-      const navbarHeight = window.innerWidth < 768 ? 72 : 105;
+      const navbarHeight =
+        window.innerWidth < 768 ? 72 : 105;
 
-      // Position slightly below the fixed navbar
-      const checkPosition = navbarHeight + 40;
+      const checkPosition =
+        navbarHeight + 45;
 
       let currentSection = "home";
 
       sections.forEach((id) => {
-        const section = document.getElementById(id);
+        const section =
+          document.getElementById(id);
 
         if (!section) return;
 
-        const rect = section.getBoundingClientRect();
+        const rect =
+          section.getBoundingClientRect();
 
-        // If the top of this section has passed
-        // the navbar area, make it active.
         if (rect.top <= checkPosition) {
           currentSection = id;
         }
@@ -84,18 +88,29 @@ function Navbar() {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      { passive: true }
+    );
 
-    window.addEventListener("resize", handleScroll);
+    window.addEventListener(
+      "resize",
+      handleScroll
+    );
 
-    // Detect initial section
     handleScroll();
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+
+      window.removeEventListener(
+        "resize",
+        handleScroll
+      );
     };
   }, []);
 
@@ -125,6 +140,14 @@ function Navbar() {
       id: "gallery",
     },
     {
+      name: "கருத்துகள் ",
+      id: "testimonials",
+    },
+    {
+      name: "முன்பதிவு",
+      id: "booking",
+    },
+    {
       name: "தொடர்பு",
       id: "contact",
     },
@@ -140,13 +163,14 @@ function Navbar() {
         z-50
       "
     >
+
       {/* =====================================================
           TOP INFORMATION BAR
       ====================================================== */}
 
       <motion.div
         initial={{
-          y: -25,
+          y: -20,
           opacity: 0,
         }}
         animate={{
@@ -172,10 +196,13 @@ function Navbar() {
             px-6
             py-2
             flex
-            justify-between
             items-center
+            justify-between
           "
         >
+
+          {/* PHONE + EMAIL */}
+
           <div
             className="
               flex
@@ -183,12 +210,10 @@ function Navbar() {
               gap-6
             "
           >
+
             <motion.div
               whileHover={{
                 y: -1,
-              }}
-              transition={{
-                duration: 0.15,
               }}
               className="
                 flex
@@ -210,9 +235,6 @@ function Navbar() {
               whileHover={{
                 y: -1,
               }}
-              transition={{
-                duration: 0.15,
-              }}
               className="
                 flex
                 items-center
@@ -228,27 +250,8 @@ function Navbar() {
                 nalancateringtrichy@gmail.com
               </span>
             </motion.div>
+
           </div>
-
-          <motion.div
-            whileHover={{
-              y: -1,
-            }}
-            transition={{
-              duration: 0.15,
-            }}
-            className="
-              flex
-              items-center
-              gap-2
-            "
-          >
-            
-
-            <span>
-              
-            </span>
-          </motion.div>
         </div>
       </motion.div>
 
@@ -258,7 +261,7 @@ function Navbar() {
 
       <motion.div
         initial={{
-          y: -35,
+          y: -30,
           opacity: 0,
         }}
         animate={{
@@ -278,47 +281,48 @@ function Navbar() {
           shadow-[0_5px_30px_rgba(0,0,0,0.08)]
         "
       >
+
         <div
           className="
-            max-w-7xl
+            max-w-[1500px]
             mx-auto
             px-3
             sm:px-4
-            md:px-6
-            lg:px-8
+            md:px-5
+            lg:px-6
             py-2
             sm:py-2.5
             flex
             items-center
-            justify-between
             gap-3
+            min-w-0
           "
         >
+
           {/* =================================================
               LOGO
           ================================================== */}
 
           <motion.button
-            onClick={() => scrollToSection("home")}
+            onClick={() =>
+              scrollToSection("home")
+            }
             whileHover={{
-              scale: 1.01,
+              scale: 1.015,
             }}
             whileTap={{
               scale: 0.97,
-            }}
-            transition={{
-              duration: 0.15,
             }}
             className="
               flex
               items-center
               gap-2
-              sm:gap-2.5
-              text-left
               shrink-0
+              text-left
               min-w-0
             "
           >
+
             <img
               src={nalanLogo}
               alt="நளன் கேட்டரிங்"
@@ -329,21 +333,26 @@ function Navbar() {
                 sm:h-11
                 md:w-12
                 md:h-12
-                lg:w-14
-                lg:h-14
+                lg:w-13
+                lg:h-13
                 object-contain
                 rounded-full
                 shrink-0
               "
             />
 
-            <div className="min-w-0">
+            <div
+              className="
+                min-w-0
+              "
+            >
+
               <h1
                 className="
                   text-[16px]
                   sm:text-[18px]
-                  md:text-[21px]
-                  lg:text-[23px]
+                  md:text-[20px]
+                  lg:text-[21px]
                   font-bold
                   text-[#166534]
                   leading-none
@@ -354,19 +363,20 @@ function Navbar() {
               </h1>
 
               <p
-  className="
-    text-[9px]
-    sm:text-[10px]
-    md:text-[11px]
-    lg:text-[12px]
-    text-green-600
-    font-medium
-    mt-1
-    whitespace-nowrap
-  "
->
-  உணவில் தரம் • என்றும் நிரந்தரம்
-</p>
+                className="
+                  text-[9px]
+                  sm:text-[10px]
+                  md:text-[11px]
+                  lg:text-[11px]
+                  text-green-600
+                  font-medium
+                  mt-1
+                  whitespace-nowrap
+                "
+              >
+                உணவில் தரம் • என்றும் நிரந்தரம்
+              </p>
+
             </div>
           </motion.button>
 
@@ -378,12 +388,17 @@ function Navbar() {
             className="
               hidden
               lg:flex
+              flex-1
+              min-w-0
               items-center
-              gap-1
-              xl:gap-2
+              justify-center
+              gap-0
+              xl:gap-0.5
             "
           >
+
             {links.map((link, index) => {
+
               const isActive =
                 activeSection === link.id;
 
@@ -392,34 +407,43 @@ function Navbar() {
                   key={link.id}
                   initial={{
                     opacity: 0,
-                    y: -10,
+                    y: -8,
                   }}
                   animate={{
                     opacity: 1,
                     y: 0,
                   }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.35,
                     delay:
-                      0.18 +
+                      0.15 +
                       index * 0.045,
                     ease: "easeOut",
                   }}
                   onClick={() =>
-                    scrollToSection(link.id)
+                    scrollToSection(
+                      link.id
+                    )
                   }
+                  whileHover={{
+                    y: -1,
+                  }}
                   whileTap={{
                     scale: 0.96,
                   }}
                   className={`
                     relative
                     group
-                    px-3
-                    xl:px-3.5
+                    flex
+                    items-center
+                    justify-center
+                    shrink-0
+                    px-2
+                    xl:px-2.5
                     py-2
                     rounded-full
-                    text-[13px]
-                    xl:text-sm
+                    text-[11px]
+                    xl:text-[12px]
                     font-medium
                     whitespace-nowrap
                     transition-colors
@@ -431,7 +455,8 @@ function Navbar() {
                     }
                   `}
                 >
-                  {/* ACTIVE GREEN BOX */}
+
+                  {/* ACTIVE HIGHLIGHT */}
 
                   {isActive && (
                     <motion.span
@@ -453,7 +478,7 @@ function Navbar() {
                     />
                   )}
 
-                  {/* MENU TEXT */}
+                  {/* TEXT */}
 
                   <span
                     className="
@@ -477,77 +502,76 @@ function Navbar() {
                         left: "0%",
                       }}
                       transition={{
-                        duration: 0.18,
-                        ease: "easeOut",
+                        duration: 0.2,
                       }}
                       className="
                         absolute
-                        -bottom-1
+                        -bottom-0.5
                         h-[2px]
                         rounded-full
                         bg-green-500
                       "
                     />
                   )}
+
                 </motion.button>
               );
             })}
+
           </nav>
 
           {/* =================================================
-              DESKTOP CTA
+              DESKTOP BOOKING BUTTON
           ================================================== */}
 
           <motion.button
             onClick={() =>
-              scrollToSection("contact")
+              scrollToSection("booking")
             }
             whileHover={{
-              scale: 1.035,
+              scale: 1.03,
               y: -1,
             }}
             whileTap={{
-              scale: 0.97,
-            }}
-            transition={{
-              duration: 0.15,
+              scale: 0.96,
             }}
             className="
-              group
               hidden
               lg:flex
+              shrink-0
               items-center
-              gap-2
+              justify-center
+              gap-1.5
               bg-green-600
               hover:bg-green-500
               text-white
-              px-4
-              xl:px-5
+              px-3
+              xl:px-4
               py-2.5
-              xl:py-3
               rounded-full
               font-semibold
-              text-[13px]
-              xl:text-sm
+              text-[11px]
+              xl:text-[12px]
+              whitespace-nowrap
               shadow-[0_8px_25px_rgba(22,163,74,0.25)]
               transition-colors
               duration-150
-              whitespace-nowrap
-              shrink-0
             "
           >
+
             <span>
               📞 பதிவு செய்யுங்கள்
             </span>
 
             <ArrowRight
-              size={16}
+              size={14}
               className="
                 transition-transform
                 duration-150
                 group-hover:translate-x-1
               "
             />
+
           </motion.button>
 
           {/* =================================================
@@ -569,6 +593,7 @@ function Navbar() {
             aria-expanded={menuOpen}
             className="
               lg:hidden
+              ml-auto
               w-10
               h-10
               sm:w-11
@@ -585,8 +610,11 @@ function Navbar() {
               shadow-sm
             "
           >
+
             <AnimatePresence mode="wait">
+
               {menuOpen ? (
+
                 <motion.div
                   key="close"
                   initial={{
@@ -604,13 +632,12 @@ function Navbar() {
                     opacity: 0,
                     scale: 0.7,
                   }}
-                  transition={{
-                    duration: 0.15,
-                  }}
                 >
                   <X size={23} />
                 </motion.div>
+
               ) : (
+
                 <motion.div
                   key="menu"
                   initial={{
@@ -628,15 +655,16 @@ function Navbar() {
                     opacity: 0,
                     scale: 0.7,
                   }}
-                  transition={{
-                    duration: 0.15,
-                  }}
                 >
                   <Menu size={23} />
                 </motion.div>
+
               )}
+
             </AnimatePresence>
+
           </motion.button>
+
         </div>
 
         {/* =================================================
@@ -644,7 +672,9 @@ function Navbar() {
         ================================================== */}
 
         <AnimatePresence>
+
           {menuOpen && (
+
             <motion.div
               initial={{
                 opacity: 0,
@@ -659,7 +689,7 @@ function Navbar() {
                 height: 0,
               }}
               transition={{
-                duration: 0.22,
+                duration: 0.25,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
@@ -671,6 +701,7 @@ function Navbar() {
                 shadow-lg
               "
             >
+
               <div
                 className="
                   px-3
@@ -679,90 +710,97 @@ function Navbar() {
                   sm:py-3
                 "
               >
-                {links.map((link, index) => {
-                  const isActive =
-                    activeSection === link.id;
 
-                  return (
-                    <motion.button
-                      key={link.id}
-                      initial={{
-                        opacity: 0,
-                        x: -12,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                      }}
-                      transition={{
-                        delay: index * 0.035,
-                        duration: 0.18,
-                        ease: "easeOut",
-                      }}
-                      whileTap={{
-                        scale: 0.98,
-                      }}
-                      onClick={() =>
-                        scrollToSection(link.id)
-                      }
-                      className={`
-                        group
-                        relative
-                        w-full
-                        flex
-                        items-center
-                        justify-between
-                        text-left
-                        px-3
-                        sm:px-4
-                        py-3
-                        sm:py-3.5
-                        rounded-xl
-                        border-b
-                        ${
-                          isActive
-                            ? "bg-green-100 border-green-200 text-green-700"
-                            : "border-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-700"
+                {links.map(
+                  (link, index) => {
+
+                    const isActive =
+                      activeSection ===
+                      link.id;
+
+                    return (
+                      <motion.button
+                        key={link.id}
+                        initial={{
+                          opacity: 0,
+                          x: -15,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          x: 0,
+                        }}
+                        transition={{
+                          delay:
+                            index * 0.035,
+                          duration: 0.2,
+                        }}
+                        whileTap={{
+                          scale: 0.98,
+                        }}
+                        onClick={() =>
+                          scrollToSection(
+                            link.id
+                          )
                         }
-                        text-sm
-                        sm:text-base
-                        font-medium
-                        transition-colors
-                        duration-150
-                      `}
-                    >
-                      <span>
-                        {link.name}
-                      </span>
-
-                      <ArrowRight
-                        size={15}
                         className={`
-                          transition-transform
-                          duration-150
+                          group
+                          relative
+                          w-full
+                          flex
+                          items-center
+                          justify-between
+                          text-left
+                          px-3
+                          sm:px-4
+                          py-3
+                          sm:py-3.5
+                          rounded-xl
+                          border-b
                           ${
                             isActive
-                              ? "text-green-700 translate-x-1"
-                              : "text-green-500 group-hover:translate-x-1"
+                              ? "bg-green-100 border-green-200 text-green-700"
+                              : "border-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-700"
                           }
+                          text-sm
+                          sm:text-base
+                          font-medium
+                          transition-colors
+                          duration-150
                         `}
-                      />
-                    </motion.button>
-                  );
-                })}
+                      >
 
-                {/* =================================================
-                    MOBILE CTA
-                ================================================== */}
+                        <span>
+                          {link.name}
+                        </span>
+
+                        <ArrowRight
+                          size={15}
+                          className={`
+                            transition-transform
+                            duration-150
+                            ${
+                              isActive
+                                ? "text-green-700 translate-x-1"
+                                : "text-green-500 group-hover:translate-x-1"
+                            }
+                          `}
+                        />
+
+                      </motion.button>
+                    );
+                  }
+                )}
+
+                {/* MOBILE CTA */}
 
                 <div
                   className="
                     pt-3
                     sm:pt-4
                     pb-1
-                    sm:pb-2
                   "
                 >
+
                   <motion.button
                     whileHover={{
                       scale: 1.015,
@@ -771,10 +809,11 @@ function Navbar() {
                       scale: 0.97,
                     }}
                     onClick={() =>
-                      scrollToSection("contact")
+                      scrollToSection(
+                        "booking"
+                      )
                     }
                     className="
-                      group
                       w-full
                       flex
                       items-center
@@ -790,29 +829,30 @@ function Navbar() {
                       text-sm
                       sm:text-base
                       shadow-[0_8px_25px_rgba(22,163,74,0.2)]
-                      transition-colors
-                      duration-150
                     "
                   >
+
                     <span>
                       📞 பதிவு செய்யுங்கள்
                     </span>
 
                     <ArrowRight
                       size={16}
-                      className="
-                        transition-transform
-                        duration-150
-                        group-hover:translate-x-1
-                      "
                     />
+
                   </motion.button>
+
                 </div>
+
               </div>
+
             </motion.div>
           )}
+
         </AnimatePresence>
+
       </motion.div>
+
     </header>
   );
 }

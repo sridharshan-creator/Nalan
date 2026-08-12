@@ -5,15 +5,13 @@ import { Sparkles, Play } from "lucide-react";
 import backgroundImage from "../../assets/images/IMG-20260803-WA0010.jpg";
 import photo1 from "../../assets/images/IMG-20260803-WA0011.jpg";
 import photo2 from "../../assets/images/IMG-20260803-WA0014.jpg";
+
 import video1 from "../../assets/videos/VID-20260803-WA0030.mp4";
 import video2 from "../../assets/videos/VID-20260803-WA0024.mp4";
 
 function Gallery() {
   const sectionRef = useRef(null);
 
-  // This controls BOTH entering and leaving animations.
-  // once:false is important because we want the animations
-  // to reverse when the user scrolls away.
   const isInView = useInView(sectionRef, {
     amount: 0.3,
     once: false,
@@ -32,11 +30,13 @@ function Gallery() {
         bg-black
       "
     >
+
       {/* =====================================================
           FULL BACKGROUND IMAGE
       ====================================================== */}
 
       <div className="absolute inset-0">
+
         <img
           src={backgroundImage}
           alt="Nalan Catering wedding and event catering celebration"
@@ -50,7 +50,6 @@ function Gallery() {
           "
         />
 
-        {/* Dark green cinematic overlay */}
         <div
           className="
             absolute
@@ -62,7 +61,6 @@ function Gallery() {
           "
         />
 
-        {/* Green atmosphere */}
         <div
           className="
             absolute
@@ -73,7 +71,9 @@ function Gallery() {
             to-[#063b24]/30
           "
         />
+
       </div>
+
 
       {/* =====================================================
           ANIMATED GREEN GLOW — TOP LEFT
@@ -103,6 +103,7 @@ function Gallery() {
         "
       />
 
+
       {/* =====================================================
           ANIMATED GREEN GLOW — BOTTOM RIGHT
       ====================================================== */}
@@ -131,6 +132,7 @@ function Gallery() {
         "
       />
 
+
       {/* =====================================================
           MAIN CONTENT
       ====================================================== */}
@@ -147,6 +149,7 @@ function Gallery() {
           md:px-8
         "
       >
+
 
         {/* =================================================
             CENTER TEXT
@@ -177,7 +180,8 @@ function Gallery() {
             text-center
           "
         >
-          {/* Label */}
+
+          {/* LABEL */}
 
           <div
             className="
@@ -188,6 +192,7 @@ function Gallery() {
               mb-5
             "
           >
+
             <Sparkles
               size={18}
               className="text-green-300"
@@ -210,9 +215,11 @@ function Gallery() {
               size={18}
               className="text-green-300"
             />
+
           </div>
 
-          {/* Main Heading */}
+
+          {/* MAIN HEADING */}
 
           <h2
             id="gallery-heading"
@@ -228,6 +235,7 @@ function Gallery() {
             "
           >
             ஒவ்வொரு விழாவும்
+
             <br />
 
             <span className="text-green-300">
@@ -235,7 +243,8 @@ function Gallery() {
             </span>
           </h2>
 
-          {/* SEO-friendly description */}
+
+          {/* DESCRIPTION */}
 
           <p
             className="
@@ -257,10 +266,13 @@ function Gallery() {
             மாற்றுகிறோம்.
           </p>
 
-          {/* Green divider */}
+
+          {/* GREEN DIVIDER */}
 
           <motion.div
-            initial={{ width: 0 }}
+            initial={{
+              width: 0,
+            }}
             animate={{
               width: isInView ? 90 : 0,
             }}
@@ -279,7 +291,8 @@ function Gallery() {
             "
           />
 
-          {/* Bottom text */}
+
+          {/* BOTTOM TEXT */}
 
           <p
             className="
@@ -292,12 +305,15 @@ function Gallery() {
               drop-shadow-lg
             "
           >
-              தமிழ் பாரம்பரியம் • சுவையின் பெருமை 
+            தமிழ் பாரம்பரியம் • சுவையின் பெருமை
           </p>
+
         </motion.div>
+
 
         {/* =================================================
             TOP LEFT IMAGE
+            INCREASED SIZE
         ================================================== */}
 
         <motion.div
@@ -323,10 +339,12 @@ function Gallery() {
             md:left-8
             lg:left-14
             top-[8%]
-            w-32
-            sm:w-40
-            md:w-48
-            lg:w-56
+
+            w-36
+            sm:w-44
+            md:w-52
+            lg:w-60
+
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
@@ -337,7 +355,9 @@ function Gallery() {
             group
           "
         >
+
           <div className="aspect-[4/3] overflow-hidden">
+
             <img
               src={photo1}
               alt="Nalan Catering wedding celebration and catering service"
@@ -352,6 +372,7 @@ function Gallery() {
                 group-hover:scale-110
               "
             />
+
           </div>
 
           <div
@@ -365,14 +386,19 @@ function Gallery() {
               to-transparent
             "
           >
+
             <p className="text-white text-[10px] md:text-xs font-semibold">
               இனிய தருணங்கள்
             </p>
+
           </div>
+
         </motion.div>
+
 
         {/* =================================================
             TOP RIGHT VIDEO
+            INCREASED SIZE
         ================================================== */}
 
         <motion.div
@@ -398,10 +424,12 @@ function Gallery() {
             md:right-8
             lg:right-14
             top-[8%]
-            w-32
-            sm:w-40
-            md:w-48
-            lg:w-56
+
+            w-36
+            sm:w-44
+            md:w-52
+            lg:w-60
+
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
@@ -412,7 +440,9 @@ function Gallery() {
             group
           "
         >
+
           <div className="aspect-[4/3] overflow-hidden">
+
             <video
               src={video1}
               autoPlay
@@ -431,9 +461,11 @@ function Gallery() {
                 group-hover:scale-105
               "
             />
+
           </div>
 
-          {/* Play badge */}
+
+          {/* PLAY BADGE */}
 
           <div
             className="
@@ -454,11 +486,14 @@ function Gallery() {
               shadow-lg
             "
           >
+
             <Play
               size={13}
               fill="currentColor"
             />
+
           </div>
+
 
           <div
             className="
@@ -472,14 +507,19 @@ function Gallery() {
               to-transparent
             "
           >
+
             <p className="text-white text-[10px] md:text-xs font-semibold">
               விழா தருணங்கள்
             </p>
+
           </div>
+
         </motion.div>
+
 
         {/* =================================================
             BOTTOM LEFT IMAGE
+            INCREASED SIZE
         ================================================== */}
 
         <motion.div
@@ -507,10 +547,12 @@ function Gallery() {
             md:left-[10%]
             lg:left-[14%]
             bottom-[6%]
-            w-32
-            sm:w-40
-            md:w-48
-            lg:w-52
+
+            w-36
+            sm:w-44
+            md:w-52
+            lg:w-56
+
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
@@ -521,7 +563,9 @@ function Gallery() {
             group
           "
         >
+
           <div className="aspect-[4/3] overflow-hidden">
+
             <img
               src={photo2}
               alt="Traditional Tamil food catering by Nalan Catering"
@@ -536,7 +580,9 @@ function Gallery() {
                 group-hover:scale-110
               "
             />
+
           </div>
+
 
           <div
             className="
@@ -550,14 +596,19 @@ function Gallery() {
               to-transparent
             "
           >
+
             <p className="text-white text-[10px] md:text-xs font-semibold">
               பாரம்பரிய சுவை
             </p>
+
           </div>
+
         </motion.div>
+
 
         {/* =================================================
             BOTTOM RIGHT VIDEO
+            INCREASED SIZE
         ================================================== */}
 
         <motion.div
@@ -585,10 +636,12 @@ function Gallery() {
             md:right-[10%]
             lg:right-[14%]
             bottom-[6%]
-            w-32
-            sm:w-40
-            md:w-48
-            lg:w-52
+
+            w-36
+            sm:w-44
+            md:w-52
+            lg:w-56
+
             rounded-2xl
             md:rounded-3xl
             overflow-hidden
@@ -599,7 +652,9 @@ function Gallery() {
             group
           "
         >
+
           <div className="aspect-[4/3] overflow-hidden">
+
             <video
               src={video2}
               autoPlay
@@ -618,9 +673,11 @@ function Gallery() {
                 group-hover:scale-105
               "
             />
+
           </div>
 
-          {/* Play badge */}
+
+          {/* PLAY BADGE */}
 
           <div
             className="
@@ -641,11 +698,14 @@ function Gallery() {
               shadow-lg
             "
           >
+
             <Play
               size={13}
               fill="currentColor"
             />
+
           </div>
+
 
           <div
             className="
@@ -659,11 +719,15 @@ function Gallery() {
               to-transparent
             "
           >
+
             <p className="text-white text-[10px] md:text-xs font-semibold">
               கொண்டாட்ட தருணங்கள்
             </p>
+
           </div>
+
         </motion.div>
+
 
         {/* =================================================
             DECORATIVE GREEN DOTS
@@ -671,8 +735,12 @@ function Gallery() {
 
         <motion.div
           animate={{
-            opacity: isInView ? [0.3, 0.9, 0.3] : 0,
-            scale: isInView ? [1, 1.3, 1] : 1,
+            opacity: isInView
+              ? [0.3, 0.9, 0.3]
+              : 0,
+            scale: isInView
+              ? [1, 1.3, 1]
+              : 1,
           }}
           transition={{
             duration: 2.5,
@@ -692,10 +760,15 @@ function Gallery() {
           "
         />
 
+
         <motion.div
           animate={{
-            opacity: isInView ? [0.3, 0.9, 0.3] : 0,
-            scale: isInView ? [1, 1.3, 1] : 1,
+            opacity: isInView
+              ? [0.3, 0.9, 0.3]
+              : 0,
+            scale: isInView
+              ? [1, 1.3, 1]
+              : 1,
           }}
           transition={{
             duration: 3,
@@ -715,7 +788,9 @@ function Gallery() {
             md:block
           "
         />
+
       </div>
+
 
       {/* =====================================================
           BOTTOM GREEN ACCENT
@@ -734,6 +809,7 @@ function Gallery() {
           to-green-300
         "
       />
+
     </section>
   );
 }

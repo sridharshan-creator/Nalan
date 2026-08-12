@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
+
 import {
   UtensilsCrossed,
   ChevronRight,
@@ -7,59 +9,113 @@ import {
   Phone,
 } from "lucide-react";
 
+
 function Menu() {
   const [activeCategory, setActiveCategory] = useState(0);
 
+
   const categories = [
+    {
+      title: "முதல் நாள் இரவு டிபன்",
+      emoji: "🌙",
+      items: [
+        "பன் அல்வா",
+        "இட்லி",
+        "இடியாப்பம்",
+        "ஆனியன் ஊத்தாப்பம்",
+        "சில்லி புரோட்டா",
+        "வெஜ் புலாவ்",
+        "சோலா பூரி",
+        "வெள்ளையாப்பம்",
+        "வெஜ் நூடுல்ஸ்",
+        "தயிர் சாதம்",
+        "ஊறுகாய்",
+        "வெஜ் குருமா",
+        "சென்னா மசால்",
+        "தேங்காய் சட்னி",
+        "கார சட்னி",
+        "மல்லி சட்னி",
+        "சாம்பார்",
+        "பனங்கற்கண்டு பால்",
+      ],
+    },
+
     {
       title: "காலை டிபன்",
       emoji: "🥞",
       items: [
-        "இட்லி",
-        "தோசை",
+        "கோதுமை அல்வா",
+        "புரூட் கேசரி",
+        "இனிப்பு பனியாரம்",
+        "நெய் புட்டு",
+        "இளநீர் இட்லி",
         "நெய் ரோஸ்ட்",
-        "வெண்பொங்கல்",
-        "பூரி",
-        "சப்பாத்தி",
-        "வடை",
-        "சாம்பார்",
+        "அடை தோசை",
+        "நெய் பொங்கல்",
+        "மெது வடை",
+        "பீட்ரூட் பூரி",
+        "எண்ணெய் பொடி",
         "தேங்காய் சட்னி",
         "தக்காளி சட்னி",
+        "ஊளுந்தச் சட்னி",
+        "சாம்பார்",
+        "பில்டர் காபி",
       ],
     },
+
     {
       title: "மதிய விருந்து",
       emoji: "🍛",
       items: [
+        "ஸ்வீட்",
+        "கோஸ் கேரட் பீன்ஸ் பொரியல்",
+        "வெண்டைக்காய் தக்காளி பச்சடி",
+        "நெல்லை அவியல்",
+        "சேனை சாப்ஸ்",
+        "காளிபிளவர் – 65",
+        "வெஜ் பிரியாணி",
+        "மல்லி சாதம் (அ)தேங்காய் சாதம்",
+        "தயிர் பச்சடி",
         "சாதம்",
+        "நெய் பருப்பு",
         "சாம்பார்",
-        "ரசம்",
         "வத்தக்குழம்பு",
-        "மோர்க்குழம்பு",
-        "அவியல்",
-        "காய்கறி பொரியல்",
-        "உருளைக்கிழங்கு வறுவல்",
-        "தயிர் சாதம்",
-        "பாயாசம்",
+        "ரசம்",
+        "நெய் பாயசம்",
+        "அப்பளம்",
+        "கெட்டி மோர்",
+        "ஊறுகாய்",
       ],
     },
+
     {
-      title: "இரவு உணவு",
+      title: "இரவு டிபன்",
       emoji: "🌙",
       items: [
-        "சப்பாத்தி",
-        "பரோட்டா",
-        "நான்",
+        "இளநீர் அல்வா",
+        "பன் அல்வா",
+        "இளநீர் இட்லி",
+        "இடியாப்பம்",
+        "ஆனியன் ஊத்தாப்பம்",
+        "கொத்து புரோட்டா",
+        "காளான் பிரியாணி",
+        "வெஜ் லாலிபாப்",
+        "ரொமாலி",
+        "வெஜ் நூடுல்ஸ்",
+        "தயிர் சாதம்",
+        "ஊறுகாய்",
         "வெஜ் குருமா",
-        "சிக்கன் குழம்பு",
-        "பனீர் பட்டர் மசாலா",
-        "வெஜ் பிரியாணி",
-        "சிக்கன் பிரியாணி",
-        "ரைட்டா",
-        "இனிப்பு",
+        "பட்டர் பன்னீர் மசால்",
+        "தேங்காய் சட்னி",
+        "கார சட்னி",
+        "மல்லி சட்னி",
+        "சாம்பார்",
+        "மசாலா பால்",
+        "ஜிகர்தண்டா",
       ],
     },
   ];
+
 
   const scrollToContact = () => {
     const element = document.getElementById("contact");
@@ -77,7 +133,9 @@ function Menu() {
     }
   };
 
+
   const activeMenu = categories[activeCategory];
+
 
   return (
     <section
@@ -93,6 +151,7 @@ function Menu() {
         md:px-6
       "
     >
+
       {/* =====================================================
           GREEN BACKGROUND DECORATION
       ====================================================== */}
@@ -121,6 +180,7 @@ function Menu() {
         "
       />
 
+
       <motion.div
         animate={{
           y: [0, 25, 0],
@@ -145,6 +205,7 @@ function Menu() {
         "
       />
 
+
       {/* Subtle decorative leaf */}
 
       <div
@@ -161,6 +222,7 @@ function Menu() {
         🍃
       </div>
 
+
       <div
         className="
           absolute
@@ -175,11 +237,13 @@ function Menu() {
         🍃
       </div>
 
+
       {/* =====================================================
           MAIN CONTAINER
       ====================================================== */}
 
       <div className="relative z-10 max-w-7xl mx-auto">
+
 
         {/* =================================================
             HEADING
@@ -208,6 +272,7 @@ function Menu() {
           {/* Decorative symbol */}
 
           <div className="flex items-center justify-center gap-3 mb-3">
+
             <Sparkles
               size={18}
               className="text-green-600"
@@ -230,7 +295,9 @@ function Menu() {
               className="text-green-600"
               aria-hidden="true"
             />
+
           </div>
+
 
           {/* SEO-friendly heading */}
 
@@ -250,6 +317,7 @@ function Menu() {
             </span>
           </h2>
 
+
           <p
             className="
               text-gray-600
@@ -266,6 +334,7 @@ function Menu() {
             நிகழ்ச்சிகளுக்கும் ஏற்ற பல்வேறு சுவையான உணவு வகைகளை
             வழங்குகிறோம்.
           </p>
+
 
           {/* Animated green underline */}
 
@@ -292,6 +361,7 @@ function Menu() {
           />
 
         </motion.div>
+
 
         {/* =================================================
             CATEGORY BUTTONS
@@ -327,6 +397,7 @@ function Menu() {
         >
 
           {categories.map((category, index) => (
+
             <motion.button
               key={category.title}
               type="button"
@@ -334,12 +405,27 @@ function Menu() {
               aria-selected={activeCategory === index}
               aria-controls={`menu-panel-${index}`}
               onClick={() => setActiveCategory(index)}
+
+              /* =================================================
+                 BUTTON TOUCH / HOVER ANIMATION
+                 Zoom + lift immediately
+              ================================================== */
+
               whileHover={{
-                y: -3,
+                scale: 1.08,
+                y: -5,
               }}
+
               whileTap={{
-                scale: 0.95,
+                scale: 1.08,
+                y: -5,
               }}
+
+              transition={{
+                duration: 0.12,
+                ease: "easeOut",
+              }}
+
               className={`
                 flex
                 items-center
@@ -353,7 +439,7 @@ function Menu() {
                 text-xs
                 sm:text-sm
                 md:text-base
-                transition-all
+                transition-colors
                 duration-200
 
                 ${
@@ -363,6 +449,7 @@ function Menu() {
                 }
               `}
             >
+
               <span aria-hidden="true">
                 {category.emoji}
               </span>
@@ -370,10 +457,13 @@ function Menu() {
               <span>
                 {category.title}
               </span>
+
             </motion.button>
+
           ))}
 
         </motion.div>
+
 
         {/* =================================================
             MENU CARD
@@ -387,21 +477,25 @@ function Menu() {
               key={activeCategory}
               id={`menu-panel-${activeCategory}`}
               role="tabpanel"
+
               initial={{
                 opacity: 0,
                 y: 25,
                 scale: 0.98,
               }}
+
               animate={{
                 opacity: 1,
                 y: 0,
                 scale: 1,
               }}
+
               exit={{
                 opacity: 0,
                 y: -15,
                 scale: 0.98,
               }}
+
               transition={{
                 duration: 0.28,
                 ease: [0.22, 1, 0.36, 1],
@@ -452,6 +546,7 @@ function Menu() {
                     "
                   />
 
+
                   <div className="relative z-10 flex items-center justify-between">
 
                     <div className="flex items-center gap-4">
@@ -474,6 +569,7 @@ function Menu() {
                         {activeMenu.emoji}
                       </div>
 
+
                       <div>
 
                         <p
@@ -486,6 +582,7 @@ function Menu() {
                         >
                           இன்றைய சிறப்பு
                         </p>
+
 
                         <h3
                           className="
@@ -502,6 +599,7 @@ function Menu() {
 
                     </div>
 
+
                     <UtensilsCrossed
                       size={28}
                       className="
@@ -515,6 +613,7 @@ function Menu() {
                   </div>
 
                 </div>
+
 
                 {/* ===========================================
                     FOOD ITEMS
@@ -542,26 +641,30 @@ function Menu() {
 
                       <motion.div
                         key={`${activeCategory}-${item}`}
+
                         initial={{
                           opacity: 0,
                           x: -15,
                         }}
+
                         animate={{
                           opacity: 1,
                           x: 0,
                         }}
+
                         transition={{
                           duration: 0.25,
                           delay: index * 0.045,
                         }}
+
                         whileHover={{
                           x: 5,
                         }}
+
                         className="
                           group
                           flex
                           items-center
-                          justify-between
                           bg-white
                           border
                           border-gray-100
@@ -598,6 +701,7 @@ function Menu() {
                             {index + 1}
                           </span>
 
+
                           <span
                             className="
                               text-sm
@@ -613,18 +717,7 @@ function Menu() {
 
                         </div>
 
-                        <ChevronRight
-                          size={17}
-                          className="
-                            flex-shrink-0
-                            text-green-500
-                            opacity-40
-                            group-hover:opacity-100
-                            group-hover:translate-x-1
-                            transition-all
-                          "
-                          aria-hidden="true"
-                        />
+                        {/* Arrow removed from food items */}
 
                       </motion.div>
 
@@ -633,6 +726,7 @@ function Menu() {
                   </div>
 
                 </div>
+
 
                 {/* ===========================================
                     BOTTOM ACCENT
@@ -655,6 +749,7 @@ function Menu() {
           </AnimatePresence>
 
         </div>
+
 
         {/* =================================================
             CTA
@@ -687,13 +782,16 @@ function Menu() {
             type="button"
             onClick={scrollToContact}
             aria-label="நளன் கேட்டரிங் சேவைக்கு இலவசமாக விலைப்பெறுங்கள்"
+
             whileHover={{
               scale: 1.04,
               y: -2,
             }}
+
             whileTap={{
               scale: 0.96,
             }}
+
             className="
               group
               inline-flex
@@ -721,7 +819,7 @@ function Menu() {
               aria-hidden="true"
             />
 
-            மேலும் அறிய 
+            மேலும் அறிய
 
             <ChevronRight
               size={18}
@@ -737,8 +835,10 @@ function Menu() {
         </motion.div>
 
       </div>
+
     </section>
   );
 }
+
 
 export default Menu;

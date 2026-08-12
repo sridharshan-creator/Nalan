@@ -188,38 +188,7 @@ function Hero() {
           text-center
         "
       >
-        {/* Small badge */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.2,
-          }}
-          className="
-            inline-flex
-            items-center
-            gap-2
-            px-4
-            py-2
-            rounded-full
-            bg-green-950/50
-            backdrop-blur-md
-            border
-            border-green-300/30
-            text-green-100
-            text-xs
-            sm:text-sm
-            mb-6
-          "
-        >
+        <motion.div>
           
         </motion.div>
 
