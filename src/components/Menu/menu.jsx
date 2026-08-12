@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useIsMobile from "../useIsMobile";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,6 +12,7 @@ import {
 
 
 function Menu() {
+  const isMobile = useIsMobile();
   const [activeCategory, setActiveCategory] = useState(0);
 
 
@@ -164,7 +166,7 @@ function Menu() {
         }}
         transition={{
           duration: 7,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -175,7 +177,7 @@ function Menu() {
           h-96
           rounded-full
           bg-green-400
-          blur-[110px]
+          blur-[60px] sm:blur-[110px]
           pointer-events-none
         "
       />
@@ -189,7 +191,7 @@ function Menu() {
         }}
         transition={{
           duration: 8,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -200,7 +202,7 @@ function Menu() {
           h-96
           rounded-full
           bg-green-700
-          blur-[120px]
+          blur-[65px] sm:blur-[120px]
           pointer-events-none
         "
       />

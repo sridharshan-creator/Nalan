@@ -1,29 +1,6 @@
-import { useEffect } from "react";
-import Lenis from "lenis";
-
 function SmoothScroll({ children }) {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
-      syncTouch: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    const animationFrame = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-      lenis.destroy();
-    };
-  }, []);
-
+  // ScrollEffects owns the single Lenis instance.
+  // Keeping this wrapper preserves compatibility with App.jsx without creating a second scroll engine.
   return children;
 }
 

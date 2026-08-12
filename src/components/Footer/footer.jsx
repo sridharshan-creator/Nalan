@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useIsMobile from "../useIsMobile";
 
 import {
   Phone,
@@ -10,6 +11,7 @@ import {
 import nalanLogo from "../../assets/images/nalan-logo.jpg";
 
 function Footer() {
+  const isMobile = useIsMobile();
   const BUSINESS_EMAIL = "nalancateringtrichy@gmail.com";
 
   const MAP_URL =
@@ -63,7 +65,7 @@ function Footer() {
         }}
         transition={{
           duration: 9,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -74,7 +76,7 @@ function Footer() {
           h-[450px]
           rounded-full
           bg-green-300
-          blur-[130px]
+          blur-[70px] sm:blur-[130px]
           pointer-events-none
         "
       />
@@ -87,7 +89,7 @@ function Footer() {
         }}
         transition={{
           duration: 10,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -98,7 +100,7 @@ function Footer() {
           h-[500px]
           rounded-full
           bg-green-400
-          blur-[140px]
+          blur-[75px] sm:blur-[140px]
           pointer-events-none
         "
       />

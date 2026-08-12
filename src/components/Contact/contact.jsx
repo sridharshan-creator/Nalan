@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import useIsMobile from "../useIsMobile";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 
 function Contact() {
+  const isMobile = useIsMobile();
   const BUSINESS_EMAIL = "nalancateringtrichy@gmail.com";
 
   // Your exact Google Maps location
@@ -90,7 +92,7 @@ ${name}
         }}
         transition={{
           duration: 9,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -101,7 +103,7 @@ ${name}
           h-[450px]
           rounded-full
           bg-green-400
-          blur-[130px]
+          blur-[70px] sm:blur-[130px]
           pointer-events-none
         "
       />
@@ -114,7 +116,7 @@ ${name}
         }}
         transition={{
           duration: 10,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -125,7 +127,7 @@ ${name}
           h-[500px]
           rounded-full
           bg-green-700
-          blur-[140px]
+          blur-[75px] sm:blur-[140px]
           pointer-events-none
         "
       />
@@ -690,7 +692,7 @@ ${name}
             className="
               relative
               bg-white/80
-              backdrop-blur-xl
+              backdrop-blur-sm md:backdrop-blur-xl
               p-5
               md:p-8
               rounded-3xl

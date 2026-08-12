@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import useIsMobile from "../useIsMobile";
 import { motion, useInView } from "framer-motion";
 import { Sparkles, Play } from "lucide-react";
 
@@ -10,6 +11,7 @@ import video1 from "../../assets/videos/VID-20260803-WA0030.mp4";
 import video2 from "../../assets/videos/VID-20260803-WA0024.mp4";
 
 function Gallery() {
+  const isMobile = useIsMobile();
   const sectionRef = useRef(null);
 
   const isInView = useInView(sectionRef, {
@@ -38,6 +40,8 @@ function Gallery() {
       <div className="absolute inset-0">
 
         <img
+          decoding="async"
+          loading="lazy"
           src={backgroundImage}
           alt="Nalan Catering wedding and event catering celebration"
           className="
@@ -87,7 +91,7 @@ function Gallery() {
         }}
         transition={{
           duration: 8,
-          repeat: isInView ? Infinity : 0,
+          repeat: isInView && !isMobile ? Infinity : 0,
           ease: "easeInOut",
         }}
         className="
@@ -98,7 +102,7 @@ function Gallery() {
           h-[500px]
           rounded-full
           bg-green-400
-          blur-[140px]
+          blur-[75px] sm:blur-[140px]
           pointer-events-none
         "
       />
@@ -116,7 +120,7 @@ function Gallery() {
         }}
         transition={{
           duration: 9,
-          repeat: isInView ? Infinity : 0,
+          repeat: isInView && !isMobile ? Infinity : 0,
           ease: "easeInOut",
         }}
         className="
@@ -127,7 +131,7 @@ function Gallery() {
           h-[500px]
           rounded-full
           bg-green-700
-          blur-[140px]
+          blur-[75px] sm:blur-[140px]
           pointer-events-none
         "
       />
@@ -362,6 +366,7 @@ function Gallery() {
               src={photo1}
               alt="Nalan Catering wedding celebration and catering service"
               loading="lazy"
+              decoding="async"
               className="
                 w-full
                 h-full
@@ -449,7 +454,7 @@ function Gallery() {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               aria-label="Nalan Catering event catering video"
               className="
                 w-full
@@ -476,7 +481,7 @@ function Gallery() {
               h-8
               rounded-full
               bg-green-700/80
-              backdrop-blur-md
+              backdrop-blur-sm md:backdrop-blur-md
               border
               border-white/40
               flex
@@ -570,6 +575,7 @@ function Gallery() {
               src={photo2}
               alt="Traditional Tamil food catering by Nalan Catering"
               loading="lazy"
+              decoding="async"
               className="
                 w-full
                 h-full
@@ -661,7 +667,7 @@ function Gallery() {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               aria-label="Nalan Catering celebration and food service video"
               className="
                 w-full
@@ -688,7 +694,7 @@ function Gallery() {
               h-8
               rounded-full
               bg-green-700/80
-              backdrop-blur-md
+              backdrop-blur-sm md:backdrop-blur-md
               border
               border-white/40
               flex
@@ -744,7 +750,7 @@ function Gallery() {
           }}
           transition={{
             duration: 2.5,
-            repeat: isInView ? Infinity : 0,
+            repeat: isInView && !isMobile ? Infinity : 0,
           }}
           className="
             absolute
@@ -772,7 +778,7 @@ function Gallery() {
           }}
           transition={{
             duration: 3,
-            repeat: isInView ? Infinity : 0,
+            repeat: isInView && !isMobile ? Infinity : 0,
             delay: 1,
           }}
           className="

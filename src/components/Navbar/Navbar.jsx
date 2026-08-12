@@ -295,7 +295,7 @@ function Navbar() {
         }}
         className="
           bg-white/95
-          backdrop-blur-xl
+          backdrop-blur-sm md:backdrop-blur-xl
           border-b
           border-green-100
           shadow-[0_5px_30px_rgba(0,0,0,0.08)]
@@ -345,6 +345,7 @@ function Navbar() {
           >
 
             <img
+              decoding="async"
               src={nalanLogo}
               alt="நளன் கேட்டரிங்"
               className="

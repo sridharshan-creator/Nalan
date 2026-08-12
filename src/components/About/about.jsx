@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useIsMobile from "../useIsMobile";
 
 import {
   UtensilsCrossed,
@@ -13,6 +14,7 @@ import appaImage from "../../assets/images/Appa.png";
 import maganImage from "../../assets/images/Magan.png";
 
 function About() {
+  const isMobile = useIsMobile();
   const stats = [
     {
       icon: <UtensilsCrossed size={25} />,
@@ -85,7 +87,7 @@ function About() {
         }}
         transition={{
           duration: 6,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -98,8 +100,7 @@ function About() {
           sm:h-[420px]
           rounded-full
           bg-green-500
-          blur-[100px]
-          sm:blur-[130px]
+          blur-[55px] sm:blur-[100px] md:blur-[130px]
           pointer-events-none
         "
       />
@@ -115,7 +116,7 @@ function About() {
         }}
         transition={{
           duration: 7,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -128,8 +129,7 @@ function About() {
           sm:h-[450px]
           rounded-full
           bg-green-700
-          blur-[110px]
-          sm:blur-[140px]
+          blur-[60px] sm:blur-[110px] md:blur-[140px]
           pointer-events-none
         "
       />
@@ -459,6 +459,7 @@ function About() {
               "
             >
               <img
+              decoding="async"
                 src={aboutImage}
                 alt="Nalan Catering"
                 className="
@@ -497,7 +498,7 @@ function About() {
                   sm:left-5
                   sm:right-5
                   bg-[#07150d]/60
-                  backdrop-blur-md
+                  backdrop-blur-sm md:backdrop-blur-md
                   border
                   border-green-300/20
                   rounded-xl
@@ -663,7 +664,7 @@ function About() {
               sm:h-[350px]
               rounded-full
               bg-green-500
-              blur-[100px]
+              blur-[55px] sm:blur-[100px]
               pointer-events-none
             "
           />
@@ -914,6 +915,7 @@ function About() {
                       "
                     >
                       <img
+              decoding="async"
                         src={owner.image}
                         alt={owner.alt}
                         className="

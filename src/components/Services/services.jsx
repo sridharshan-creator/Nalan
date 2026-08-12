@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useIsMobile from "../useIsMobile";
 
 import {
   UtensilsCrossed,
@@ -14,6 +15,7 @@ import houseImage from "../../assets/images/house.jpg";
 
 
 function Services() {
+  const isMobile = useIsMobile();
 
   const services = [
     {
@@ -98,7 +100,7 @@ function Services() {
         }}
         transition={{
           duration: 6,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -111,8 +113,7 @@ function Services() {
           sm:h-[420px]
           rounded-full
           bg-green-400
-          blur-[100px]
-          sm:blur-[130px]
+          blur-[55px] sm:blur-[100px] md:blur-[130px]
           pointer-events-none
         "
       />
@@ -127,7 +128,7 @@ function Services() {
         }}
         transition={{
           duration: 7,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -142,7 +143,7 @@ function Services() {
           sm:h-[400px]
           rounded-full
           bg-green-500
-          blur-[120px]
+          blur-[65px] sm:blur-[120px]
           pointer-events-none
         "
       />
@@ -159,7 +160,7 @@ function Services() {
         }}
         transition={{
           duration: 7,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -172,8 +173,7 @@ function Services() {
           sm:h-[450px]
           rounded-full
           bg-green-700
-          blur-[110px]
-          sm:blur-[140px]
+          blur-[60px] sm:blur-[110px] md:blur-[140px]
           pointer-events-none
         "
       />

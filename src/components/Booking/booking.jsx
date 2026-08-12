@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useIsMobile from "../useIsMobile";
 import {
   Phone,
   CalendarDays,
@@ -7,6 +8,7 @@ import {
 } from "lucide-react";
 
 function Booking() {
+  const isMobile = useIsMobile();
   const scrollToContact = () => {
     const element = document.getElementById("contact");
 
@@ -47,7 +49,7 @@ function Booking() {
         }}
         transition={{
           duration: 7,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -62,8 +64,7 @@ function Booking() {
           md:h-[500px]
           rounded-full
           bg-green-400
-          blur-[120px]
-          md:blur-[150px]
+          blur-[65px] sm:blur-[120px] md:blur-[150px]
           pointer-events-none
         "
       />
@@ -81,7 +82,7 @@ function Booking() {
         }}
         transition={{
           duration: 6,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -92,7 +93,7 @@ function Booking() {
           h-[400px]
           rounded-full
           bg-emerald-300
-          blur-[110px]
+          blur-[60px] sm:blur-[110px]
           pointer-events-none
         "
       />
@@ -110,7 +111,7 @@ function Booking() {
         }}
         transition={{
           duration: 7,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
           delay: 1,
         }}
@@ -122,7 +123,7 @@ function Booking() {
           h-[450px]
           rounded-full
           bg-green-300
-          blur-[120px]
+          blur-[65px] sm:blur-[120px]
           pointer-events-none
         "
       />

@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import useIsMobile from "../useIsMobile";
 import heroImage from "../../assets/images/IMG-20260803-WA0010.jpg";
 
 function Hero() {
+  const isMobile = useIsMobile();
   const { scrollY } = useScroll();
 
   const imageY = useTransform(scrollY, [0, 600], [0, 120]);
@@ -98,7 +100,7 @@ function Hero() {
         }}
         transition={{
           duration: 5,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -122,7 +124,7 @@ function Hero() {
         }}
         transition={{
           duration: 8,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -133,7 +135,7 @@ function Hero() {
           h-[400px]
           rounded-full
           bg-green-400
-          blur-[120px]
+          blur-[65px] sm:blur-[120px]
           z-[2]
           pointer-events-none
         "
@@ -147,7 +149,7 @@ function Hero() {
         }}
         transition={{
           duration: 9,
-          repeat: Infinity,
+          repeat: isMobile ? 0 : Infinity,
           ease: "easeInOut",
         }}
         className="
@@ -158,7 +160,7 @@ function Hero() {
           h-[450px]
           rounded-full
           bg-emerald-400
-          blur-[130px]
+          blur-[70px] sm:blur-[130px]
           z-[2]
           pointer-events-none
         "
@@ -348,7 +350,7 @@ function Hero() {
               rounded-full
               bg-white/10
               hover:bg-white/20
-              backdrop-blur-md
+              backdrop-blur-sm md:backdrop-blur-md
               border
               border-white/30
               text-white
